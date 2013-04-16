@@ -34,3 +34,14 @@ kissy1.2下需要gallery的包配置, 1.3不需要
         } 
     });
 
+## 实现备注：
+
+对比[matchMedia.js](https://github.com/scottjehl/matchMedia.js)会发现，这里对返回值做了修改
+
+[matchMedia.js](https://github.com/scottjehl/matchMedia.js)的返回值为object：
+
+    return { matches: bool, media: q };
+而这里是直接返回布尔值：
+    return { bool };
+
+改成这样的原因是，一方面q是函数的参数，是已知的，return出来意义不大；另一方面如果保持原来的return，调用方式就变成了MatchMedia('(min-width: 400px)').matches,按照kissy的风格调用方式会变成 MatchMedia('(min-width: 400px)').get('matches'), 使用起来不方便:)
