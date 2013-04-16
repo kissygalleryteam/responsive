@@ -24,7 +24,6 @@ kissy1.2下需要gallery的包配置, 1.3不需要
          * @param {string} [mediaquery string] 
          * @return {bool} [true|false]
          */
-        
         if (MatchMedia('(min-width: 400px)')) {
             // 测试一般media query
         }
@@ -39,8 +38,7 @@ kissy1.2下需要gallery的包配置, 1.3不需要
 
 # 备注
 
-对比[matchMedia.js](https://github.com/scottjehl/matchMedia.js)会发现，这里对返回值做了修改
-
+对比[matchMedia.js](https://github.com/scottjehl/matchMedia.js)会发现，这里对返回值做了修改    
 [matchMedia.js](https://github.com/scottjehl/matchMedia.js)的返回值为object,如下：
 
     return { matches: bool, media: q };
