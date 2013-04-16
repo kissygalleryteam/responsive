@@ -33,8 +33,8 @@ kissy1.2下需要gallery的包配置, 1.3不需要
             // 测试是否横屏
         } 
     });
-    
-# demo
+
+# demo示例
  [点击访问](../demo/matchmedia.html)
 
 # 备注
