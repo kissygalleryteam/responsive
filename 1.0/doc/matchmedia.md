@@ -3,7 +3,7 @@ MatchMedia匹配是否支持或某个[media query](http://www.w3.org/TR/css3-med
 
 版本：1.0
 
-作者：Scott Jehl, Paul Irish, Nicholas Zakas,妙净
+作者：Scott Jehl, Paul Irish, Nicholas Zakas, 妙净
 
 
 ## 包配置 
@@ -19,7 +19,7 @@ kissy1.2下需要gallery的包配置, 1.3不需要
         ]
     });
 
-## 用法：
+## 用法
     KISSY.use('gallery/responsive/1.0/matchmedia/index', function (S, MatchMedia) {
         
         /**
@@ -35,10 +35,11 @@ kissy1.2下需要gallery的包配置, 1.3不需要
             // 测试是否横屏
         } 
     });
+    
  # demo
  [点击访问](../demo/matchmedia.html)
 
-# 备注：
+# 备注
 
 对比[matchMedia.js](https://github.com/scottjehl/matchMedia.js)会发现，这里对返回值做了修改
 
