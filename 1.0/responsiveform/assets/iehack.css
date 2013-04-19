@@ -1,0 +1,51 @@
+.maxwidth990 input[type="text"],
+.maxwidth990 input[type="password"],
+.maxwidth990 input[type="email"],
+.maxwidth990 input[type="url"],
+.maxwidth990 input[type="date"],
+.maxwidth990 input[type="time"],
+.maxwidth990 input[type="month"],
+.maxwidth990 input[type="week"],
+.maxwidth990 input[type="number"],
+.maxwidth990 input[type="range"],
+.maxwidth990 input[type="search"] {
+	width: 50%;
+}
+
+.maxwidth990 .control-group textarea {
+	width: 70%;
+}
+
+.maxwidth700 input[type="text"],
+.maxwidth700 input[type="password"],
+.maxwidth700 input[type="email"],
+.maxwidth700 input[type="url"],
+.maxwidth700 input[type="date"],
+.maxwidth700 input[type="time"],
+.maxwidth700 input[type="month"],
+.maxwidth700 input[type="week"],
+.maxwidth700 input[type="number"],
+.maxwidth700 input[type="range"],
+.maxwidth700 input[type="search"] {
+	width: 98%;
+}
+
+.maxwidth700 .control-group textarea {
+	width: 98%;
+}
+
+.maxwidth700 .control-group .control-label {
+	width: 100%;
+	text-align: left;
+}
+
+.maxwidth700 .control-group .control {
+	width: 100%;
+	clear: both;
+}
+
+.maxwidth700 .control-group .choice-label {
+	display: block;
+	margin-bottom: 5px;
+	padding-left: 10%;
+}
