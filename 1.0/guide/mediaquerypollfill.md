@@ -15,11 +15,13 @@ MediaqueryPolyfill即media query兼容（ie8-）实现
             }
         ]
     });
+    //为了防止闪屏，切换class应该在body渲染之前，所以不建议KISSY.use的按需异步加载，改为直接script
     <script src="http://a.tbcdn.cn/s/kissy/gallery/responsive/1.0/??,matchmedia/index.js,mediaquerypolyfill/index.js"></script>
+    <script>
     KISSY.use('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MediaqueryPolyfill) {
         new MediaqueryPolyfill([480, 1010, 1220, 1420, 1620]);//响应的临界值
     });
-
+    </script>
 # 备注
 实现media query i8-兼容，业内比较成熟的方案有[respond.js](https://github.com/scottjehl/Respond)和[css3-mediaqueries-js](https://github.com/livingston/css3-mediaqueries-js)在不跨域的情况下推荐使用（只有1k且不出现闪屏，使用方便，但会多一个ajax 304请求），但是跨域时（css/js在cdn）不推荐（会出现至少500ms间隔的闪屏，且需要在cdn上引入代理页面实现跨域）；css3-mediaqueries-js不推荐使用，其更多是mediaqueries的完全兼容实现，但min-width和max-width即可满足响应式实现的要求。基于以上，采用全局切换class的方式实现ie8-的兼容，引入less解决media query 和 兼容css的重复维护的问题。更多测试结果，[点这里](http://ux.etao.com/posts/686)哈
 
