@@ -12,8 +12,7 @@
 			B) A major browser implements <picture>
 */
 
-KISSY.add('gallery/responsive-img/1.0/index', function (S, DOM, Event) {
-
+KISSY.add('gallery/responsive/1.0/picturepolyfill', function (S, DOM, Event) {
 	
 	"use strict";
 	

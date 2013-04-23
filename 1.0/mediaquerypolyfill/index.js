@@ -6,6 +6,7 @@
  */
 
 KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMedia, Base) {
+	"use strict";
 	/**
 	 * @class MediaqueryPolyfill
 	 * @constructor

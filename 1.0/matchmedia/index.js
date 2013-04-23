@@ -6,6 +6,7 @@
  */
 
 KISSY.add('gallery/responsive/1.0/matchmedia/index', function (S) {
+	"use strict";
 	/**
 	 * @name MatchMedia
 	 * @class mediaquery探测
