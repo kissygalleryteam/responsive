@@ -1,5 +1,6 @@
 # 综述
 MediaqueryPolyfill即media query兼容（ie8-）实现 
+实现原理：不支持mediaquery的改在html节点上切换class
 版本：1.0    
 作者：妙净
 
