@@ -2,51 +2,126 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>KISSY gallery - Local Storage</title>
+     <meta name="viewport" content="width=device-width"/>
+    <title>KISSY gallery - response - mediaquerypolyfill</title>
+    <script src="http://a.tbcdn.cn/s/kissy/1.3.0/seed.js" charset="utf-8"></script>
+    <script src="../mediaquerypolyfill/index.js" charset="utf-8"></script>
+    <script>
+    var S = KISSY;
+    if(S.Config.debug) {
+        S.config({
+            packages:[
+                {
+                    name:"gallery", // 包名
+                    path:"../../../../", // 包对应路径, 相对路径指相对于当前页面路径
+                    charset:"utf-8"
+                }
+            ]
+        });
+    }
 
-    <link rel="stylesheet" href="http://a.tbcdn.cn/s/kissy/1.3.0/css/dpl/base-min.css"/>
-    <link rel="stylesheet" href="../../../tools/skin/default.css"/>
-    <script src="http://a.tbcdn.cn/s/kissy/1.3.0/kissy.js" charset="utf-8"></script>
+    S.use('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MediaqueryPolyfill) {
+        new MediaqueryPolyfill([480, 1010, 1220, 1420, 1620]);
+    });
 
+    </script>
 </head>
 <body>
-<div id="header">
-    <h1 class="logo"><a alt="KISSY" href="http://kissyui.com/"><img src="http://a.tbcdn.cn/s/kissy/logo.png"/></a></h1>
+    <style type="text/css">
 
-    <div class="sub-title">Gallery</div>
-    <ul class="navigation">
-        <li><a href="http://docs.kissyui.com/">首页</a></li>
-        <li><a href="http://github.com/kissyteam">源码</a></li>
-    </ul>
+        @media (max-width: 1620px) {
+            div:after {
+                content: '1620';
+            }
+            div {
+                background-color: blue;
+            }
+        }
 
-</div>
-<div id="content">
-    <div class="s-crumbs">
-        <span>当前位置：</span>
-        <a href="http://kissyui.com/">KISSY</a>
-        <a href="../../../index.html">Gallery</a>
-        <span>anti-ie6</span>
-    </div>
-			<pre class="s-section">				
-作者：崇志
-功能：ie6 提示层
-</pre>
+        @media (max-width: 1420px) {
+            div:after {
+                content: '1420';
+            }
+            div {
+                background-color: yellow;
+            }
+        } 
 
-    <p>
-        <a href="draw/demo.html">手绘版本</a>
-    </p>
+        @media (max-width: 1220px) {
+            div:after {
+                content: '1220';
+            }
+            div {
+                background-color: red;
+            }
 
-    <p>
-        <a href="normal/demo.html">普通版本</a>
-    </p>
+        }
 
-    <p>
-        <a href="top/demo.html">吊顶版本</a>
-    </p>
+        @media (max-width: 1010px) {
+            div:after {
+                content: '1010';
+            }
+            div {
+                background-color: green;
+            }
+        }
 
-</div>
-<div id="footer">
-    &copy; Copyright 2010~2100, KISSY Team.
-</div>
+        @media (max-width: 480px) {
+            div:after {
+                content: '480';
+            }
+            div {
+                background-color: pink;
+            }
+        }
+/* for can't support media query */
+        .vw1620 div:after {
+                content: '1620';
+        }
+
+        .vw1620 div {
+                background-color: blue;
+                width: 1620px;
+        }
+        
+
+        .vw1420 div:after {
+                content: '1420';
+        }
+
+        .vw1420 div {
+                background-color: yellow;
+                width: 1420px;
+        }
+
+        .vw1220 div:after {
+                content: '1220';
+        }
+
+        .vw1220 div {
+                background-color: red;
+                width: 1200px;
+        }
+
+        .vw1010 div:after {
+                content: '1620';
+        }
+
+        .vw1010 div {
+                background-color: green;
+                width: 990px;
+        }
+
+        .vw480 div:after {
+                content: '1620';
+        }
+
+        .vw480 div {
+                background-color: pink;
+                width: 480px;
+        }
+        
+    </style>
+    <div style="height:1500px;"></div>
 </body>
 </html>

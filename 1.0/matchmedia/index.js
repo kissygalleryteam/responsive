@@ -1,5 +1,5 @@
 /*
- * @desc https://github.com/scottjehl/matchMedia.js 参考
+ * @fileoverview mediaquery探测 参考 https://github.com/scottjehl/matchMedia.js 
  * @author Scott Jehl, Paul Irish, Nicholas Zakas, miaojing@taobao.com
  * @version 1.0
  * @date 2013-04-11
@@ -7,17 +7,19 @@
 
 KISSY.add('gallery/responsive/1.0/matchmedia/index', function (S) {
 	/**
+	 * @name MatchMedia
+	 * @class mediaquery探测
 	 * @param {string} [mediaquery string] 
 	 * @return {bool} [true|false]
 	 */
-	var MatchMedia = function(q) {
+	function MatchMedia(q) {
 		var bool,
 			doc = document;
-			docElem  = doc.documentElement,
-			refNode  = docElem.firstElementChild || docElem.firstChild,
+			docElem = doc.documentElement,
+			refNode = docElem.firstElementChild || docElem.firstChild,
 			// fakeBody required for <FF4 when executed in <head>
 			fakeBody = doc.createElement('body'),
-			div      = doc.createElement('div');
+			div = doc.createElement('div');
 		div.id = 'mq-test-1';
 		div.style.cssText = "position:absolute;top:-100em";
 		fakeBody.style.background = "none";
