@@ -17,8 +17,8 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMe
 		if (MatchMedia('(min-width: 400px)')) return;
 		var self = this;
 		config = {resolution: config};
-        MediaqueryPolyfill.superclass.constructor.call(self, config);
-        self.init();
+ 		MediaqueryPolyfill.superclass.constructor.call(self, config);
+		self.init();
 	}
 
 	
@@ -27,7 +27,6 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMe
 			var self = this;
 			var timer;
 			self._load(self);
-			
 			window.onresize = function() {
 				if (timer) { 
 					timer.cancel(); 
@@ -61,11 +60,12 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMe
 			var self = this;
 			var resolution = self.get('resolution');
 			var len = resolution.length;
-			//offsetWidth 包括滚动条 
-			//var viewportWidth = document.documentElement.offsetWidth;
-			//media query w3c标准 含滚动条 http://www.w3.org/TR/css3-mediaqueries/#width
-			//media query webkit实现 实际内容 不包含滚动条 其他及其标准 含滚动条
-			//respond.js也用clientWidth计算viewport 不含滚动条 更符合表达习惯
+			/**
+			 * var viewportWidth = document.documentElement.offsetWidth;
+			 * media query w3c标准 含滚动条 http://www.w3.org/TR/css3-mediaqueries/#width
+			 * media query webkit实现 实际内容 不包含滚动条 其他及其标准 含滚动条
+			 * respond.js也用clientWidth计算viewport 不含滚动条 更符合表达习惯
+			 */
 			var viewportWidth = document.documentElement.clientWidth;
 			S.log('clientWidth:'+ viewportWidth);
 
