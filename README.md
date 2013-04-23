@@ -11,6 +11,9 @@
 ##多媒体
 ##表单
 ##模块
-###switchable 
+###Switchable 
 ###Accordion
-###lightbox
+###Lightbox
+###Form
+- [基础响应式表单](https://github.com/miaojing/responsive/blob/master/1.0/demo/sample.html "基础响应式表单")
+- [搜索框响应式](https://github.com/miaojing/responsive/blob/master/1.0/demo/search.html "搜索框响应式")
