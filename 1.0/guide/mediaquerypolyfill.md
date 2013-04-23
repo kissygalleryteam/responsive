@@ -56,6 +56,10 @@ MediaqueryPolyfill即media query兼容（ie8-）实现
     .vw1220 div {
         background-color: red;
     }
+    /*
+     * 上面是不是重复了，可以根据需要引入less解决下
+     * 如果响应到mobile端320，高分辨率的css hack是不是多余了，如果多余好几k,可以考虑实现拆分成不同文件。
+     */
 
 # 备注
 
