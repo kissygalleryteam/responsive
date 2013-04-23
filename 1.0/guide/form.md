@@ -6,7 +6,7 @@
 表单响应式，兼容各大主流浏览器（包括IE6-8），兼容实现使用`@妙净` 的`MediaqueryPolyfill`，详细使用方法请参看[media query兼容（ie8-）实现](https://github.com/miaojing/responsive/blob/master/1.0/guide/mediaquerypolyfill.md "media query兼容（ie8-）实现")，在此不多做赘述。
 
 普通Form结构
-----
+-----------
 本结构参考BootStrap表单结构，具体如下：
 
     <form action="" class="simpleform">
@@ -59,6 +59,7 @@
 	</form>
 
 搜索表单结构
+----------
 
 	<form action="" class="searchform">
 		<div class="control-group">
