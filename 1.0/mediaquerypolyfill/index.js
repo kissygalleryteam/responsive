@@ -26,20 +26,16 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMe
 		init: function() {
 			var self = this;
 			var timer;
-			self._load();
-			window.onresize = self._load;
-			/*
+			self._load(self);
+			
 			window.onresize = function() {
 				if (timer) { 
-						//clearTimeout(timer); 
-						clearObjTimeout();
-					
+					timer.cancel(); 
 				}
-				timer = setTimeout(self._load, 200);
+				timer = S.later(self._load, 200, false, self); 
 			};
-			*/
 		},
-
+		
 		/**
 		 * _replaceClass 替换class
 		 * @param  {String} cls 原classString
@@ -81,7 +77,6 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMe
 					break;
 				}
 			}
-
         	// 不支持兼容模式，必需有doctype
         	document.documentElement.className = self._replaceClass(document.documentElement.className, /vw\d+/, 'vw' + vwClass);
 		}
