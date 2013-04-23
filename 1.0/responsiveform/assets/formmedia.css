@@ -1,0 +1,125 @@
+.control-group {
+	margin-bottom: 15px;
+	zoom: 1;
+}
+
+.control-group:after {
+	clear: both;
+	content: '';
+	display: block;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;
+}
+
+.control-group .control-label {
+	float: left;
+	width: 33%;
+	text-align: right;
+}
+
+.control-group .control {
+	float: left;
+	width: 67%;
+}
+
+.choice-label input[type="radio"],
+.choice-label input[type="checkbox"] {
+	margin: 0;
+	padding: 0;
+	margin-right: 5px;
+	vertical-align: text-bottom;
+}
+
+.control-legend {
+	display: block;
+	margin-top: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="time"],
+input[type="month"],
+input[type="week"],
+input[type="number"],
+input[type="range"],
+input[type="search"],
+textarea {
+	border: 1px solid #eee;
+	border-top-color: #ccc;
+	border-left-color: #ccc;
+	height: 22px;
+	width: 40%;
+	color: #ccc;
+	outline: none;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.control-group textarea {
+	width: 60%;
+	height: 180px;
+	resize: none;
+}
+
+.control-group .choice-label {
+	margin-right: 15px;
+}
+
+@media screen and (max-width: 990px) {
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	input[type="url"],
+	input[type="date"],
+	input[type="time"],
+	input[type="month"],
+	input[type="week"],
+	input[type="number"],
+	input[type="range"],
+	input[type="search"] {
+		width: 50%;
+	}
+
+	.control-group textarea {
+		width: 70%;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	input[type="url"],
+	input[type="date"],
+	input[type="time"],
+	input[type="month"],
+	input[type="week"],
+	input[type="number"],
+	input[type="range"],
+	input[type="search"] {
+		width: 98%;
+	}
+
+	.control-group textarea {
+		width: 98%;
+	}
+
+	.control-group .control-label {
+		width: 100%;
+		text-align: left;
+	}
+
+	.control-group .control {
+		width: 100%;
+		clear: both;
+	}
+
+	.control-group .choice-label {
+		display: block;
+		margin-bottom: 5px;
+		padding-left: 10%;
+	}
+}
