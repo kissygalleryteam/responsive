@@ -27,7 +27,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMe
 		init: function() {
 			var self = this;
 			var timer;
-			self._load(self);
+			self._load();
 			window.onresize = function() {
 				if (timer) { 
 					timer.cancel(); 

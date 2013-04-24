@@ -15,7 +15,7 @@ KISSY.add('gallery/responsive/1.0/matchmedia/index', function (S) {
 	 */
 	function MatchMedia(q) {
 		var bool,
-			doc = document;
+			doc = document,
 			docElem = doc.documentElement,
 			refNode = docElem.firstElementChild || docElem.firstChild,
 			// fakeBody required for <FF4 when executed in <head>
