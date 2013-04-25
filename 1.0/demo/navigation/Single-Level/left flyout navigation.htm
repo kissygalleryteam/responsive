@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by Stuart Robson (http://codepen.io/sturobson/pen/rAoBh)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>left flyout navigation - CodePen</title>
+
+  <meta name="viewport" content="width=device-width">
+
+  <style>article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block}audio,canvas,video{display:inline-block;*display:inline;*zoom:1}audio:not([controls]){display:none}[hidden]{display:none}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html,button,input,select,textarea{font-family:sans-serif}body{margin:0}a:focus{outline:thin dotted}a:hover,a:active{outline:0}h1{font-size:2em;margin:0.67em 0}h2{font-size:1.5em;margin:0.83em 0}h3{font-size:1.17em;margin:1em 0}h4{font-size:1em;margin:1.33em 0}h5{font-size:0.83em;margin:1.67em 0}h6{font-size:0.75em;margin:2.33em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}blockquote{margin:1em 40px}dfn{font-style:italic}mark{background:#ff0;color:#000}p,pre{margin:1em 0}pre,code,kbd,samp{font-family:monospace, serif;_font-family:'courier new', monospace;font-size:1em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}q{quotes:none}q:before,q:after{content:'';content:none}small{font-size:75%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}dl,menu,ol,ul{margin:1em 0}dd{margin:0 0 0 40px}menu,ol,ul{padding:0 0 0 40px}nav ul,nav ol{list-style:none;list-style-image:none}img{border:0;-ms-interpolation-mode:bicubic}a img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}form{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0;white-space:normal;*margin-left:-7px}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}button,input{line-height:normal}button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;*overflow:visible}button[disabled],input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;*height:13px;*width:13px}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-decoration,input[type="search"]::-webkit-search-cancel-button{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+</style>
+
+  <style>
+/* box-sizing FTW - http://paulirish.com/2012/box-sizing-border-box-ftw/  */
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* === INTERESTING STUFF GOES HERE === */
+
+html { -webkit-transform: translate3d(0, 0, 0); }
+
+body { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif }
+
+img { max-width: 100% }
+
+ul { padding: 0 }
+
+h1 {
+  margin: 0 12px 0 0;
+  font-family: "skolar",serif;
+  float: right;
+  line-height: 50px;
+  vertical-align: middle;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+a { color: #d13400; text-decoration: none; display: block;  }
+
+/* === SPRITES === */
+
+.menu-mobile {
+  float: left;
+  margin: 0 12px 0 12px;
+  vertical-align: middle;
+  display: block;
+  background-image: url('http://www.alwaystwisted.com/playground/img/sprites.png');
+  background-repeat: no-repeat;
+  width: 36px;
+  height: 36px;
+  margin-top: 2px;
+}
+
+.menu-button { background-position: -32px -292px; }
+
+/*li:hover i {
+  background-position-x: -32px;
+}*/
+li:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+li:hover a {
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3);
+}
+
+@media screen and (min-width: 48em) { 
+  #menu-button { visibility: hidden }
+}
+
+header {
+  background-color: #F5F5F5;
+  border-bottom: 1px solid #3e3f3f;
+  position: relative;
+  height: 50px;
+
+}
+
+[role="navigation"] { 
+  background: #5C5C5C;
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+[role="navigation"] ul {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #6a6a6a;
+}
+
+[role="navigation"] li {
+  color: #6d6d6d;
+  padding-left: 24px;
+  position: relative;
+  display: block;
+  border-bottom: 1px solid #3e3f3f;
+  border-top: 1px solid #6a6a6a;
+}
+
+@media screen and (min-width: 48em) { 
+  [role="navigation"] li { border-left: none }
+}
+
+[role="navigation"] li:first-of-type { border-top: 1px solid #3e3f3f }
+[role="navigation"] li:last-of-type { border-bottom-color: #3e3f3f; }
+
+[role="navigation"] a {
+  position: relative;
+  display: block;
+  line-height: 48px;
+  font-size: 20px;
+  vertical-align: middle;
+  text-decoration: none;
+  color: #FFF;
+}
+
+[role="navigation"], [role="main"] { width: 100% }
+
+.js #wrapper {
+  display: -webkit-box;
+  display:    -moz-box;
+  display:         box;
+  -webkit-box-orient: horizontal;
+     -moz-box-orient: horizontal;
+    -ms-box-orient: horizontal;
+      box-orient: horizontal;
+}
+}
+
+[role="main"], [role="banner"] {
+  -webkit-box-shadow: -3px 0px 4px 0.5 1px 2px rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: -3px 0px 4px 0.5 1px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: -3px 0px 4px 0.5 1px 2px rgba(0, 0, 0, 0.1);
+  border-left: 1px solid #3e3f3f;
+}
+
+.js [role="navigation"] {
+  margin-left: -100%;
+  -webkit-box-ordinal-group: 1;
+     -moz-box-ordinal-group: 1;
+      -ms-box-ordinal-group: 1;
+    	  box-ordinal-group: 1;
+  -webkit-transition: all 0.1s ease-in-out;
+     -moz-transition: all 0.1 S ease-in-out;
+      -ms-transition: all 0.1s ease-in-out;
+  	   -o-transition: all 0.1s ease-in-out;
+  		  transition: all 0.1s ease-in-out;
+}
+
+[role="banner"] {
+  width: 100%;
+}
+.js [role="banner"] {
+  margin-left: 0;
+  -webkit-box-ordinal-group: 2;
+     -moz-box-ordinal-group: 2;
+    	-ms-box-ordinal-group: 2;
+        box-ordinal-group: 2;
+}
+.js [role="main"] {
+  margin-left: -100%;
+  margin-top: 50px;
+  -webkit-box-ordinal-group: 3;
+     -moz-box-ordinal-group: 3;
+      -ms-box-ordinal-group: 3;
+          box-ordinal-group: 3;
+  padding: 1.5%;
+}
+
+.active-nav [role="navigation"] { background: #5C5C5C; margin-left: 0; width: 80%; }
+
+.active-nav #clear-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 800px;
+  width: 20%;
+  background: transparent;
+  z-index: 4;
+}
+.active-nav [role="banner"] {
+  margin-left: ; -200%;
+  overflow: hidden;
+}
+.active-nav [role="main"] {
+  overflow: hidden;
+}
+
+@media all and (min-width: 768px) {
+
+  .js [role="navigation"] {
+    background: #5C5C5C;
+    width: 30%;
+    margin-left: 0;
+    -webkit-box-ordinal-group: 2;
+       -moz-box-ordinal-group: 2;
+    	  -ms-box-ordinal-group: 2;
+    		  box-ordinal-group: 2;
+  }
+
+  .js [role="main"], .js [role="banner"] {
+    width: 70%;
+  }
+
+  ,js [role="banner"] {
+  -webkit-box-ordinal-group: 1;
+     -moz-box-ordinal-group: 1;
+    -ms-box-ordinal-group: 1;
+      box-ordinal-group: 1;
+  }
+
+  .active-nav #clear-btn { display: none }
+
+}
+
+@media all and (min-width: 800px) { 
+.js #wrapper {
+    -webkit-box-orient: vertical;
+       -moz-box-orient: vertical;
+    	  -ms-box-orient: vertical;
+    		  box-orient: vertical;
+}
+  .js [role="navigation"] {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+  }
+
+  [role="navigation"] li{
+    display: inline-block;
+    padding: 0 12px;
+    border: none;
+    border-right: 1px solid #333;
+  }
+
+  [role="navigation"] li:first-of-type {
+    border-left: 1px solid #333;
+  }
+  .js [role="main"] {
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .js [role="banner"] { 
+    margin: 0;
+    width: 100%; 
+  }
+}
+
+.ir{border:0;font:0/0 a;text-shadow:none;color:transparent;background-color:transparent;}.hidden{display:none !important;visibility:hidden;}.visuallyhidden{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;}.visuallyhidden.focusable:active,.visuallyhidden.focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto;}.invisible{visibility:hidden}.clearfix:before,.clearfix:after{content:"";display:table;}.clearfix:after{clear:both}.clearfix{*zoom:1}@media print{*{background:transparent !important;color:black !important;box-shadow:none !important;text-shadow:none !important;}a,a:visited{text-decoration:underline}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid;}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3;}h2,h3{page-break-after:avoid}}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+</head>
+
+<body>
+
+  <div id="wrapper">
+
+  <a href="" id="clear-btn"></a>
+
+  <header role="banner">
+    <h1>My Great Site</h1>
+    <a href="" id="menu-button" class="ir menu-mobile menu-button" role="presentation">menu</a>
+  </header>
+  <nav role="navigation">
+    <ul>
+      <li><a href="">A link</a></li><li><a href="">A link</a></li><li><a href="">A link</a></li><li><a href="">A link</a></li><li><a href="">A link</a></li><li><a href="">A link</a></li>
+    </ul>
+	</nav>
+
+	<section role="main">  
+
+    <h2> 一个简单的左侧弹出导航想法</h2>
+
+    <p>
+        当导航在小的视口中打开时，这种模式在增加一个可点击的区域来关闭导航
+    </p>
+    <a href="http://www.twitter.com/sturobson">@sturobson</a>
+
+    <p>note: works better on a device rather than trapped in this pen</p>
+
+  </section>
+
+</div>
+
+  <script src="http://a.tbcdn.cn/??s/kissy/1.2.0/kissy-min.js"></script>
+  <script>/*!
+ * Modernizr v2.5.3
+ * www.modernizr.com
+ *
+ * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton
+ * Available under the BSD and MIT licenses: www.modernizr.com/license/
+ */
+/*
+ * Modernizr tests which native CSS3 and HTML5 features are available in
+ * the current UA and makes the results available to you in two ways:
+ * as properties on a global Modernizr object, and as classes on the
+ * <html> element. This information allows you to progressively enhance
+ * your pages with a granular level of control over the experience.
+ *
+ * Modernizr has an optional (not included) conditional resource loader
+ * called Modernizr.load(), based on Yepnope.js (yepnopejs.com).
+ * To get a build that includes Modernizr.load(), as well as choosing
+ * which tests to include, go to www.modernizr.com/download/
+ *
+ * Authors        Faruk Ates, Paul Irish, Alex Sexton
+ * Contributors   Ryan Seddon, Ben Alman
+ */
+window.Modernizr=function(e,t,n){function A(e){f.cssText=e}function O(e,t){return A(p.join(e+";")+(t||""))}function M(e,t){return typeof e===t}function _(e,t){return!!~(""+e).indexOf(t)}function D(e,t){for(var r in e)if(f[e[r]]!==n)return t=="pfx"?e[r]:!0;return!1}function P(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:M(s,"function")?s.bind(r||t):s}return!1}function H(e,t,n){var r=e.charAt(0).toUpperCase()+e.substr(1),i=(e+" "+v.join(r+" ")+r).split(" ");return M(t,"string")||M(t,"undefined")?D(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),P(i,t,n))}function j(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:/^color$/.test(s)?(o.appendChild(l),o.offsetWidth,i=l.value!=c,o.removeChild(l)):i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.5.3",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l=t.createElement("div"),c=t.body,h=c?c:t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),l.appendChild(f);return s=["&#173;","<style>",e,"</style>"].join(""),l.id=u,h.innerHTML+=s,h.appendChild(l),c||(h.style.background="",o.appendChild(h)),a=n(l,e),c?l.parentNode.removeChild(l):h.parentNode.removeChild(h),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t).matches;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C=function(){function r(r,i){i=i||t.createElement(e[r]||"div"),r="on"+r;var s=r in i;return s||(i.setAttribute||(i=t.createElement("div")),i.setAttribute&&i.removeAttribute&&(i.setAttribute(r,""),s=M(i[r],"function"),M(i[r],"undefined")||(i[r]=n),i.removeAttribute(r))),i=null,s}var e={select:"input",change:"input",submit:"form",reset:"form",error:"img",load:"img",abort:"img"};return r}(),k={}.hasOwnProperty,L;!M(k,"undefined")&&!M(k.call,"undefined")?L=function(e,t){return k.call(e,t)}:L=function(e,t){return t in e&&M(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i});var B=function(n,r){var s=n.join(""),o=r.length;T(s,function(n,r){var s=t.styleSheets[t.styleSheets.length-1],u=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"",a=n.childNodes,f={};while(o--)f[a[o].id]=a[o];i.touch="ontouchstart"in e||e.DocumentTouch&&t instanceof DocumentTouch||(f.touch&&f.touch.offsetTop)===9,i.csstransforms3d=(f.csstransforms3d&&f.csstransforms3d.offsetLeft)===9&&f.csstransforms3d.offsetHeight===3,i.generatedcontent=(f.generatedcontent&&f.generatedcontent.offsetHeight)>=1,i.fontface=/src/i.test(u)&&u.indexOf(r.split(" ")[0])===0},o,r)}(['@font-face {font-family:"font";src:url("https://")}',["@media (",p.join("touch-enabled),("),u,")","{#touch{top:9px;position:absolute}}"].join(""),["@media (",p.join("transform-3d),("),u,")","{#csstransforms3d{left:9px;position:absolute;height:3px;}}"].join(""),['#generatedcontent:after{content:"',c,'";visibility:hidden}'].join("")],["fontface","touch","csstransforms3d","generatedcontent"]);y.flexbox=function(){return H("flexOrder")},y["flexbox-legacy"]=function(){return H("boxDirection")},y.canvas=function(){var e=t.createElement("canvas");return!!e.getContext&&!!e.getContext("2d")},y.canvastext=function(){return!!i.canvas&&!!M(t.createElement("canvas").getContext("2d").fillText,"function")},y.webgl=function(){try{var r=t.createElement("canvas"),i;i=!(!e.WebGLRenderingContext||!r.getContext("experimental-webgl")&&!r.getContext("webgl")),r=n}catch(s){i=!1}return i},y.touch=function(){return i.touch},y.geolocation=function(){return!!navigator.geolocation},y.postmessage=function(){return!!e.postMessage},y.websqldatabase=function(){return!!e.openDatabase},y.indexedDB=function(){return!!H("indexedDB",e)},y.hashchange=function(){return C("hashchange",e)&&(t.documentMode===n||t.documentMode>7)},y.history=function(){return!!e.history&&!!history.pushState},y.draganddrop=function(){var e=t.createElement("div");return"draggable"in e||"ondragstart"in e&&"ondrop"in e},y.websockets=function(){for(var t=-1,n=v.length;++t<n;)if(e[v[t]+"WebSocket"])return!0;return"WebSocket"in e},y.rgba=function(){return A("background-color:rgba(150,255,150,.5)"),_(f.backgroundColor,"rgba")},y.hsla=function(){return A("background-color:hsla(120,40%,100%,.5)"),_(f.backgroundColor,"rgba")||_(f.backgroundColor,"hsla")},y.multiplebgs=function(){return A("background:url(https://),url(https://),red url(https://)"),/(url\s*\(.*?){3}/.test(f.background)},y.backgroundsize=function(){return H("backgroundSize")},y.borderimage=function(){return H("borderImage")},y.borderradius=function(){return H("borderRadius")},y.boxshadow=function(){return H("boxShadow")},y.textshadow=function(){return t.createElement("div").style.textShadow===""},y.opacity=function(){return O("opacity:.55"),/^0.55$/.test(f.opacity)},y.cssanimations=function(){return H("animationName")},y.csscolumns=function(){return H("columnCount")},y.cssgradients=function(){var e="background-image:",t="gradient(linear,left top,right bottom,from(#9f9),to(white));",n="linear-gradient(left top,#9f9, white);";return A((e+"-webkit- ".split(" ").join(t+e)+p.join(n+e)).slice(0,-e.length)),_(f.backgroundImage,"gradient")},y.cssreflections=function(){return H("boxReflect")},y.csstransforms=function(){return!!H("transform")},y.csstransforms3d=function(){var e=!!H("perspective");return e&&"webkitPerspective"in o.style&&(e=i.csstransforms3d),e},y.csstransitions=function(){return H("transition")},y.fontface=function(){return i.fontface},y.generatedcontent=function(){return i.generatedcontent},y.video=function(){var e=t.createElement("video"),n=!1;try{if(n=!!e.canPlayType)n=new Boolean(n),n.ogg=e.canPlayType('video/ogg; codecs="theora"').replace(/^no$/,""),n.h264=e.canPlayType('video/mp4; codecs="avc1.42E01E"').replace(/^no$/,""),n.webm=e.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,"")}catch(r){}return n},y.audio=function(){var e=t.createElement("audio"),n=!1;try{if(n=!!e.canPlayType)n=new Boolean(n),n.ogg=e.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/,""),n.mp3=e.canPlayType("audio/mpeg;").replace(/^no$/,""),n.wav=e.canPlayType('audio/wav; codecs="1"').replace(/^no$/,""),n.m4a=(e.canPlayType("audio/x-m4a;")||e.canPlayType("audio/aac;")).replace(/^no$/,"")}catch(r){}return n},y.localstorage=function(){try{return localStorage.setItem(u,u),localStorage.removeItem(u),!0}catch(e){return!1}},y.sessionstorage=function(){try{return sessionStorage.setItem(u,u),sessionStorage.removeItem(u),!0}catch(e){return!1}},y.webworkers=function(){return!!e.Worker},y.applicationcache=function(){return!!e.applicationCache},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect},y.inlinesvg=function(){var e=t.createElement("div");return e.innerHTML="<svg/>",(e.firstChild&&e.firstChild.namespaceURI)==g.svg},y.smil=function(){return!!t.createElementNS&&/SVGAnimate/.test(h.call(t.createElementNS(g.svg,"animate")))},y.svgclippaths=function(){return!!t.createElementNS&&/SVGClipPath/.test(h.call(t.createElementNS(g.svg,"clipPath")))};for(var F in y)L(y,F)&&(x=F.toLowerCase(),i[x]=y[F](),E.push((i[x]?"":"no-")+x));return i.input||j(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)L(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,o.className+=" "+(t?"":"no-")+e,i[e]=t}return i},A(""),a=l=null,function(e,t){function o(e,t){var n=e.createElement("p"),r=e.getElementsByTagName("head")[0]||e.documentElement;return n.innerHTML="x<style>"+t+"</style>",r.insertBefore(n.lastChild,r.firstChild)}function u(){var e=l.elements;return typeof e=="string"?e.split(" "):e}function a(e){var t={},n=e.createElement,i=e.createDocumentFragment,s=i();e.createElement=function(e){var i=(t[e]||(t[e]=n(e))).cloneNode();return l.shivMethods&&i.canHaveChildren&&!r.test(e)?s.appendChild(i):i},e.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+u().join().replace(/\w+/g,function(e){return t[e]=n(e),s.createElement(e),'c("'+e+'")'})+");return n}")(l,s)}function f(e){var t;return e.documentShived?e:(l.shivCSS&&!i&&(t=!!o(e,"article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}audio{display:none}canvas,video{display:inline-block;*display:inline;*zoom:1}[hidden]{display:none}audio[controls]{display:inline-block;*display:inline;*zoom:1}mark{background:#FF0;color:#000}")),s||(t=!a(e)),t&&(e.documentShived=t),e)}var n=e.html5||{},r=/^<|^(?:button|form|map|select|textarea)$/i,i,s;(function(){var e=t.createElement("a");e.innerHTML="<xyz></xyz>",i="hidden"in e,s=e.childNodes.length==1||function(){try{t.createElement("a")}catch(e){return!0}var n=t.createDocumentFragment();return typeof n.cloneNode=="undefined"||typeof n.createDocumentFragment=="undefined"||typeof n.createElement=="undefined"}()})();var l={elements:n.elements||"abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video",shivCSS:n.shivCSS!==!1,shivMethods:n.shivMethods!==!1,type:"default",shivDocument:f};e.html5=l,f(t)}(this,t),i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.hasEvent=C,i.testProp=function(e){return D([e])},i.testAllProps=H,i.testStyles=T,i.prefixed=function(e,t,n){return t?H(e,t,n):H(e,"pfx")},o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document);</script>
+
+  <script>
+      ;(function(S){
+          var $ = S.all;
+          var showMenu = function() {
+              $('body').removeClass("active-sidebar").toggleClass("active-nav");
+              $('.menu-button').toggleClass("active-button");
+          }
+              // Toggle for nav menu
+          $('.menu-button').on('click', function(e) {
+              e.preventDefault();
+              showMenu();
+          });
+      })(KISSY);
+  </script>
+
+</body>
+
+</html>
