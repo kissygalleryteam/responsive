@@ -3,9 +3,10 @@
 * [mediaquery探测（matchmedia）](/1.0/guide/matchmedia.md)
 * [mediaquery ie8-兼容实现（mediaquerypolyfill）](/1.0/guide/mediaquerypolyfill.md)
 * [响应式图片兼容实现（picturepolyfill）](/1.0/guide/picturepolyfill.md)
-* [表单响应式实现](/1.0/guide/form.md)
 
-#常用响应式模式实现，兼容ie6+
+#常用响应式模式实现
+参考[Responsive Patterns](http://bradfrost.github.io/this-is-responsive/patterns.html)，目的是将其本土化,方便项目中快速实现该响应模式。
+
 ##布局
 ###Reflowing Layouts
 - [Mostly Fluid](http://s.codepen.io/bradfrost/fullpage/Iardn, "Mostly Fluid")
