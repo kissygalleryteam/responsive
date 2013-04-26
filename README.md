@@ -7,9 +7,9 @@
 #常用响应式模式实现，兼容ie6+
 ##布局
 ###Reflowing Layouts
-- [Mostly Fluid](http://miaojing.github.io/responsive/1.0/demo/navigation/layout/Mostly%20Fluid.htm)
-- [Column Drop](http://miaojing.github.io/responsive/1.0/demo/navigation/layout/Column%20Drop.htm)
-- [Layout Shifter](http://miaojing.github.io/responsive/1.0//demo/layout/Layout%20Shifter.htm)
+- [Mostly Fluid](http://miaojing.github.io/responsive/1.0/demo/layout/Mostly%20Fluid.htm)
+- [Column Drop](http://miaojing.github.io/responsive/1.0/demo/layout/Column%20Drop.htm)
+- [Layout Shifter](http://miaojing.github.io/responsive/1.0/demo/layout/Layout%20Shifter.htm)
 - [Tiny Tweaks](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/Toggle%20Navigation.htm)
 - [Main column with sidebar](http://miaojing.github.io/responsive/1.0/demo/layout/Main%20column%20with%20sidebar.htm)
 - [3 column](http://miaojing.github.io/responsive/1.0/demo/layout/3%20Column%20Layout.htm)
