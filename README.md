@@ -13,7 +13,7 @@
 - [Tiny Tweaks](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/Toggle-Navigation.htm)
 - [Main column with sidebar](http://miaojing.github.io/responsive/1.0/demo/layout/Main-column-with-sidebar.htm)
 - [3 column](http://miaojing.github.io/responsive/1.0/demo/layout/3-Column-Layout.htm)
-- [3 column v2](http://miaojing.github.io/responsive/1.0/demo/layout/3-Column-Layout-v2.htm)
+- [3 column v2](http://miaojing.github.io/responsive/1.0/demo/layout/3-Column-Layout-v2.html)
 
 ###Equal Width
 - [2 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/2-Equal-Width-Columns.htm)
@@ -29,9 +29,8 @@
 - [Bottom](http://miaojing.github.io/responsive/1.0/demo/layout/layout-offcanvas-footer-nav.html)
 
 ###Source-Order Shift
-- [Table Cell](http://miaojing.github.io/responsive/1.0/demo/layout/source-table-cell.htm)
-- [Flexbox](http://miaojing.github.io/responsive/1.0/demo/layout/Off-Canvas-Left.htm)
-- [AppendAround](http://miaojing.github.io/responsive/1.0/demo/layout/layout-append-around.htm)
+- [Table Cell](http://miaojing.github.io/responsive/1.0/demo/layout/source-table-cell.html)
+- [AppendAround](http://miaojing.github.io/responsive/1.0/demo/layout/layout-append-around.html)
 
 ###Lists
 - [List with Thumbnails](http://miaojing.github.io/responsive/1.0/demo/layout/list-img-text.html)
@@ -67,9 +66,9 @@
 - [多级导航 支持IE6](http://miaojing.github.io/responsive/1.0/demo/navigation/Multi-Level/multinav.htm "")
 
 ###面包屑
-- [Across the Top](http://miaojing.github.io/responsive/1.0/demo/Breadcrumbs/Across-the-Top-Breadcrumbs.htm)
-- [Breadcrumbs Dropdown](http://miaojing.github.io/responsive/1.0/demo/Breadcrumbs/Dropdown-Breadcrumbs.htm)
-- [Last-One Only](http://miaojing.github.io/responsive/1.0/demo/Breadcrumbs/Last-One-Only-Breadcrumbs.htm)
+- [Across the Top](http://miaojing.github.io/responsive/1.0/demo/navigation/Breadcrumbs/Across-the-Top-Breadcrumbs.htm)
+- [Breadcrumbs Dropdown](http://miaojing.github.io/responsive/1.0/navigation/demo/Breadcrumbs/Dropdown-Breadcrumbs.htm)
+- [Last-One Only](http://miaojing.github.io/responsive/1.0/demo/navigation/Breadcrumbs/Last-One-Only-Breadcrumbs.htm)
 
 ##图片
 - [Basic Fluid Image](http://miaojing.github.io/responsive/1.0/demo/image/Image-Grid.htm)
@@ -87,8 +86,8 @@
 
 ##模块
 ###Switchable
- - [3-up Carousel](http://miaojing.github.io/responsive/1.0/demo/modules/3-up-Carousel-.htm)
- - [Fluid Carousel](http://miaojing.github.io/responsive/1.0/demo/modules/Fluid-Carousel-.htm)
+ - [3-up Carousel](http://miaojing.github.io/responsive/1.0/demo/modules/3-up-Carousel.htm)
+ - [Fluid Carousel](http://miaojing.github.io/responsive/1.0/demo/modules/Fluid-Carousel.htm)
 
 ###Accordion
 - [Fluid](http://miaojing.github.io/responsive/1.0/demo/modules/fluid-Accordion.htm)
