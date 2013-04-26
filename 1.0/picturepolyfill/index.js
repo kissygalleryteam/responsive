@@ -33,6 +33,8 @@ KISSY.add('gallery/responsive/1.0/picturepolyfill/index', function (S, DOM, Even
 			var self = this;
 			var timer;
 			self._responsiveImg();
+			var viewportWidth = document.documentElement.clientWidth;
+			
 			window.onresize = function() {
 				if (timer) { 
 					timer.cancel(); 
