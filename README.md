@@ -28,13 +28,13 @@
 
 ##导航
 ###单层
-- [Toggle](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Toggle%20Navigation.htm)
-- [Footer Anchor](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Footer%20Anchor.htm.htm)
-- [Select Menu](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Select%20Menu.htm)
-- [Left Nav Flyout](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/left%20flyout%20navigation.htm)
-- [Left Nav Flyout w/ 'off-nav closing'](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/The%20Left%20Nav%20Flyout.htm)
-- [Priority+](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Priority+%20Navigation.htm)
-- [Top Links](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/A%20Pen%20by%20bradfrost.htm)
+- [Toggle](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/Toggle%20Navigation.htm)
+- [Footer Anchor](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/Footer%20Anchor.htm.htm)
+- [Select Menu](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/Select%20Menu.htm)
+- [Left Nav Flyout](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/left%20flyout%20navigation.htm)
+- [Left Nav Flyout w/ 'off-nav closing'](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/The%20Left%20Nav%20Flyout.htm)
+- [Priority+](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/Priority+%20Navigation.htm)
+- [Top Links](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/A%20Pen%20by%20bradfrost.htm)
 
 ###[多层](/1.0/guide/multinav.md)
 - [多级导航1](http://miaojing.github.io/responsive/1.0/demo/navigation/Multi-Level/multinav-exIE6-1.htm "")
@@ -50,10 +50,10 @@
 
 ##图片
 - [Basic Fluid Image](http://miaojing.github.io/responsive/1.0/demo/image/Image%20Grid.htm)
-- [Image Grid](http://miaojing.github.io/responsive/1.0//demo/image/Landscape%20Image.htm)
+- [Image Grid](http://miaojing.github.io/responsive/1.0/demo/image/Landscape%20Image.htm)
 
 ##[多媒体(Media)](/1.0/guide/media.md)
-- [Fluid Video](http://miaojing.github.io/responsive/1.0//demo/media/Fluid%20Video.htm)
+- [Fluid Video](http://miaojing.github.io/responsive/1.0/demo/media/Fluid%20Video.htm)
 - [Fluid Map Maintaining Aspect Ratio](http://miaojing.github.io/responsive/1.0/demo/media/Fluid%20Map%20Maintaining%20Aspect%20Ratio.htm)
 - [Adaptive Maps](http://miaojing.github.io/responsive/1.0/demo/media/Adaptive%20Map.htm)
 
