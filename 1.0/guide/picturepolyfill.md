@@ -3,6 +3,8 @@ PicturePolyfill即Picture标签的兼容实现  [W3C响应式图片讨论组](ht
 版本：1.0    
 作者：Scott Jehl、Wilto、miaojing
 
+# demo示例
+ [点击访问](http://miaojing.github.io/responsive/1.0//demo/picturepolyfill.html)
 
 ## picture标签
 
