@@ -3,6 +3,7 @@
 * [mediaquery探测（matchmedia）](/1.0/guide/matchmedia.md)
 * [mediaquery ie8-兼容实现（mediaquerypolyfill）](/1.0/guide/mediaquerypolyfill.md)
 * [响应式图片兼容实现（picturepolyfill）](/1.0/guide/picturepolyfill.md)
+* [表单响应式实现](/1.0/guide/form.md)
 
 #常用响应式模式实现，兼容ie6+
 ##布局
@@ -31,8 +32,8 @@
 ##图片(image)
 ##多媒体(Media)
 ##表单(Form)
-- [basic form 基础响应式表单](/1.0/demo/sampleform.html "基础响应式表单")
-- [search form 搜索框响应式](/1.0/demo/searchform.html "搜索框响应式")
+- [basic form 基础响应式表单](http://miaojing.github.io/responsive/1.0/demo/sampleform.html"基础响应式表单")
+- [search form 搜索框响应式](http://miaojing.github.io/responsive/1.0/demo/searchform.html"搜索框响应式")
 
 ##模块(Modules)  
 ###Switchable 
