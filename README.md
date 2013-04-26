@@ -67,7 +67,7 @@
 
 ###面包屑
 - [Across the Top](http://miaojing.github.io/responsive/1.0/demo/navigation/Breadcrumbs/Across-the-Top-Breadcrumbs.htm)
-- [Breadcrumbs Dropdown](http://miaojing.github.io/responsive/1.0/navigation/demo/Breadcrumbs/Dropdown-Breadcrumbs.htm)
+- [Breadcrumbs Dropdown](http://miaojing.github.io/responsive/1.0/demo/navigation/Breadcrumbs/Dropdown-Breadcrumbs.htm)
 - [Last-One Only](http://miaojing.github.io/responsive/1.0/demo/navigation/Breadcrumbs/Last-One-Only-Breadcrumbs.htm)
 
 ##图片
