@@ -72,6 +72,6 @@
 
 其他
 ----
-本普通表单demo演示代码请[点击查看](https://github.com/miaojing/responsive/blob/master/1.0/demo/sampleform.html),demo只提供两种尺寸vw700和vw990，实际使用可根据具体情况自行添加删除尺寸，在通过调用`MediaqueryPolyfill`方法实现IE8-兼容。
+本普通表单demo演示代码请[点击查看](http://miaojing.github.io/responsive/1.0/demo/sampleform.html),demo只提供两种尺寸vw700和vw990，实际使用可根据具体情况自行添加删除尺寸，在通过调用`MediaqueryPolyfill`方法实现IE8-兼容。
 
-搜索表单demo代码请[点击查看](https://github.com/miaojing/responsive/blob/master/1.0/demo/searchform.html)，此demo不依赖脚本实现兼容IE8-。
+搜索表单demo代码请[点击查看](http://miaojing.github.io/responsive/1.0/demo/searchform.html)，此demo不依赖脚本实现兼容IE8-。
