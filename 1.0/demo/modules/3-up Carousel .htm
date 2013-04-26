@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by Brad Frost (http://codepen.io/bradfrost/pen/pgjav)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>3-up Carousel - CodePen</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel='stylesheet' href='http://bradfrost.github.com/this-is-responsive/styles.css'>
+
+  <style>
+.c {
+  		position: relative;
+			max-width: 74em;
+			margin: 0 auto;
+		}
+		.c-list-container {
+			overflow: hidden;
+			position: relative;
+		}
+		.c-list {
+			width: 99999em;
+			position: relative;
+			left: 0;
+			-webkit-transition: left 0.5s ease-out; 
+     		-moz-transition: left 0.5s ease-out;  
+       		-o-transition: left 0.5s ease-out; 
+        	transition: left 0.5s ease-out;
+		}
+
+		.c li {
+			float: left;
+		}
+		.c li a {
+			display: block;
+		}
+		.c img {
+			display: block;
+		}
+		.c h2 {
+			margin-top: 0;
+		}
+		.summary {
+			padding: 1em;
+		}
+		.c-nav {
+			clear: both;
+			overflow: hidden;
+			border-top: 1px solid #808080;
+		}
+		.c-nav a {
+			float: left;
+			width: 50%;
+			padding: 1em;
+			-webkit-transition: opacity 0.5s ease-out; 
+     		-moz-transition: opacity 0.5s ease-out;  
+       		-o-transition: opacity 0.5s ease-out; 
+        	transition: opacity 0.5s ease-out;
+		}
+		.c-nav a.next {
+			border-left: 1px solid #808080;
+			text-align: right;
+		}
+		.c-nav a.inactive {
+			opacity: 0.2;
+
+		}
+
+		/* Medium */
+		@media screen and (min-width: 35em) {
+			.c {
+				padding: 1em 0.5em 0;
+			}
+			.c li {
+				padding: 0 0.5em;
+			}
+			body:after { /* Conditional CSS http://adactio.com/journal/5429/ */
+		        content: 'medium';
+		        display: none;
+	   		}
+		}
+
+		/* Large */
+		@media screen and (min-width: 56.25em) {
+			body:after { /* Conditional CSS http://adactio.com/journal/5429/ */
+		        content: 'large';
+		        display: none;
+	   		}
+		}
+
+		/*Large with room to spare on either side */
+		@media screen and (min-width: 82em) {
+			.c-nav a {
+				position: absolute;
+				top: 40%;
+				left: -4em;
+				width: 4em;
+				height: 2em;
+				padding: 0;
+				margin-top: -1em;
+			}
+			.c-nav a.next {
+				left: auto;
+				right: -4em;
+				border: 0;
+			}
+		}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+</head>
+
+<body>
+
+  <!--Pattern HTML-->
+  <div id="pattern" class="pattern">
+  	<div class="c">
+			<div class="c-list-container">
+				<ul class="c-list">
+					<li>
+						<a href="#">
+							<img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_landscape.png" alt="FPO Image" />
+							<div class="summary">
+								<h2>This is the first title</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget lacus erat, sit amet tempor nibh. Aliquam erat volutpat. Nulla et porta tortor. </p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_landscape.png" alt="FPO Image" />
+							<div class="summary">
+								<h2>This is the second title</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget lacus erat, sit amet tempor nibh. Aliquam erat volutpat. Nulla et porta tortor. </p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_landscape.png" alt="FPO Image" />
+							<div class="summary">
+								<h2>This is the third title</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget lacus erat, sit amet tempor nibh. Aliquam erat volutpat. Nulla et porta tortor. </p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_landscape.png" alt="FPO Image" />
+							<div class="summary">
+								<h2>This is the fourth title</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget lacus erat, sit amet tempor nibh. Aliquam erat volutpat. Nulla et porta tortor. </p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_landscape.png" alt="FPO Image" />
+							<div class="summary">
+								<h2>This is the fifth title</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget lacus erat, sit amet tempor nibh. Aliquam erat volutpat. Nulla et porta tortor. </p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_landscape.png" alt="FPO Image" />
+							<div class="summary">
+								<h2>This is the sixth title</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget lacus erat, sit amet tempor nibh. Aliquam erat volutpat. Nulla et porta tortor. </p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_landscape.png" alt="FPO Image" />
+							<div class="summary">
+								<h2>This is the seventh title</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget lacus erat, sit amet tempor nibh. Aliquam erat volutpat. Nulla et porta tortor. </p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_landscape.png" alt="FPO Image" />
+							<div class="summary">
+								<h2>This is the eighth title</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget lacus erat, sit amet tempor nibh. Aliquam erat volutpat. Nulla et porta tortor. </p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_landscape.png" alt="FPO Image" />
+							<div class="summary">
+								<h2>This is the ninth title</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget lacus erat, sit amet tempor nibh. Aliquam erat volutpat. Nulla et porta tortor. </p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<nav class="c-nav">
+				<a href="#" class="prev">&larr; Prev</a>
+				<a href="#" class="next">Next &rarr;</a>
+			</nav>
+		</div>
+
+	</div>
+	<!--End Pattern HTML-->
+
+	<div class="container">	
+		<section class="pattern-description">
+			<h1>3-up Carousel</h1>
+			<p>A carousel that shows one panel on smaller screens, and reveals three panels when space becomes available.</p>
+			<h2>Considerations</h2>
+			<ul>
+				<li>Assumes small screen by default</li>
+				<li>Swipe-enabled for devices with touch even support</li>
+			</ul>
+		</section>
+		<footer role="contentinfo">   
+			<div>
+				<nav id="menu">
+					<a href="http://bradfrost.github.com/this-is-responsive/patterns.html">&larr;More Responsive Patterns</a>
+				</nav>
+			</div>
+		</footer>
+	</div>
+
+  <script src="//code.jquery.com/jquery-latest.js"></script>
+
+  <script>
+(function(w){
+    	var sw = document.body.clientWidth,
+				current = 0,
+				breakpointSize = window.getComputedStyle(document.body,':after').getPropertyValue('content'),
+				multiplier = 1, /*Determines the number of panels*/
+				$carousel = $('.c'),
+				$cList = $('.c-list'),
+				$cWidth = $carousel.outerWidth(),
+				$li = $('.c li'),
+				$liLength = $li.size(),
+				numPages = $liLength/multiplier,
+				$prev = $('.c-nav .prev'),
+				$next = $('.c-nav .next');
+
+			$(document).ready(function() {
+				buildCarousel();
+			});
+
+			$(window).resize(function(){ //On Window Resize
+				sw = document.body.clientWidth;
+				$cWidth = $carousel.width();
+				breakpointSize = window.getComputedStyle(document.body,':after').getPropertyValue('content');  /* Conditional CSS http://adactio.com/journal/5429/ */
+				sizeCarousel();
+				posCarousel();
+			});
+
+			function sizeCarousel() { //Determine the size and number of panels to reveal
+				current = 0;
+				if (breakpointSize == 'medium') {
+					multiplier = 2;
+
+				} else if (breakpointSize == 'large') {
+					multiplier = 3;
+				} else {
+					multiplier = 1;
+				}
+
+				animLimit = $liLength/multiplier-1;
+
+				$li.outerWidth($cWidth/multiplier); //Set panel widths
+
+			}
+
+			function buildCarousel() { //Build the Carousel
+				sizeCarousel();
+			}
+
+			function posCarousel() { //Animate Carousel. CSS transitions used for the actual animation.
+				var pos = -current * $cWidth;
+				$cList.css("left",pos);
+			}
+
+			$prev.click(function(e){ //Previous Button Click
+				e.preventDefault();
+				if(current>0) {
+					current--;
+				}
+				posCarousel();
+
+			});
+			$next.click(function(e){ //Next Button Click
+				e.preventDefault();
+				if(current<animLimit) {
+					current++;
+				}
+				posCarousel();
+			});
+		})(this);
+  </script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+</body>
+
+</html>
