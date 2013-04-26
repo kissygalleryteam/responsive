@@ -22,7 +22,7 @@
 - [5 equal-width columns](http://codepen.io/bradfrost/full/rjfta, "")
 - [6 equal-width columns](http://bradfrost.github.io/this-is-responsive/patterns.html#, "")
 
-###[Off Canvas]
+###Off Canvas
 - [Top](http://codepen.io/bradfrost/full/jtdvf, "Top")
 - [Left](http://codepen.io/bradfrost/full/sjiCv, "")
 - [Right](http://codepen.io/bradfrost/full/GybaF, "")
@@ -36,5 +36,8 @@
 ###Accordion
 ###Lightbox
 ###Form
-- [基础响应式表单](https://github.com/miaojing/responsive/blob/master/1.0/demo/sample.html "基础响应式表单")
-- [搜索框响应式](https://github.com/miaojing/responsive/blob/master/1.0/demo/search.html "搜索框响应式")
+- [基础响应式表单](/1.0/demo/sample.html "基础响应式表单")
+- [搜索框响应式](/1.0/demo/search.html "搜索框响应式")
+
+#作者们
+妙净、墨峰、乐淘、邓萌
