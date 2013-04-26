@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!--
+Copyright (c) 2013 by Brad Frost (http://codepen.io/bradfrost/pen/vcuem)
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+  <title>CodePen - A Pen by bradfrost</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel='stylesheet' href='http://bradfrost.github.com/this-is-responsive/styles.css'>
+  <style>
+.navigation li a {
+  		display: block;
+			border-bottom: 1px solid #000;
+			padding: 1em;
+		}
+
+		@media all and (min-width: 30em) {
+			.navigation li {
+				display: inline-block;
+				margin: 0 0.5em;
+			}
+			.navigation li a {
+				padding: 1em 0.5em;
+				border: 0;
+			}
+		}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+</head>
+<body>
+  <!--Pattern HTML-->
+  <div id="pattern" class="pattern">
+  	<!--Begin Pattern HTML-->
+		<ul class="navigation" role="navigation">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Products</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</div>
+	<!--End Pattern HTML-->
+
+	<div class="container">	
+		<section class="pattern-description">
+			<h1>堆积的顶部链接</h1>
+			<p>A navigation that vertically stacks navigation items on top of each other for small screens, and becomes a horizontal list when screen space becomes available.</p>
+			<h3>优点</h3>
+			<ul>
+			<li><strong>易于实现</strong>- you can implement your large-screen site almost as-is.</li>
+            <li><strong>对于触屏相对于顶部链接模式更加友好。</strong> - Where links across the top can lead to unwanted proximity clicks, stacking the links provides a larger hit state</li>
+			</ul>
+			<h3>缺点</h3>
+			<ul>
+			<li><strong>高度问题</strong>- <a href="http://andmag.se/2012/01/height-matters/">高度在移动端非常重要</a>.
+                正如<a href="http://www.abookapart.com/products/mobile-first">Luke的书</a>
+                解释的, 对于移动web体验，内容是第一位的, 其次才是导航. 你想要让用户尽快的看到最基本的内容。这意味着需要导航为内容让路，使得用户可以在网页上的核心内容上聚焦。当所有的核心内容被切断的时候，会让人感觉很奇怪。
+			</ul>
+		</section>
+		<footer role="contentinfo">   
+			<div>
+				<nav id="menu">
+					<a href="http://bradfrost.github.com/this-is-responsive/patterns.html">&larr;More Responsive Patterns</a>
+				</nav>
+			</div>
+		</footer>
+	</div>
+</body>
+
+</html>

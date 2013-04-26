@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width; initial-scale=1.0">
+	<title>表单响应式</title>
+	<link rel="stylesheet" href="../responsiveform/pagestyle.css">
+	<link rel="stylesheet" href="../responsiveform/formmedia.css">
+	<!--[if IE]>
+		<link rel="stylesheet" href="../responsiveform/iehack.css">
+	<![endif]-->
+	<script src="http://a.tbcdn.cn/s/kissy/1.3.0/seed.js"></script>
+	<script>
+	KISSY.config({
+	    packages:[
+	        {
+	            name:"gallery", // 包名
+	            path:"../../../../",
+	            charset:"utf-8"
+	        }
+	    ]
+	});
+	</script>
+	//为了防止闪屏，切换class应该在body渲染之前，所以不建议用KISSY.use的按需异步加载进来，改为直接在head中引入
+	<script src="http://a.tbcdn.cn/s/kissy/gallery/responsive/1.0/??,matchmedia/index.js,mediaquerypolyfill/index.js"></script>
+	<script>
+	KISSY.use('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MediaqueryPolyfill) {
+	    new MediaqueryPolyfill([700, 990]);//响应的临界值
+	});
+	</script>
+</head>
+<body>
+	<div class="main-wrap">
+		<h2 class="pagetitle">响应式设计之表单设计</h2>
+		<form action="" class="simpleform">
+			<div class="control-group">
+				<label for="input1" class="control-label">姓名：</label>
+				<div class="control">
+					<input type="text" name="" id="input1" placeholder="输入真实姓名">
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="input2" class="control-label">邮箱：</label>
+				<div class="control">
+					<input type="text" name="" id="input2" placeholder="输入您的常用邮箱地址">
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="input3" class="control-label">消息：</label>
+				<div class="control">
+					<textarea name="" id="input3" cols="30" rows="10" placeholder="填写消息内容"></textarea>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">您的选择：</label>
+				<div class="control">
+					<label for="choiceone" class="choice-label">
+						<input type="radio" name="choice" id="choiceone" value="">第一选择
+					</label>
+					<label for="choicetwo" class="choice-label">
+						<input type="radio" id="choicetwo" name="choice" value="">第二选择
+					</label>
+					<label for="choicethree" class="choice-label">
+						<input type="radio" id="choicethree" name="choice" value="">第三选择
+					</label>
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="input3" class="control-label">可以多选：</label>
+				<div class="control">
+					<label for="multone" class="choice-label">
+						<input type="checkbox" name="mult" id="multone" value="">第一选择
+					</label>
+					<label for="multtwo" class="choice-label">
+						<input type="checkbox" id="multtwo" name="mult" value="">第二选择
+					</label>
+					<label for="multthree" class="choice-label">
+						<input type="checkbox" id="multthree" name="mult" value="">第三选择
+					</label>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
