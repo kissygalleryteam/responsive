@@ -59,14 +59,12 @@
 - [Priority+](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Priority+-Navigation.htm)
 - [Top Links](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/A-Pen-by-bradfrost.htm)
 
-###多层
-- [Multi-Toggle](http://codepen.io/bradfrost/full/tnhGv)
-- [Multi-Toggle v3](http://codepen.io/bradfrost/full/orKvD)
-- [Multi-Toggle with Active Parent Links](http://codepen.io/bradfrost/full/pwmHf)
-- [Multi-Toggle with Active Parent Links - Pure CSS](http://codepen.io/bradfrost/full/rjfta)
-- [The Ol' Right-to-Left](http://bradfrost.github.io/this-is-responsive/patterns.html#)
-- [The Skip the Subnav](http://bradfrost.github.io/this-is-responsive/patterns.html#)
-- [The Carousel+](http://bradfrost.github.io/this-is-responsive/patterns.html#)
+###[多层](/1.0/guide/multinav.md)
+- [多级导航1](http://miaojing.github.io/responsive/1.0/demo/navigation/Multi-Level/multinav-exIE6-1.htm "")
+- [多级导航2](http://miaojing.github.io/responsive/1.0/demo/navigation/Multi-Level/multinav-exIE6-3.htm "")
+- [多级导航3](http://miaojing.github.io/responsive/1.0/demo/navigation/Multi-Level/multinav-exIE6-5.htm "")
+- [多级导航4](http://miaojing.github.io/responsive/1.0/demo/navigation/Multi-Level/multinav-exIE6-6.htm "")
+- [多级导航 支持IE6](http://miaojing.github.io/responsive/1.0/demo/navigation/Multi-Level/multinav.htm "")
 
 ###面包屑
 - [Across the Top](http://miaojing.github.io/responsive/1.0/demo/Breadcrumbs/Across-the-Top-Breadcrumbs.htm)
