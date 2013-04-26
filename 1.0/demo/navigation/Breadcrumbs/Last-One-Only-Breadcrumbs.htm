@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!--
+Copyright (c) 2013 by Brad Frost (http://codepen.io/bradfrost/pen/dKulf)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+  <title>Last One Only Breadcrumbs - CodePen</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel='stylesheet' href='http://bradfrost.github.com/this-is-responsive/styles.css'>
+
+  <style>
+.crumbs {
+  		padding: 1em;
+		}
+		.crumbs li {
+			display: none;
+		}
+		.crumbs li.last {
+			display: inline-block;
+		}
+		.crumbs li.last:before {
+			content: '←';
+			color: #999;
+		}
+		@media all and (min-width: 32em) {
+			.crumbs li {
+				display: inline-block;
+			}
+			.crumbs li:after {
+				content: '→';
+				padding: 0 0.25em 0 0.5em;
+				color: #999;
+			}
+			.crumbs li.last:before, .crumbs li.last:after {
+				content: '';
+			}
+		}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+</head>
+
+<body>
+
+  <!--Pattern HTML-->
+  <section id="pattern" class="pattern">
+		<ul class="crumbs">
+			<li><a href="#">Grandparent</a></li>
+			<li><a href="#">Parent</a></li>
+			<li><a href="#">Child</a></li>
+			<li class="last"><a href="#">Grandchild</a></li>
+		</ul>
+
+	</section>
+	<!--End Pattern HTML-->
+
+	<div class="container">	
+		<!--Pattern Description-->
+		<section class="pattern-description">
+			<h1>Last One Only Breadcrumbs</h1>
+			<p> 这种面包屑解决方案默认情况之展现最后一项，但当有空间可用时会展现整个路径。</p>
+			<h2>优点</h2>
+			<ul>
+				<li>通过仅仅展现面包屑路径的最后吼一项可以节约空间.</li>
+				<li>小屏幕用户仍然能够遍历面包屑路径</li>
+			</ul>
+			<h2>缺点</h2>
+			<ul>
+				<li>为了回到多层，小屏幕用户需要整页刷新</li>
+				<li>小屏幕仍然需要下载额外的html标签即使它们没有被用到</li>
+			</ul>
+		</section>
+		<!--End Pattern Description-->
+		<!--Footer-->
+		<footer role="contentinfo">   
+			<div>
+				<nav id="menu">
+					<a href="../patterns.html">&larr;More Responsive Patterns</a>
+				</nav>
+			</div>
+		</footer>
+		<!--End Footer-->
+	</div>
+</body>
+</html>

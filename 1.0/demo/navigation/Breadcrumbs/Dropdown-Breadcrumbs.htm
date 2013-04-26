@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by Brad Frost (http://codepen.io/bradfrost/pen/DCgax)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>Dropdown Breadcrumbs - CodePen</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel='stylesheet' href='http://bradfrost.github.com/this-is-responsive/styles.css'>
+
+  <style>
+.crumbs-container {
+  		position: relative;
+			overflow: hidden;
+			height: 3.2em;
+			-webkit-transition: height 0.5s ease-out; 
+			-moz-transition: height 0.5s ease-out;  
+			-o-transition: height 0.5s ease-out; 
+			transition: height 0.5s ease-out;
+		}
+		.crumbs-container.active {
+			height: 13.6em;
+		}
+		.crumbs {
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+
+		}
+		.crumbs li a {
+			display: block;
+			padding: 1em;
+			border-bottom: 1px solid #000;
+		}
+		.crumbs li:last-child a {
+			border-bottom: 0;
+		}
+		#crumbs-trigger {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			display: block;
+			font-size: 2em; 
+			padding: 0 0.5em 0.2em;
+		}
+
+		@media all and (min-width: 32em) {
+			.crumbs-container.active {
+				height: 3.2em;
+			}
+			.crumbs {
+				padding: 1em;
+			}
+			.crumbs li {
+				display: inline-block;
+			}
+			.crumbs li a {
+				display: inline;
+				border: 0;
+				padding: 0;
+			}
+			.crumbs li:after {
+				content: '→';
+				padding: 0 0.25em 0 0.5em;
+				color: #999;
+			}
+			.crumbs li.last:before, .crumbs li.last:after {
+				content: '';
+			}
+			#crumbs-trigger {
+				display: none;
+			}
+		}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+</head>
+
+<body>
+
+  <!--Pattern HTML-->
+  <section id="pattern" class="pattern">
+  	<div class="crumbs-container">
+			<ul class="crumbs">
+				<li><a href="#">Grandparent</a></li>
+				<li><a href="#">Parent</a></li>
+				<li><a href="#">Child</a></li>
+				<li class="last"><a href="#">Grandchild</a></li>
+			</ul>
+		</div>
+	</section>
+	<!--End Pattern HTML-->
+
+	<div class="container">	
+		<!--Pattern Description-->
+		<section class="pattern-description">
+			<h1>Dropdown Breadcrumbs</h1>
+			<p>A breadcrumb solution that exposes the last item for small screens and reveals the rest of the items in the trail when clicked. The entire trail is exposed when space becomes available.</p>
+			<h2>优点</h2>
+			<ul>
+				<li>Saves space by only exposing the last element in the breadcrumb trail.</li>
+				<li>Small screen users are still able to traverse the breadcrumb trail</li>
+			</ul>
+			<h2>缺点</h2>
+			<ul>
+				<li>Small screen users require a full-page refresh in order to go back multiple levels</li>
+				<li>Small screens still download the extra markup even though it's not used</li>
+			</ul>
+		</section>
+		<!--End Pattern Description-->
+
+		<!--Footer-->
+		<footer role="contentinfo">   
+			<div>
+				<nav id="menu">
+					<a href="http://bradfrost.github.com/this-is-responsive/patterns.html">&larr;More Responsive Patterns</a>
+				</nav>
+			</div>
+		</footer>
+		<!--End Footer-->
+	</div>
+
+  <script src="//code.jquery.com/jquery-latest.js"></script>
+
+  <script>
+(function(w){
+  		var $crumbsContainer = $('.crumbs-container');
+			$(document).ready(function() {
+				buildCrumbs();
+			});
+
+			function buildCrumbs() {
+				$('<a href="#" id="crumbs-trigger">+</a>').appendTo($crumbsContainer);
+
+				$('#crumbs-trigger').bind('click', function(e) {
+					e.preventDefault();
+					var $this = $(this);
+					$crumbsContainer.toggleClass('active');
+
+					if($crumbsContainer.hasClass('active')) {
+						$this.text('-');
+					} else {
+						$this.text('+');
+					}
+				});
+
+			}
+
+		})(this);
+  </script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+</body>
+
+</html>

@@ -7,34 +7,57 @@
 #常用响应式模式实现，兼容ie6+
 ##布局
 ###Reflowing Layouts
-- [Mostly Fluid](http://miaojing.github.io/responsive/1.0/demo/layout/Mostly%20Fluid.htm)
-- [Column Drop](http://miaojing.github.io/responsive/1.0/demo/layout/Column%20Drop.htm)
-- [Layout Shifter](http://miaojing.github.io/responsive/1.0/demo/layout/Layout%20Shifter.htm)
-- [Tiny Tweaks](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/Toggle%20Navigation.htm)
-- [Main column with sidebar](http://miaojing.github.io/responsive/1.0/demo/layout/Main%20column%20with%20sidebar.htm)
-- [3 column](http://miaojing.github.io/responsive/1.0/demo/layout/3%20Column%20Layout.htm)
-- [3 column v2](http://miaojing.github.io/responsive/1.0/demo/layout/3%20Column%20Layout%20v2.htm)
+- [Mostly Fluid](http://miaojing.github.io/responsive/1.0/demo/layout/Mostly-Fluid.htm)
+- [Column Drop](http://miaojing.github.io/responsive/1.0/demo/layout/Column-Drop.htm)
+- [Layout Shifter](http://miaojing.github.io/responsive/1.0/demo/layout/Layout-Shifter.htm)
+- [Tiny Tweaks](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/Toggle-Navigation.htm)
+- [Main column with sidebar](http://miaojing.github.io/responsive/1.0/demo/layout/Main-column-with-sidebar.htm)
+- [3 column](http://miaojing.github.io/responsive/1.0/demo/layout/3-Column-Layout.htm)
+- [3 column v2](http://miaojing.github.io/responsive/1.0/demo/layout/3-Column-Layout-v2.htm)
 
 ###Equal Width
-- [2 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/2%20Equal-Width%20Columns.htm)
-- [3 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/3%20Equal-Width%20Columns.htm)
-- [4 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/4%20Equal-Width%20Columns.htm)
-- [5 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/5%20Equal-Width%20Columns.htm)
+- [2 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/2-Equal-Width-Columns.htm)
+- [3 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/3-Equal-Width-Columns.htm)
+- [4 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/4-Equal-Width-Columns.htm)
+- [5 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/5-Equal-Width-Columns.htm)
 
 ###Off Canvas
-- [Top](http://miaojing.github.io/responsive/1.0/demo/layout/Off-Canvas%20Top.htm)
-- [Left](http://miaojing.github.io/responsive/1.0/demo/layout/Off-Canvas%20Left.htm)
-- [Right](http://miaojing.github.io/responsive/1.0/demo/layout/Off-Canvas%20Right.htm)
+- [Top](http://miaojing.github.io/responsive/1.0/demo/layout/Off-Canvas-Top.htm)
+- [Left](http://miaojing.github.io/responsive/1.0/demo/layout/Off-Canvas-Left.htm)
+- [Right](http://miaojing.github.io/responsive/1.0/demo/layout/Off-Canvas-Right.htm)
+- [Left and Right](http://miaojing.github.io/responsive/1.0/demo/layout/Off-Canvas-Right.htm)
+- [Bottom](http://miaojing.github.io/responsive/1.0/demo/layout/layout-offcanvas-footer-nav.html)
+
+###Source-Order Shift
+- [Table Cell](http://miaojing.github.io/responsive/1.0/demo/layout/source-table-cell.htm)
+- [Flexbox](http://miaojing.github.io/responsive/1.0/demo/layout/Off-Canvas-Left.htm)
+- [AppendAround](http://miaojing.github.io/responsive/1.0/demo/layout/layout-append-around.htm)
+
+###Lists
+- [List with Thumbnails](http://miaojing.github.io/responsive/1.0/demo/layout/list-img-text.html)
+- [List with Thumbnails 2](http://miaojing.github.io/responsive/1.0/demo/layout/list-img-text-2.html)
+- [List with Thumbnails and Summary](http://miaojing.github.io/responsive/1.0/demo/layout/list-img-summary.html)
+
+###Grid Block
+- [4-up Grid Block](http://miaojing.github.io/responsive/1.0/demo/layout/img-grid.html)
+- [Double-Wide v1](http://miaojing.github.io/responsive/1.0/demo/layout/grid-dw.html)
+- [Double-Wide v2](http://miaojing.github.io/responsive/1.0/demo/layout/grid-dw-2.html)
+- [Double-Wide v3](http://miaojing.github.io/responsive/1.0/demo/layout/grid-dw-3.html)
+- [Double-Wide v4](http://miaojing.github.io/responsive/1.0/demo/layout/grid-dw-4.html)
+- [With Title Sections](http://miaojing.github.io/responsive/1.0/demo/layout/grid-title.html)
+- [Equal Height Rows](http://miaojing.github.io/responsive/1.0/demo/layout/img-landscape.html)
+- [Irregular Grid Blocks](http://miaojing.github.io/responsive/1.0/demo/layout/grid-regular.html)
+
 
 ##导航
 ###单层
-- [Toggle](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Toggle%20Navigation.htm)
-- [Footer Anchor](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Footer%20Anchor.htm.htm)
-- [Select Menu](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Select%20Menu.htm)
-- [Left Nav Flyout](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/left%20flyout%20navigation.htm)
-- [Left Nav Flyout w/ 'off-nav closing'](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/The%20Left%20Nav%20Flyout.htm)
-- [Priority+](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Priority+%20Navigation.htm)
-- [Top Links](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/A%20Pen%20by%20bradfrost.htm)
+- [Toggle](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Toggle-Navigation.htm)
+- [Footer Anchor](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Footer-Anchor.htm.htm)
+- [Select Menu](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Select-Menu.htm)
+- [Left Nav Flyout](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/left-flyout-navigation.htm)
+- [Left Nav Flyout w/ 'off-nav closing'](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/The-Left-Nav-Flyout.htm)
+- [Priority+](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Priority+-Navigation.htm)
+- [Top Links](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/A-Pen-by-bradfrost.htm)
 
 ###多层
 - [Multi-Toggle](http://codepen.io/bradfrost/full/tnhGv)
@@ -46,41 +69,37 @@
 - [The Carousel+](http://bradfrost.github.io/this-is-responsive/patterns.html#)
 
 ###面包屑
-- [Across the Top](http://miaojing.github.io/responsive/1.0/demo/Breadcrumbs/Across%20the%20Top%20Breadcrumbs.htm)
-- [Breadcrumbs Dropdown](http://miaojing.github.io/responsive/1.0/demo/Breadcrumbs/Dropdown%20Breadcrumbs.htm)
-- [Last-One Only](http://miaojing.github.io/responsive/1.0/demo/Breadcrumbs/Last%20One%20Only%20Breadcrumbs.htm)
+- [Across the Top](http://miaojing.github.io/responsive/1.0/demo/Breadcrumbs/Across-the-Top-Breadcrumbs.htm)
+- [Breadcrumbs Dropdown](http://miaojing.github.io/responsive/1.0/demo/Breadcrumbs/Dropdown-Breadcrumbs.htm)
+- [Last-One Only](http://miaojing.github.io/responsive/1.0/demo/Breadcrumbs/Last-One-Only-Breadcrumbs.htm)
 
 ##图片
-- [Basic Fluid Image](http://miaojing.github.io/responsive/1.0/demo/image/Image%20Grid.htm)
-- [Image Grid](http://miaojing.github.io/responsive/1.0//demo/image/Landscape%20Image.htm)
+- [Basic Fluid Image](http://miaojing.github.io/responsive/1.0/demo/image/Image-Grid.htm)
+- [Image Grid](http://miaojing.github.io/responsive/1.0//demo/image/Landscape-Image.htm)
 
 ##多媒体
-- [Fluid Video](http://miaojing.github.io/responsive/1.0//demo/media/Fluid%20Video.htm)
-- [Fluid Map Maintaining Aspect Ratio](http://miaojing.github.io/responsive/1.0/demo/media/Fluid%20Map%20Maintaining%20Aspect%20Ratio.htm)
-- [Adaptive Maps](http://miaojing.github.io/responsive/1.0/demo/media/Adaptive%20Map.htm)
+- [Fluid Video](http://miaojing.github.io/responsive/1.0//demo/media/Fluid-Video.htm)
+- [Fluid Map Maintaining Aspect Ratio](http://miaojing.github.io/responsive/1.0/demo/media/Fluid-Map-Maintaining-Aspect-Ratio.htm)
+- [Adaptive Maps](http://miaojing.github.io/responsive/1.0/demo/media/Adaptive-Map.htm)
 
 ##表单
-- [Form with Left Labels](http://miaojing.github.io/responsive/1.0/demo/form/Simple%20Responsive%20Form%20.htm)
-- [Fluid Search Form](http://miaojing.github.io/responsive/1.0/demo/form/Search%20Form.htm)
-- [Search with Filters](http://miaojing.github.io/responsive/1.0/demo/form/Filtered%20Search%20RWD%20Pattern.htm)
+- [基础响应式表单](https://github.com/miaojing/responsive/blob/master/1.0/demo/sample.html "基础响应式表单")
+- [搜索框响应式](https://github.com/miaojing/responsive/blob/master/1.0/demo/search.html "搜索框响应式")
+- [Search with Filters](http://miaojing.github.io/responsive/1.0/demo/form/Filtered-Search-RWD-Pattern.htm)
 
 ##模块
 ###Switchable
- - [3-up Carousel](http://miaojing.github.io/responsive/1.0/demo/modules/3-up%20Carousel%20.htm)
- - [Fluid Carousel](http://miaojing.github.io/responsive/1.0/demo/modules/Fluid%20Carousel%20.htm)
+ - [3-up Carousel](http://miaojing.github.io/responsive/1.0/demo/modules/3-up-Carousel-.htm)
+ - [Fluid Carousel](http://miaojing.github.io/responsive/1.0/demo/modules/Fluid-Carousel-.htm)
 
 ###Accordion
-- [Fluid](http://miaojing.github.io/responsive/1.0/demo/modules/fluid%20Accordion.htm)
-- [Accordion to Full](http://miaojing.github.io/responsive/1.0/demo/modules/Accordion%20to%20Full.htm)
-- [Accordion To Tab](http://miaojing.github.io/responsive/1.0/demo/modules/Responsive%20Accordian%20to%20Tabs.htm)
-- [Vertical to Horizontal](http://miaojing.github.io/responsive/1.0/demo/modules/Responsive%20Accordian%20to%20Accordian.htm)
+- [Fluid](http://miaojing.github.io/responsive/1.0/demo/modules/fluid-Accordion.htm)
+- [Accordion to Full](http://miaojing.github.io/responsive/1.0/demo/modules/Accordion-to-Full.htm)
+- [Accordion To Tab](http://miaojing.github.io/responsive/1.0/demo/modules/Responsive-Accordian-to-Tabs.htm)
+- [Vertical to Horizontal](http://miaojing.github.io/responsive/1.0/demo/modules/Responsive-Accordian-to-Accordian.htm)
 
 ###Messaging
-- [Slide-Down Notification Bar](http://miaojing.github.io/responsive/1.0/demo/modules/Slide-Down%20Notification%20Bar.htm)
+- [Slide-Down Notification Bar](http://miaojing.github.io/responsive/1.0/demo/modules/Slide-Down-Notification-Bar.htm)
 
 ###Lightbox
-- [Conditional Lightbox](http://miaojing.github.io/responsive/1.0/demo/modules/Conditional%20Lightbox%20for%20Responsive%20Design.htm)
-
-###Form
-- [基础响应式表单](https://github.com/miaojing/responsive/blob/master/1.0/demo/sample.html "基础响应式表单")
-- [搜索框响应式](https://github.com/miaojing/responsive/blob/master/1.0/demo/search.html "搜索框响应式")
+- [Conditional Lightbox](http://miaojing.github.io/responsive/1.0/demo/modules/Conditional-Lightbox-for-Responsive-Design.htm)
