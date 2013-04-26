@@ -27,17 +27,17 @@
 - [Left](http://codepen.io/bradfrost/full/sjiCv, "")
 - [Right](http://codepen.io/bradfrost/full/GybaF, "")
 
-##导航
-##图片
-##多媒体
-##表单
-##模块
+##导航(navgation)
+##图片(image)
+##多媒体(Media)
+##表单(Form)
+- [basic form 基础响应式表单](/1.0/demo/sample.html "基础响应式表单")
+- [search form 搜索框响应式](/1.0/demo/search.html "搜索框响应式")
+##模块(Modules)
 ###Switchable 
 ###Accordion
 ###Lightbox
-###Form
-- [基础响应式表单](/1.0/demo/sample.html "基础响应式表单")
-- [搜索框响应式](/1.0/demo/search.html "搜索框响应式")
+
 
 #作者们
 妙净、墨峰、乐淘、邓萌
