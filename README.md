@@ -53,9 +53,9 @@
 - [Image Grid](http://miaojing.github.io/responsive/1.0/demo/image/Landscape%20Image.htm)
 
 ##[多媒体(Media)](/1.0/guide/media.md)
-- [Fluid Video](http://miaojing.github.io/responsive/1.0/demo/media/Fluid%20Video.htm)
-- [Fluid Map Maintaining Aspect Ratio](http://miaojing.github.io/responsive/1.0/demo/media/Fluid%20Map%20Maintaining%20Aspect%20Ratio.htm)
-- [Adaptive Maps](http://miaojing.github.io/responsive/1.0/demo/media/Adaptive%20Map.htm)
+- [Google Map](http://miaojing.github.io/responsive/1.0/demo/media/google-map.htm "Google Map")
+- [Video Flash](http://miaojing.github.io/responsive/1.0/demo/media/media-video-flash-youku.htm "Video Flash")
+- [Video HTML5](http://miaojing.github.io/responsive/1.0/demo/media/media-video-html5.htm "Video HTML5")
 
 ##[表单(Form)](/1.0/guide/form.md)
 - [Form with Left Labels](http://miaojing.github.io/responsive/1.0/demo/form/Simple%20Responsive%20Form%20.htm)
