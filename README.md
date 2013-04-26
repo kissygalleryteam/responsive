@@ -80,8 +80,8 @@
 - [Adaptive Maps](http://miaojing.github.io/responsive/1.0/demo/media/Adaptive-Map.htm)
 
 ##表单
-- [基础响应式表单](https://github.com/miaojing/responsive/blob/master/1.0/demo/sample.html "基础响应式表单")
-- [搜索框响应式](https://github.com/miaojing/responsive/blob/master/1.0/demo/search.html "搜索框响应式")
+- [基础响应式表单](http://miaojing.github.io/responsive/1.0/demo/sampleform.html "基础响应式表单")
+- [搜索框响应式](http://miaojing.github.io/responsive/1.0/demo/searchform.html "搜索框响应式")
 - [Search with Filters](http://miaojing.github.io/responsive/1.0/demo/form/Filtered-Search-RWD-Pattern.htm)
 
 ##模块
