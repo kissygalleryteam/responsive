@@ -36,14 +36,12 @@
 - [Priority+](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/Priority+%20Navigation.htm)
 - [Top Links](http://miaojing.github.io/responsive/1.0//demo/navigation/Single-Level/A%20Pen%20by%20bradfrost.htm)
 
-###多层
-- [Multi-Toggle](http://codepen.io/bradfrost/full/tnhGv)
-- [Multi-Toggle v3](http://codepen.io/bradfrost/full/orKvD)
-- [Multi-Toggle with Active Parent Links](http://codepen.io/bradfrost/full/pwmHf)
-- [Multi-Toggle with Active Parent Links - Pure CSS](http://codepen.io/bradfrost/full/rjfta)
-- [The Ol' Right-to-Left](http://bradfrost.github.io/this-is-responsive/patterns.html#)
-- [The Skip the Subnav](http://bradfrost.github.io/this-is-responsive/patterns.html#)
-- [The Carousel+](http://bradfrost.github.io/this-is-responsive/patterns.html#)
+###[多层](/1.0/guide/multinav.md)
+- [多级导航1](http://miaojing.github.io/responsive/1.0/demo/navigation/Multi-Level/multinav-exIE6-1.htm "")
+- [多级导航2](http://miaojing.github.io/responsive/1.0/demo/navigation/Multi-Level/multinav-exIE6-3.htm "")
+- [多级导航3](http://miaojing.github.io/responsive/1.0/demo/navigation/Multi-Level/multinav-exIE6-5.htm "")
+- [多级导航4](http://miaojing.github.io/responsive/1.0/demo/navigation/Multi-Level/multinav-exIE6-6.htm "")
+- [多级导航 支持IE6](http://miaojing.github.io/responsive/1.0/demo/navigation/Multi-Level/multinav.htm "")
 
 ###面包屑
 - [Across the Top](http://miaojing.github.io/responsive/1.0/demo/Breadcrumbs/Across%20the%20Top%20Breadcrumbs.htm)
@@ -54,12 +52,12 @@
 - [Basic Fluid Image](http://miaojing.github.io/responsive/1.0/demo/image/Image%20Grid.htm)
 - [Image Grid](http://miaojing.github.io/responsive/1.0//demo/image/Landscape%20Image.htm)
 
-##多媒体
+##[多媒体(Media)](/1.0/guide/media.md)
 - [Fluid Video](http://miaojing.github.io/responsive/1.0//demo/media/Fluid%20Video.htm)
 - [Fluid Map Maintaining Aspect Ratio](http://miaojing.github.io/responsive/1.0/demo/media/Fluid%20Map%20Maintaining%20Aspect%20Ratio.htm)
 - [Adaptive Maps](http://miaojing.github.io/responsive/1.0/demo/media/Adaptive%20Map.htm)
 
-##表单
+##[表单(Form)](/1.0/guide/form.md)
 - [Form with Left Labels](http://miaojing.github.io/responsive/1.0/demo/form/Simple%20Responsive%20Form%20.htm)
 - [Fluid Search Form](http://miaojing.github.io/responsive/1.0/demo/form/Search%20Form.htm)
 - [Search with Filters](http://miaojing.github.io/responsive/1.0/demo/form/Filtered%20Search%20RWD%20Pattern.htm)
