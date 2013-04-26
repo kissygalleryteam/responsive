@@ -2,7 +2,8 @@
 MatchMedia匹配是否支持或某个[media query](http://www.w3.org/TR/css3-mediaqueries/)表达式，实现参考[matchMedia.js](https://github.com/scottjehl/matchMedia.js)    
 版本：1.0    
 作者：Scott Jehl, Paul Irish, Nicholas Zakas, 妙净
-
+# demo示例
+ [点击访问](http://miaojing.github.io/responsive/1.0//demo/matchmedia.html)
 
 ## 包配置 
 kissy1.2下需要gallery的包配置, 1.3不需要
@@ -33,8 +34,7 @@ kissy1.2下需要gallery的包配置, 1.3不需要
         } 
     });
 
-# demo示例
- [点击访问](../demo/matchmedia.html)
+
 
 # 备注
 

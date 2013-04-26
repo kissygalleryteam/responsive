@@ -3,7 +3,8 @@ MediaqueryPolyfill即media query兼容（ie8-）实现
 实现思路：不支持mediaquery的在html节点上切换class（如响应的临界值为1220和1420：vm1220、vm1420）,在页面初始化前和window.resize的时候切换class。    
 版本：1.0    
 作者：妙净
-
+# demo示例
+ [点击访问](http://miaojing.github.io/responsive/1.0/demo/mediaquerypolyfill.html)
 ## 引入js
     <head>
     <script src="http://a.tbcdn.cn/s/kissy/1.3.0/seed.js"></script>
