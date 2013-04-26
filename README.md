@@ -31,6 +31,10 @@
 ##导航(navgation)
 ##图片(image)
 ##多媒体(Media)
+- [Google Map](http://miaojing.github.io/responsive/1.0/demo/media/google-map.htm "Google Map")
+- [Video Flash](http://miaojing.github.io/responsive/1.0/demo/media/media-video-flash-youku.htm "Video Flash")
+- [Video HTML5](http://miaojing.github.io/responsive/1.0/demo/media/media-video-html5.htm "Video HTML5")
+
 ##表单(Form)
 - [basic form 基础响应式表单](http://miaojing.github.io/responsive/1.0/demo/sampleform.html "基础响应式表单")
 - [search form 搜索框响应式](http://miaojing.github.io/responsive/1.0/demo/searchform.html "搜索框响应式")
