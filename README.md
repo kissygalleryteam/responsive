@@ -4,7 +4,8 @@
 * [mediaquery ie8-兼容实现（mediaquerypolyfill）](/1.0/guide/mediaquerypolyfill.md)
 * [响应式图片兼容实现（picturepolyfill）](/1.0/guide/picturepolyfill.md)
 
-#常用响应式模式实现，兼容ie6+
+#常用响应式模式实现
+参考[Responsive Patterns](http://bradfrost.github.io/this-is-responsive/patterns.html),尝试翻译整理以及改变实现方式尽可能兼容更多的浏览器
 ##布局
 ###Reflowing Layouts
 - [Mostly Fluid](http://miaojing.github.io/responsive/1.0/demo/layout/Mostly-Fluid.htm)
