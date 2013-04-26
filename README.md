@@ -3,6 +3,7 @@
 * [mediaquery探测（matchmedia）](/1.0/guide/matchmedia.md)
 * [mediaquery ie8-兼容实现（mediaquerypolyfill）](/1.0/guide/mediaquerypolyfill.md)
 * [响应式图片兼容实现（picturepolyfill）](/1.0/guide/picturepolyfill.md)
+* [表单响应式实现](/1.0/guide/form.md)
 
 #常用响应式模式实现，兼容ie6+
 ##布局
@@ -30,15 +31,20 @@
 ##导航(navgation)
 ##图片(image)
 ##多媒体(Media)
+- [Google Map](http://miaojing.github.io/responsive/1.0/demo/media/google-map.htm "Google Map")
+- [Video Flash](http://miaojing.github.io/responsive/1.0/demo/media/media-video-flash-youku.htm "Video Flash")
+- [Video HTML5](http://miaojing.github.io/responsive/1.0/demo/media/media-video-html5.htm "Video HTML5")
+
 ##表单(Form)
-- [basic form 基础响应式表单](/1.0/demo/sample.html "基础响应式表单")
-- [search form 搜索框响应式](/1.0/demo/search.html "搜索框响应式")
-##模块(Modules)
+- [basic form 基础响应式表单](http://miaojing.github.io/responsive/1.0/demo/sampleform.html "基础响应式表单")
+- [search form 搜索框响应式](http://miaojing.github.io/responsive/1.0/demo/searchform.html "搜索框响应式")
+
+##模块(Modules)  
 ###Switchable 
 ###Accordion
 ###Lightbox
 
 
 #爱好者们
-妙净、墨峰、李杰、雨异、紫溪、子宽、岑安、基德、乐淘、邓萌
+妙净、墨峰、李杰、雨异、紫溪、子宽、岑安、基德、乐淘、邓萌    
 感兴趣的同学可以一起交流，响应式设计兴趣小组内部ww群号 958033829
