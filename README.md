@@ -7,25 +7,24 @@
 #常用响应式模式实现，兼容ie6+
 ##布局
 ###Reflowing Layouts
-- [Mostly Fluid](http://s.codepen.io/bradfrost/fullpage/Iardn)
-- [Column Drop](http://codepen.io/bradfrost/full/zhCwd)
-- [Layout Shifter](http://codepen.io/bradfrost/full/LtryA)
-- [Tiny Tweaks](http://codepen.io/bradfrost/full/brjFH)
-- [Main column with sidebar](http://codepen.io/bradfrost/full/gtkHy)
-- [3 column](http://codepen.io/bradfrost/full/vspLD)
-- [3 column v2](http://codepen.io/bradfrost/full/joIac)
+- [Mostly Fluid](http://miaojing.github.io/responsive/1.0/demo/navigation/layout/Mostly%20Fluid.htm)
+- [Column Drop](http://miaojing.github.io/responsive/1.0/demo/navigation/layout/Column%20Drop.htm)
+- [Layout Shifter](http://miaojing.github.io/responsive/1.0//demo/layout/Layout%20Shifter.htm)
+- [Tiny Tweaks](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/Toggle%20Navigation.htm)
+- [Main column with sidebar](http://miaojing.github.io/responsive/1.0/demo/layout/Main%20column%20with%20sidebar.htm)
+- [3 column](http://miaojing.github.io/responsive/1.0/demo/layout/3%20Column%20Layout.htm)
+- [3 column v2](http://miaojing.github.io/responsive/1.0/demo/layout/3%20Column%20Layout%20v2.htm)
 
 ###Equal Width
-- [2 equal-width columns](http://codepen.io/bradfrost/full/tnhGv)
-- [3 equal-width columns](http://codepen.io/bradfrost/full/orKvD)
-- [4 equal-width columns](http://codepen.io/bradfrost/full/pwmHf)
-- [5 equal-width columns](http://codepen.io/bradfrost/full/rjfta)
-- [6 equal-width columns](http://bradfrost.github.io/this-is-responsive/patterns.html#)
+- [2 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/2%20Equal-Width%20Columns.htm)
+- [3 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/3%20Equal-Width%20Columns.htm)
+- [4 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/4%20Equal-Width%20Columns.htm)
+- [5 equal-width columns](http://miaojing.github.io/responsive/1.0/demo/layout/5%20Equal-Width%20Columns.htm)
 
 ###Off Canvas
-- [Top](http://codepen.io/bradfrost/full/jtdvf)
-- [Left](http://codepen.io/bradfrost/full/sjiCv)
-- [Right](http://codepen.io/bradfrost/full/GybaF)
+- [Top](http://miaojing.github.io/responsive/1.0/demo/layout/Off-Canvas%20Top.htm)
+- [Left](http://miaojing.github.io/responsive/1.0/demo/layout/Off-Canvas%20Left.htm)
+- [Right](http://miaojing.github.io/responsive/1.0/demo/layout/Off-Canvas%20Right.htm)
 
 ##导航
 ###单层
@@ -61,17 +60,17 @@
 - [Adaptive Maps](http://miaojing.github.io/responsive/1.0/demo/media/Adaptive%20Map.htm)
 
 ##表单
-- [Form with Left Labels](http://miaojing.github.io/responsive/1.0/form/Simple%20Responsive%20Form%20.htm)
+- [Form with Left Labels](http://miaojing.github.io/responsive/1.0/demo/form/Simple%20Responsive%20Form%20.htm)
 - [Fluid Search Form](http://miaojing.github.io/responsive/1.0/demo/form/Search%20Form.htm)
 - [Search with Filters](http://miaojing.github.io/responsive/1.0/demo/form/Filtered%20Search%20RWD%20Pattern.htm)
 
 ##模块
 ###Switchable
- - [3-up Carousel](http://miaojing.github.io/responsive/1.0/modules/3-up%20Carousel%20.htm)
+ - [3-up Carousel](http://miaojing.github.io/responsive/1.0/demo/modules/3-up%20Carousel%20.htm)
  - [Fluid Carousel](http://miaojing.github.io/responsive/1.0/demo/modules/Fluid%20Carousel%20.htm)
 
 ###Accordion
-- [Fluid](http://miaojing.github.io/responsive/1.0/modules/fluid%20Accordion.htm)
+- [Fluid](http://miaojing.github.io/responsive/1.0/demo/modules/fluid%20Accordion.htm)
 - [Accordion to Full](http://miaojing.github.io/responsive/1.0/demo/modules/Accordion%20to%20Full.htm)
 - [Accordion To Tab](http://miaojing.github.io/responsive/1.0/demo/modules/Responsive%20Accordian%20to%20Tabs.htm)
 - [Vertical to Horizontal](http://miaojing.github.io/responsive/1.0/demo/modules/Responsive%20Accordian%20to%20Accordian.htm)
