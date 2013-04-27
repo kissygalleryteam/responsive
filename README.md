@@ -81,8 +81,8 @@
 - [Last-One Only](http://miaojing.github.io/responsive/1.0/demo/navigation/Breadcrumbs/Last-One-Only-Breadcrumbs.htm)
 
 ##图片
-- [Basic Fluid Image](http://miaojing.github.io/responsive/1.0/demo/image/Image-Grid.htm)
-- [Image Grid](http://miaojing.github.io/responsive/1.0//demo/image/Landscape-Image.htm)
+- [Basic Fluid Image](http://miaojing.github.io/responsive/1.0//demo/image/Landscape-Image.htm)
+- [Image Grid](http://miaojing.github.io/responsive/1.0/demo/image/Image-Grid.htm)
 
 ##多媒体
 - [Fluid Video](http://miaojing.github.io/responsive/1.0//demo/media/Fluid-Video.htm)
