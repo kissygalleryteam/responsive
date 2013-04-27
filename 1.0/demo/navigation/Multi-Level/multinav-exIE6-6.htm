@@ -4,8 +4,59 @@
   <meta charset="UTF-8">
   <title>The Skip the Subnav - CodePen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel='stylesheet' href='../multinav/styles.css'>
   <style>
+
+  /************Reset**************/
+	* { 
+		-moz-box-sizing: border-box; 
+		-webkit-box-sizing: border-box; 
+		box-sizing: border-box; 
+	}
+	html, body, div, object, iframe, fieldset { 
+		margin: 0; 
+		padding: 0; 
+		border: 0;
+	} 
+	ol, ul { 
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	} 
+	table { 
+		border-collapse: collapse; 
+		border-spacing: 0; 
+	}
+	header, footer, nav, section, article, hgroup, figure {
+		display: block;	
+	}
+	legend {
+		display: none;
+	}
+	/************End Reset**************/
+
+	/************Global**************/
+	body {
+		background: #fff;
+		color: #000;
+		font: 100%/1.4 "HelveticaNeue", "Helvetica", "Arial", sans-serif;
+		padding: 0;
+		-webkit-text-size-adjust: none;
+	}
+	a {
+		color: #808080;
+		text-decoration: none;
+	}
+	a:hover, a:focus {
+		color: #e51837;
+	}
+	/************End Global**************/
+
+		.pattern {
+			background: #f7f7f7;
+			border-bottom: 1px solid #808080;
+			margin-bottom: 1em;
+			overflow: hidden;
+		}
 a.menu-link {
         float: right;
   	    display: block;

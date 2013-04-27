@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by Brad Frost (http://codepen.io/bradfrost/pen/jtdvf)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>Off-Canvas Top - CodePen</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel='stylesheet' href='http://bradfrost.github.com/this-is-responsive/styles.css'>
+
+  <style>
+.offcanvas-top {
+  position: relative;
+  overflow: hidden;
+  height: 3.2em;
+  -webkit-transition: height 0.5s ease-out; 
+  -moz-transition: height 0.5s ease-out;  
+  -o-transition: height 0.5s ease-out; 
+  transition: height 0.5s ease-out;
+}
+.offcanvas-top.active {
+  height: 13.6em;
+}
+.o-content {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding: 1em 1em 2.5em;
+
+}
+.crumbs li a {
+  display: block;
+  padding: 1em;
+  border-bottom: 1px solid #000;
+}
+.crumbs li:last-child a {
+  border-bottom: 0;
+}
+#trigger {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: block;
+  font-size: 1em; 
+  padding: 0 1em 1em;
+}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+</head>
+
+<body>
+
+  <div id="pattern" class="pattern">
+    <div class="offcanvas-top">
+  		<div class="o-content">
+				<p>Here is more content. This could be related items, navigation or other content you feel is conducive to this type of treatment.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis nisi et dui placerat ornare. Maecenas molestie lacus lobortis libero lacinia sed scelerisque lectus congue. Mauris dignissim nisi a ante laoreet et ullamcorper ligula ullamcorper. In hac habitasse platea dictumst. In nisi odio, tempor in viverra vitae, mollis ac tortor. Sed a rhoncus leo. Maecenas ac dui elit, tristique dapibus nisl. Suspendisse feugiat porta ligula, auctor posuere lorem vulputate et.</p>
+				</div>
+		</div>
+</div>
+	<!--End Pattern HTML-->
+<div class="container">	
+		<!--Pattern Description-->
+		<section class="pattern-description">
+			<h1>Off-Canvas Top</h1>
+			<p>More content or navigation can be displayed off-canvas above the core content. </p>
+			<h2>Pros</h2>
+			<ul>
+				<li>Saves space for core content.</li>
+				<li>Elegant</li>
+			</ul>
+			<h2>Cons</h2>
+			<ul>
+				<li><strong>JS Dependency</strong> - Not necessarily a con, but ensure that off-canvas content is still accessible for users with poor/no JS support</li>
+				<li><strong>Animation Performance</strong> - Platforms, especially mobile platforms, vary greatly in how well they treat animations. Keep this in mind.</li>
+			</ul>
+			<h2>Resources</h2>
+			<ul>
+				<li><a href="http://www.lukew.com/ff/entry.asp?1517">Off Canvas Multi-Device Layout</a></li>
+				<li><a href="http://www.lukew.com/ff/entry.asp?1569">Off Canvas Multi-Device Layouts</a></li>
+				<li><a href="http://jasonweaver.name/lab/offcanvas/">Off-Canvas demo by Jason Weaver</a></li>
+			</ul>
+		</section>
+		<!--End Pattern Description-->
+
+		<!--Footer-->
+		<footer role="contentinfo">   
+			<div>
+				<nav id="menu">
+					<a href="http://bradfrost.github.com/this-is-responsive/patterns.html">&larr;More Responsive Patterns</a>
+				</nav>
+			</div>
+		</footer>
+		<!--End Footer-->
+	</div>
+
+  <script src="//code.jquery.com/jquery-latest.js"></script>
+
+  <script>
+(function(w){
+      var $container = $('.offcanvas-top'),
+				$cHeight = $('.o-content').outerHeight();
+			$(document).ready(function() {
+				buildCanvas();
+			});
+
+			function buildCanvas() {
+				$('<a href="#" id="trigger">More +</a>').appendTo($container);
+
+				$('#trigger').bind('click', function(e) {
+					e.preventDefault();
+					var $this = $(this);
+					$container.toggleClass('active');
+					if($container.hasClass('active')) {
+						$container.height($cHeight);
+						$this.text('Hide -');
+					} else {
+						$container.height(50);
+						$this.text('More +');
+					}
+				});
+
+			}
+
+			$(window).resize(function() { //On Window resizeBy(
+				$cHeight = $('.o-content').outerHeight();
+        console.log($cHeight);
+			});
+
+		})(this);
+  </script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+</body>
+
+</html>
