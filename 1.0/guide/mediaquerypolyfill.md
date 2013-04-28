@@ -19,10 +19,15 @@ MediaqueryPolyfill即media query兼容（ie8-）实现
         ]
     });
     //为了防止闪屏，切换class应该在body渲染之前，所以不建议用KISSY.use的按需异步加载进来，改为直接在head中引入
-    <script src="http://a.tbcdn.cn/s/kissy/gallery/responsive/1.0/??,matchmedia/index.js,mediaquerypolyfill/index.js"></script>
+    <script src="http://a.tbcdn.cn/s/kissy/gallery/responsive/1.0/??matchmedia/index-min.js,mediaquerypolyfill/index-min.js"></script>
     <script>
     KISSY.use('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MediaqueryPolyfill) {
-        new MediaqueryPolyfill([480, 1010, 1220, 1420, 1620]);//响应的临界值
+        new MediaqueryPolyfill([480, 1010, 1220, 1420, 1620]);//响应的临界值 
+        /*
+         * media query width 3C（ff/ie9）包含滚动条,但webkit内核的不包含滚动条宽度，
+         * 但实际视觉设计师是按照页面内容宽度来定是不含滚动条的，所以一般mediaquery的width要在页面宽度的基础上加滚动条的宽度17（习惯整数的也可以加20，效果是提前3px响应而已）
+         * 如：页面宽度990,则media query 临界值为 990+20=1010
+         */
     });
     </script>
     </head>

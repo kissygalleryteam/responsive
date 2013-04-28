@@ -5,7 +5,7 @@ module.exports = function(grunt) {
         // name作为gallery发布后的模块名
         // version是版本，也是发布目录
         // author必须是{name: "xxx", email: "xxx"}格式
-        pkg: grunt.file.readJSON('package.json'),
+        pkg: grunt.file.readJSON('responsive.json'),
         banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
             '<%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %>\n' +
             '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
