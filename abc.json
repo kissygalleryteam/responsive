@@ -1,0 +1,13 @@
+{
+    "name": "responsive",
+    "version": "1.0",
+    "desc": "响应式模式",
+    "cover": "",
+    "author": {
+        "name": "miaojing",
+        "email": "miaojing@gmail.com",
+        "page": "请修改作者个人首页"
+    },
+    "type": "kissy-pie",
+    "type-url": "http://abc.alibaba-inc.com/r/kissy-pie"
+}
