@@ -10,14 +10,14 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMe
 	/**
 	 * @class MediaqueryPolyfill
 	 * @constructor
-	 * @param {Array} config  resolution breakpoint 分辨率临界值
+	 * @param {Array} config  breakpoints breakpoint 分辨率临界值
 	 * @return {void} 
 	 */
 	function MediaqueryPolyfill(config) {
 		//支持mediaquery的跳出
-		if (MatchMedia('(min-width: 400px)')) return;
+		if (window.matchMedia && window.matchMedia('only all').matches) return;
 		var self = this;
-		config = {resolution: config};
+		config = {breakpoints: config};
  		MediaqueryPolyfill.superclass.constructor.call(self, config);
 		self.init();
 	}
@@ -59,8 +59,8 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMe
 
 		_load: function() {
 			var self = this;
-			var resolution = self.get('resolution');
-			var len = resolution.length;
+			var breakpoints = self.get('breakpoints');
+			var len = breakpoints.length;
 			/**
 			 * var viewportWidth = document.documentElement.offsetWidth;
 			 * media query w3c标准 含滚动条 http://www.w3.org/TR/css3-mediaqueries/#width
@@ -70,11 +70,11 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMe
 			var viewportWidth = document.documentElement.clientWidth;
 			S.log('clientWidth:'+ viewportWidth);
 
-			var vwClass = resolution[len - 1];
+			var vwClass = breakpoints[len - 1];
 			for (var i = 0; i < len; i ++) {
 				var j = i - 1 < 0 ? 0 : i -1 ;
-				if(viewportWidth < resolution[i]) {
-					vwClass = resolution[j];
+				if(viewportWidth < breakpoints[i]) {
+					vwClass = breakpoints[j];
 					break;
 				}
 			}
@@ -83,7 +83,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMe
 		}
 	}, {ATTRS: {
 		//默认对750(ipad竖屏)、990(ipad横屏和普通pc)、1200(pc宽屏)进行响应
-		resolution: [750, 1010, 1220] 
+		breakpoints: [750, 1010, 1220] 
 	}});
 
 	return MediaqueryPolyfill;

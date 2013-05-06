@@ -20,7 +20,7 @@
     }
     
     S.use('gallery/responsive/1.0/matchmedia/index', function (S, MatchMedia) {
-        if (MatchMedia('(min-width: 400px)')) {
+        if (window.matchmedia('(min-width: 400px)').matches) {
             alert('yeah:) support');
         } else {
             alert('sorry;) can not support');
