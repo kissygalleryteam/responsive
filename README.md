@@ -11,7 +11,7 @@
 - [Mostly Fluid](http://miaojing.github.io/responsive/1.0/demo/layout/Mostly-Fluid.htm)
 - [Column Drop](http://miaojing.github.io/responsive/1.0/demo/layout/Column-Drop.htm)
 - [Layout Shifter](http://miaojing.github.io/responsive/1.0/demo/layout/Layout-Shifter.htm)
-- [Tiny Tweaks](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/Toggle-Navigation.htm)
+- [Tiny Tweaks](http://miaojing.github.io/responsive/1.0/demo/layout/Tiny-Tweaks.htm)
 - [Main column with sidebar](http://miaojing.github.io/responsive/1.0/demo/layout/Main-column-with-sidebar.htm)
 - [3 column](http://miaojing.github.io/responsive/1.0/demo/layout/3-Column-Layout.htm)
 - [3 column v2](http://miaojing.github.io/responsive/1.0/demo/layout/3-Column-Layout-v2.html)
