@@ -3,8 +3,9 @@
 * [响应式实现基础函数 (respondTools)](/1.0/guide/respondtools.md)
 * [mediaquery ie8-兼容实现（mediaquerypolyfill）](/1.0/guide/mediaquerypolyfill.md)
 * [响应式图片兼容实现（picturepolyfill）](/1.0/guide/picturepolyfill.md)
-* [响应式switchable（switchable）](/1.0/guide/switchable.md)（待和承玉进一步沟通，最好kissy switchable直接支持）
 * [响应式导航（navigation）](/1.0/guide/navgation.md)(待从wanke.etao.com导航上抽取出来)
+* [响应式switchable（switchable）](/1.0/guide/switchable.md)（待和承玉进一步沟通，最好kissy switchable直接支持）
+
 
 #常用响应式模式实现
 参考[Responsive Patterns](http://bradfrost.github.io/this-is-responsive/patterns.html),尝试翻译整理以及改变实现方式尽可能兼容更多的浏览器
@@ -112,3 +113,6 @@
 
 ###Lightbox
 - [Conditional Lightbox](http://miaojing.github.io/responsive/1.0/demo/modules/Conditional-Lightbox-for-Responsive-Design.htm)
+
+#作者们
+妙净、墨峰、乐淘、邓萌等
