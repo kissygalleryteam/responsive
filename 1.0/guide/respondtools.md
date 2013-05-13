@@ -39,12 +39,13 @@ kissy1.2下需要gallery的包配置, 1.3不需要
 
 ##原生 window.matchMedia兼容性
 ###Desktop
-####|chrome 9|firefox 6.0|IE10|opera 12.1|safari 5.1|
+|chrome 9|firefox 6.0|IE10|opera 12.1|safari 5.1|
 ###Mobile
-####|android 3.0|firefox mobile 6.0|IE mobile not supported|opera mobile 12.1|safari mobile5|
+|android 3.0|firefox mobile 6.0|IE mobile not supported|opera mobile 12.1|safari mobile5|
 
  ##相关链接
- 1.https://developer.mozilla.org/en-US/docs/DOM/window.matchMedia
- 2.https://github.com/scottjehl/matchMedia.js
- 3.http://msdn.microsoft.com/zh-CN/library/ie/hh772743(v=vs.85).aspx
+
+ 1.https://developer.mozilla.org/en-US/docs/DOM/window.matchMedia    
+ 2.https://github.com/scottjehl/matchMedia.js    
+ 3.http://msdn.microsoft.com/zh-CN/library/ie/hh772743(v=vs.85).aspx    
 
