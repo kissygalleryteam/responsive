@@ -11,7 +11,7 @@ PicturePolyfill即Picture标签的兼容实现  [W3C响应式图片讨论组](ht
 # demo示例
  [点击访问](http://miaojing.github.io/responsive/1.0//demo/picturepolyfill.html)
 
-##html结构如下，模拟picture
+##html结构
 为什么html结构不用[picture h5](http://www.w3.org/TR/html-picture-element/)草案中的规范推荐的，而用div，因为ie9会移除source标签，js无法获取soucre标签，经测试确实如此，社区同样有人反馈同样的[问题](http://www.w3.org/community/respimg/2012/03/06/js-implementation-problem-with/)
 
     <div data-picture data-alt="淘宝女装">
