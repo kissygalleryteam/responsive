@@ -46,10 +46,8 @@ kissy1.2下需要gallery的包配置, 1.3不需要
 ####Mobile
 |android 3.0|firefox mobile 6.0|IE mobile not supported|opera mobile 12.1|safari mobile5|
 
-matchMedia匹配是否支持或某个[media query]()表达式，实现参考[matchMedia.js](https://github.com/scottjehl/matchMedia.js)    
 
- ##相关链接
-
+##相关链接   
  1.https://developer.mozilla.org/en-US/docs/DOM/window.matchMedia    
  2.https://github.com/scottjehl/matchMedia.js    
  3.http://msdn.microsoft.com/zh-CN/library/ie/hh772743(v=vs.85).aspx    
