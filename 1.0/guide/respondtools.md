@@ -1,7 +1,8 @@
 # 综述
 响应式基础函数,目前包括2个函数：    
-1. window.matchMedia(mq):   顾名思义,window.matchMedia的兼容实现，用于探测当前是否支持该mediaquery表达式
-2. wave(mq) : 判断当前viewportWidth是否在media query的【min max】区间,兼容ie6+ 实现参考[jquery respondjs plugin](http://responsejs.com/)
+1.window.matchMedia(mq):   顾名思义,window.matchMedia的兼容实现，用于探测当前是否支持该mediaquery表达式    
+2.wave(mq) : 判断当前viewportWidth是否在media query的【min max】区间,兼容ie6+ 实现参考[jquery respondjs plugin](http://responsejs.com/)    
+
 版本：1.0    
 作者：Scott Jehl, Paul Irish, Nicholas Zakas, 妙净
 # demo示例
