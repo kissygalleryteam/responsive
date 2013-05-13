@@ -36,40 +36,54 @@ KISSY.add('gallery/responsive/1.0/picturepolyfill/index', function (S, Base, Res
 			
 			window.onresize = function() {
 				timer && timer.cancel(); 
-				timer = S.later(self._responsiveImg, 500, false, self); 
+				timer = S.later(self._responsiveImg, 200, false, self); 
 			};
 		},
 
 		_responsiveImg: function() {
 			var w = window, ps = w.document.getElementsByTagName( "div" );
-
-			// Loop the pictures
+			var HD = window.devicePixelRatio && window.devicePixelRatio;
 			for( var i = 0, il = ps.length; i < il; i++ ) {
 				if( ps[ i ].getAttribute( "data-picture" ) !== null ) {
 
 					var sources = ps[ i ].getElementsByTagName( "div" ),
 						matches = [];
 
-					// See if which sources match
+					// 匹配哪一个source 
 					for( var j = 0, jl = sources.length; j < jl; j++ ) {
 						var media = sources[ j ].getAttribute( "data-media" );
-						// if there's no media specified, OR w.matchMedia is supported 
-						if( !media || ( w.matchMedia && w.matchMedia( media ).matches ) ){
+						if( !media || RespondTools.wave(media)){
 							matches.push( sources[ j ] );
 						}
 					}
 
-					// Find any existing img element in the picture element
+					//如果picture下存在fallback img后续将其移除 
 					var picImg = ps[ i ].getElementsByTagName( "img" )[ 0 ];
 
-					if( matches.length ){			
+					if( matches.length ) {			
 						if( !picImg ){
 							picImg = w.document.createElement( "img" );
 							picImg.alt = ps[ i ].getAttribute( "data-alt" );
 							ps[ i ].appendChild( picImg );
 						}
 
-						picImg.src =  matches.pop().getAttribute( "data-src" );
+						//额外支持高清屏
+						var src = matches.pop().getAttribute( "data-src" ), imgsrc, srcArr = src.split(",");
+
+						for(var s = 0, sl = srcArr.length; s < sl ; s++) {
+							var srcH = srcArr[s].replace(/^\s*/, '').replace(/\s*$/, '').split(" "), 
+							srcRatio = parseFloat( srcH[1], 10 );
+							if (window.devicePixelRatio) {
+								if(srcRatio == window.devicePixelRatio) {
+									imgsrc = srcH[0];
+								}
+							} else {
+								//不支持高清屏 
+								if(!srcH[1] || srcH[1] && srcRatio == 1) imgsrc = srcH[0];
+							}
+						}
+
+						picImg.src =  imgsrc;
 					} else if( picImg ){
 						ps[ i ].removeChild( picImg );
 					}
