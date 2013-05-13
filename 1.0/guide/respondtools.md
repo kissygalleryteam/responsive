@@ -1,5 +1,7 @@
 # 综述
-MatchMedia匹配是否支持或某个[media query](http://www.w3.org/TR/css3-mediaqueries/)表达式，实现参考[matchMedia.js](https://github.com/scottjehl/matchMedia.js)    
+响应式基础函数,目前包括2个函数：    
+1. window.matchMedia(mq):   顾名思义,window.matchMedia的兼容实现，用于探测当前是否支持该mediaquery表达式
+2. wave(mq) : 判断当前viewportWidth是否在media query的【min max】区间,兼容ie6+ 实现参考[jquery respondjs plugin](http://responsejs.com/)
 版本：1.0    
 作者：Scott Jehl, Paul Irish, Nicholas Zakas, 妙净
 # demo示例
@@ -37,11 +39,13 @@ kissy1.2下需要gallery的包配置, 1.3不需要
         }
     });
 
-##原生 window.matchMedia兼容性
-###Desktop
+###原生 window.matchMedia兼容性
+####Desktop
 |chrome 9|firefox 6.0|IE10|opera 12.1|safari 5.1|
-###Mobile
+####Mobile
 |android 3.0|firefox mobile 6.0|IE mobile not supported|opera mobile 12.1|safari mobile5|
+
+matchMedia匹配是否支持或某个[media query](http://www.w3.org/TR/css3-mediaqueries/)表达式，实现参考[matchMedia.js](https://github.com/scottjehl/matchMedia.js)    
 
  ##相关链接
 
