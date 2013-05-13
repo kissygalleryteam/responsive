@@ -5,37 +5,135 @@
  * @date 2013-04-11
  */
 
-KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMedia, Base) {
+KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, RespondTools, Base) {
 	"use strict";
 	/**
 	 * @class MediaqueryPolyfill
 	 * @constructor
-	 * @param {Array} config  breakpoints breakpoint 分辨率临界值
+	 * @param {Object} config  breakpoints 
 	 * @return {void} 
 	 */
 	function MediaqueryPolyfill(config) {
-		//支持mediaquery的跳出
-		if (window.matchMedia && window.matchMedia('only all').matches) return;
 		var self = this;
-		config = {breakpoints: config};
  		MediaqueryPolyfill.superclass.constructor.call(self, config);
 		self.init();
 	}
 
-	
+	MediaqueryPolyfill.ATTRS = {
+		/**
+		 * breakpoints 临界值 默认对750(ipad竖屏)、990(ipad横屏和普通pc)、1200(pc宽屏)进行响应
+		 * @cfg {array}
+		 */
+		breakpoints: { value: [750, 1010, 1220]},
+		/**
+		 * [listeners matchMedia监听器]
+		 * @cfg {Object}
+		 */
+		listeners: {},
+		/**
+		 * isAutoExectListener 是否初始化页面时自动执行一次相应的响应回调，默认true
+		 * @cfg {Boolean}
+		 */
+		isAutoExectListener: { value: true },
+
+		/**
+		 * [isSupportMediaquery 是否支持mediaquery]
+		 * @type {Boolean}
+		 */
+		isSupportMediaquery: { value: window.matchMedia && window.matchMedia('only all').matches }, 
+
+		/**
+		 * [isSupportAddListener 是否支持window.matchMedia('only all').addLinsterner是否支持]
+		 * @type {Boolean}
+		 */
+		isSupportAddListener: { value: window.matchMedia && !!window.matchMedia('only all').addListener },
+
+		/**
+		 * document.documentElement.offsetWidth 含滚动条
+		 * media query w3c标准 含滚动条 http://www.w3.org/TR/css3-mediaqueries/#width
+		 * media query webkit实现 实际内容 不包含滚动条； 其他及其标准 含滚动条
+		 * respond.js也用clientWidth计算viewport 不含滚动条 更符合表达习惯
+		 * @type {Number}
+		 */
+		viewportWidth: { 
+			value: 0, 
+			getter: function() {
+				return document.documentElement.clientWidth;
+			}
+		}
+	};
+
 	S.extend(MediaqueryPolyfill, Base, {
 		init: function() {
-			var self = this;
-			var timer;
-			self._load();
+			var self = this, timer;
+			!self.get('isSupportMediaquery') && self._changeHtmlClass();
+
+			if(self.get('isSupportAddListener')) { 
+				self._addNativeListener(); 
+			} else {
+				self.get('isAutoExectListener') && self._addListenerPolyfill(); 
+			}
+
 			window.onresize = function() {
-				if (timer) { 
-					timer.cancel(); 
-				}
-				timer = S.later(self._load, 200, false, self); 
+				timer && timer.cancel(); 
+				timer = S.later(self._resizeHandler, 500, false, self); 
 			};
 		},
+
+		/**
+		 * _resize window.onresize的handler 
+		 * 做2件事情:1.切换html节点上的class 2.执行listeners的callback
+		 * @return {void} 
+		 */
+		_resizeHandler: function() {
+			var self = this;
+			if (!self.get('isSupportMediaquery')) {
+				self._changeHtmlClass();	
+			}
+			if (!self.get('isSupportAddListener')) {
+				S.log('exect _addListenerPolyfill');
+				self._addListenerPolyfill();
+			} 
+		},
+
+		/**
+		 * _addNativeListener 依次注册listener 原生实现
+		 */
+		_addNativeListener: function() {
+			var self = this,
+				listeners = self.get('listeners'),
+				isAutoExectListener = self.get('isAutoExectListener'),
+				newListeners = {};
+
+			for (var listen in listeners) {
+				var mql = window.matchMedia(listen);
+				newListeners[mql.media] = listeners[listen];
+				isAutoExectListener && mql.matches && listeners[listen]();
+				mql.addListener(function(mql) {
+					/*
+					 * 因mql.media的值会由原来的(min-width:480px) and (max-width: 1009px)变成	(max-width: 1009px) and (min-width:480px)
+					 * 所以这里换newListeners重新整理listerners
+					 */
+					mql.matches && newListeners[mql.media]();
+				});
+			}
+		},
 		
+		/**
+		 * _addListenerPolyfill 通过被执行在window.resize中，模拟实现window.matchMedia('xx').addLinsterner
+		 */
+		_addListenerPolyfill: function() {
+			var self = this, min, max,
+				listeners = self.get('listeners');
+
+			for (var p in listeners) {
+				if (RespondTools.wave(p)) {
+					listeners[p]();
+					S.log('callback');
+				}
+			}
+		},
+
 		/**
 		 * _replaceClass 替换class
 		 * @param  {String} cls 原classString
@@ -57,20 +155,18 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMe
 	        return cls.join(' ');
         },
 
-		_load: function() {
-			var self = this;
-			var breakpoints = self.get('breakpoints');
-			var len = breakpoints.length;
-			/**
-			 * var viewportWidth = document.documentElement.offsetWidth;
-			 * media query w3c标准 含滚动条 http://www.w3.org/TR/css3-mediaqueries/#width
-			 * media query webkit实现 实际内容 不包含滚动条 其他及其标准 含滚动条
-			 * respond.js也用clientWidth计算viewport 不含滚动条 更符合表达习惯
-			 */
-			var viewportWidth = document.documentElement.clientWidth;
-			S.log('clientWidth:'+ viewportWidth);
+        /**
+         * _changeHtmlClass 切换html节点的class
+         * 如：vm1420 ==》 vm1220
+         * @return {void} 
+         */
+		_changeHtmlClass: function() {
+			var self = this,
+				breakpoints = self.get('breakpoints'),
+			 	len = breakpoints.length,
+			 	viewportWidth = self.get('viewportWidth'),
+			 	vwClass = breakpoints[len - 1];
 
-			var vwClass = breakpoints[len - 1];
 			for (var i = 0; i < len; i ++) {
 				var j = i - 1 < 0 ? 0 : i -1 ;
 				if(viewportWidth < breakpoints[i]) {
@@ -81,12 +177,9 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MatchMe
         	// 不支持兼容模式，必需有doctype
         	document.documentElement.className = self._replaceClass(document.documentElement.className, /vw\d+/, 'vw' + vwClass);
 		}
-	}, {ATTRS: {
-		//默认对750(ipad竖屏)、990(ipad横屏和普通pc)、1200(pc宽屏)进行响应
-		breakpoints: [750, 1010, 1220] 
-	}});
+	});
 
 	return MediaqueryPolyfill;
 }, {
-	requires: ['../matchmedia/index', 'base']
+	requires: ['../respondtools/index', 'base']
 });

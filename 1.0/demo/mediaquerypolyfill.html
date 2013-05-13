@@ -22,7 +22,17 @@
     }
 
     S.use('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MediaqueryPolyfill) {
-        new MediaqueryPolyfill([480, 1010, 1220, 1420, 1620]);
+        var mqp = new MediaqueryPolyfill({
+            breakpoints: [480, 1010, 1220, 1420, 1620],
+            listeners: {
+                '(max-width: 480px)': function(){S.log('<=480px')},//0~480
+                '(max-width: 1009px) and (min-width: 480px)': function(){S.log('480~1009')},//480~1009
+                '(min-width: 1010px) and (max-width: 1219px)': function(){S.log('1010~1219')},//1010~1219
+                '(min-width: 1220px) and (max-width: 1419px)': function(){S.log('1220~1419')},//1220~1419
+                '(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')},//1420~1619
+                '(min-width: 1620px)': function(){S.log('>=1620')}//1420~1619
+            }
+        });
     });
 
     </script>
@@ -32,7 +42,7 @@
 
         @media (max-width: 1620px) {
             div:after {
-                content: '1620';
+                content: '<=1620';
             }
             div {
                 background-color: blue;
@@ -41,7 +51,7 @@
 
         @media (max-width: 1420px) {
             div:after {
-                content: '1420';
+                content: '<=1420';
             }
             div {
                 background-color: yellow;
@@ -50,7 +60,7 @@
 
         @media (max-width: 1220px) {
             div:after {
-                content: '1220';
+                content: '<=1220';
             }
             div {
                 background-color: red;
@@ -60,7 +70,7 @@
 
         @media (max-width: 1010px) {
             div:after {
-                content: '1010';
+                content: '<=1010';
             }
             div {
                 background-color: green;
@@ -69,7 +79,7 @@
 
         @media (max-width: 480px) {
             div:after {
-                content: '480';
+                content: '<=480';
             }
             div {
                 background-color: pink;
@@ -77,7 +87,7 @@
         }
 /* for can't support media query */
         .vw1620 div:after {
-            content: '1620';
+            content: '>=1620';
         }
 
         .vw1620 div {
@@ -86,7 +96,7 @@
         
 
         .vw1420 div:after {
-            content: '1420';
+            content: '>=1420';
         }
 
         .vw1420 div {
@@ -94,7 +104,7 @@
         }
 
         .vw1220 div:after {
-            content: '1220';
+            content: '>=1220';
         }
 
         .vw1220 div {
@@ -102,7 +112,7 @@
         }
 
         .vw1010 div:after {
-            content: '1620';
+            content: '>=1010';
         }
 
         .vw1010 div {
@@ -110,7 +120,7 @@
         }
 
         .vw480 div:after {
-            content: '1620';
+            content: '>=480';
         }
 
         .vw480 div {
