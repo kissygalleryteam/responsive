@@ -1,6 +1,6 @@
 #基于kissy seed常用响应式技术实现
 
-* [响应式实现基础函数 respondTools](/1.0/guide/respondTools.md)
+* [响应式实现基础函数 (respondTools)](/1.0/guide/respondTools.md)
 * [mediaquery ie8-兼容实现（mediaquerypolyfill）](/1.0/guide/mediaquerypolyfill.md)
 * [响应式图片兼容实现（picturepolyfill）](/1.0/guide/picturepolyfill.md)
 * [响应式switchable（switchable）](/1.0/guide/switchable.md)（待和承玉进一步沟通，最好kissy switchable直接支持）
