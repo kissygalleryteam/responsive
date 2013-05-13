@@ -22,12 +22,23 @@ MediaqueryPolyfill即media query兼容（ie8-）实现
     <script src="http://a.tbcdn.cn/s/kissy/gallery/responsive/1.0/??matchmedia/index-min.js,mediaquerypolyfill/index-min.js"></script>
     <script>
     KISSY.use('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MediaqueryPolyfill) {
-        new MediaqueryPolyfill([480, 1010, 1220, 1420, 1620]);//响应的临界值 
-        /*
-         * media query width 3C（ff/ie9）包含滚动条,但webkit内核的不包含滚动条宽度，
-         * 但实际视觉设计师是按照页面内容宽度来定是不含滚动条的，所以一般mediaquery的width要在页面宽度的基础上加滚动条的宽度17（习惯整数的也可以加20，效果是提前3px响应而已）
-         * 如：页面宽度990,则media query 临界值为 990+20=1010
-         */
+        var mqp = new MediaqueryPolyfill({
+            /*
+             * media query width 3C（ff/ie9）包含滚动条,但webkit内核的不包含滚动条宽度，
+             * 但实际视觉设计师是按照页面内容宽度来定是不含滚动条的，所以一般mediaquery的width要在页面宽度的基础上加滚动条的宽度17（习惯整数的也可以加20，效果是提前3px响应而已）
+             * 如：页面宽度990,则media query 临界值为 990+20=1010
+             */
+            breakpoints: [480, 1010, 1220, 1420, 1620],
+            //顺便支持不同响应区间js逻辑响应,类似window.matchMedia('max-width: 1220px').addLinstener的polyfill,兼容ie6+
+            listeners: {
+                '(max-width: 480px)': function(){S.log('<=480px')},//0~480
+                '(max-width: 1009px) and (min-width: 480px)': function(){S.log('480~1009')},//480~1009
+                '(min-width: 1010px) and (max-width: 1219px)': function(){S.log('1010~1219')},//1010~1219
+                '(min-width: 1220px) and (max-width: 1419px)': function(){S.log('1220~1419')},//1220~1419
+                '(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')},//1420~1619
+                '(min-width: 1620px)': function(){S.log('>=1620')}//1420~1619
+            }
+        });
     });
     </script>
     </head>
