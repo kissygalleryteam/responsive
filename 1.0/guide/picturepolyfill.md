@@ -1,9 +1,8 @@
 # 综述
-PicturePolyfill即Picture标签的兼容实现  [W3C响应式图片讨论组](http://www.w3.org/community/respimg/) 参考开源 [picturefill](https://github.com/scottjehl/picturefill)，同时增加以下feature：
-
-1.兼容i8及其以下【done】 
-2.支持Retina屏【done】
-3.支持图片懒加载 【todo】
+PicturePolyfill即Picture标签的兼容实现  [W3C响应式图片讨论组](http://www.w3.org/community/respimg/) 参考开源 [picturefill](https://github.com/scottjehl/picturefill)，同时增加以下feature：    
+1.兼容i8及其以下【done】     
+2.支持Retina屏【done】    
+3.支持图片懒加载 【todo】    
 
 版本：1.0    
 作者：Scott Jehl、Wilto、妙净
@@ -50,12 +49,12 @@ PicturePolyfill即Picture标签的兼容实现  [W3C响应式图片讨论组](ht
         });
     });
 
-# 参考链接
-1.[JS implementation / Problem with the source element source标签在ie9下的问题](http://www.w3.org/community/respimg/2012/03/06/js-implementation-problem-with/)
-2.[Polyfilling picture without the overhead](http://www.w3.org/community/respimg/2012/03/15/polyfilling-picture-without-the-overhead/)
-3.[32种图片响应式方案列表以及优劣对比](https://docs.google.com/spreadsheet/ccc?key=0Al0lI17fOl9DdDgxTFVoRzFpV3VCdHk2NTBmdVI2OXc#gid=0)
-4.[从可用性，是否需要服务端支持，维护成本等方面分析图片响应式应该选择哪一种方案](http://css-tricks.com/which-responsive-images-solution-should-you-use/)
-5.[图片响应式picture草案出来之前,深入讨论图片响应式技术方案](http://blog.cloudfour.com/responsive-imgs-part-2/)
+#参考链接  
+1.[JS implementation / Problem with the source element source标签在ie9下的问题](http://www.w3.org/community/respimg/2012/03/06/js-implementation-problem-with/)    
+2.[Polyfilling picture without the overhead](http://www.w3.org/community/respimg/2012/03/15/polyfilling-picture-without-the-overhead/)   
+3.[32种图片响应式方案列表以及优劣对比](https://docs.google.com/spreadsheet/ccc?key=0Al0lI17fOl9DdDgxTFVoRzFpV3VCdHk2NTBmdVI2OXc#gid=0)  
+4.[从可用性，是否需要服务端支持，维护成本等方面分析图片响应式应该选择哪一种方案](http://css-tricks.com/which-responsive-images-solution-should-you-use/)    
+5.[图片响应式picture草案出来之前,深入讨论图片响应式技术方案](http://blog.cloudfour.com/responsive-imgs-part-2/)    
 
 
 
