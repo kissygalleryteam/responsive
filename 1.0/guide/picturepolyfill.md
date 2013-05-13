@@ -12,7 +12,7 @@ PicturePolyfill即Picture标签的兼容实现  [W3C响应式图片讨论组](ht
  [点击访问](http://miaojing.github.io/responsive/1.0//demo/picturepolyfill.html)
 
 ##html结构如下，模拟picture
-    /*为什么html结构不用[picture h5](http://www.w3.org/TR/html-picture-element/)草案中的规范推荐的，而用div，因为ie9会移除source标签，js无法获取soucre标签，经测试确实如此，社区同样有人反馈同样的[问题](http://www.w3.org/community/respimg/2012/03/06/js-implementation-problem-with/)*/
+为什么html结构不用[picture h5](http://www.w3.org/TR/html-picture-element/)草案中的规范推荐的，而用div，因为ie9会移除source标签，js无法获取soucre标签，经测试确实如此，社区同样有人反馈同样的[问题](http://www.w3.org/community/respimg/2012/03/06/js-implementation-problem-with/)
     <div data-picture data-alt="淘宝女装">
         <div data-media="(min-width: 400px)" data-src="http://img04.taobaocdn.com/bao/uploaded/i4/i3/T1fQ6LXoxjXXXnyXc__105152.jpg_100x100.jpg 1x, http://img04.taobaocdn.com/bao/uploaded/i4/i3/T1fQ6LXoxjXXXnyXc__105152.jpg_200x200.jpg 2x"></div>
         <div data-media="(min-width: 500px)" data-src="http://img04.taobaocdn.com/bao/uploaded/i4/i3/T1fQ6LXoxjXXXnyXc__105152.jpg_230x230.jpg 1x, http://img04.taobaocdn.com/bao/uploaded/i4/i3/T1fQ6LXoxjXXXnyXc__105152.jpg_460x460.jpg 2x"></div>
@@ -23,8 +23,7 @@ PicturePolyfill即Picture标签的兼容实现  [W3C响应式图片讨论组](ht
     </div>
 
 
-## picture标签 理论上 h5草案 http://www.w3.org/community/respimg/
-    
+## 理论上的picture标签  
     <picture alt="淘宝女装">
         <source media="(min-width: 400px)" srcset="http://img04.taobaocdn.com/bao/uploaded/i4/i3/T1fQ6LXoxjXXXnyXc__105152.jpg_100x100.jpg 1x, http://img04.taobaocdn.com/bao/uploaded/i4/i3/T1fQ6LXoxjXXXnyXc__105152.jpg_200x200.jpg 2x">
         <source media="(min-width: 500px)" srcset="http://img04.taobaocdn.com/bao/uploaded/i4/i3/T1fQ6LXoxjXXXnyXc__105152.jpg_230x230.jpg 1x, http://img04.taobaocdn.com/bao/uploaded/i4/i3/T1fQ6LXoxjXXXnyXc__105152.jpg_460x460.jpg 2x">
