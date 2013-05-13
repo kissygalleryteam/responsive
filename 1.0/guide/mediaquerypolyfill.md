@@ -19,7 +19,7 @@ MediaqueryPolyfill即media query兼容（ie8-）实现
         ]
     });
     //为了防止闪屏，切换class应该在body渲染之前，所以不建议用KISSY.use的异步加载进来，改为直接在head中引入
-    <script src="http://a.tbcdn.cn/s/kissy/gallery/responsive/1.0/??matchmedia/index-min.js,mediaquerypolyfill/index-min.js"></script>
+    <script src="http://a.tbcdn.cn/s/kissy/gallery/responsive/1.0/??respondtools/index-min.js,mediaquerypolyfill/index-min.js"></script>
     <script>
     KISSY.use('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MediaqueryPolyfill) {
         var mqp = new MediaqueryPolyfill({
@@ -74,7 +74,7 @@ MediaqueryPolyfill即media query兼容（ie8-）实现
         background-color: red;
     }
     /*
-     * 上面media query和hack css的内容是重复的，可以根据需要引入less解决
+     * 上面media query和hack css的内容是重复的，可以根据需要引入less解决,一淘首页目前是引入less解决
      * 如果响应到mobile端，高分辨率的css hack多余了，如果多余好几k,可以考虑实现拆分成不同文件，根据不同终端输出。
      */
 
