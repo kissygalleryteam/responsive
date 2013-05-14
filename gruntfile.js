@@ -27,8 +27,8 @@ module.exports = function(grunt) {
             main: {
                 files: [
                     {
-                        src: "<%= pkg.version %>/matchmedia/index.js",
-                        dest: "<%= pkg.version %>/build/matchmedia/index.js"
+                        src: "<%= pkg.version %>/respondtools/index.js",
+                        dest: "<%= pkg.version %>/build/respondtools/index.js"
                     },
                     {
                         src: "<%= pkg.version %>/mediaquerypolyfill/index.js",
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
             },
             base: {
                 files: {
-                    '<%= pkg.version %>/build/matchmedia/index-min.js': ['<%= pkg.version %>/build/matchmedia/index.js'],
+                    '<%= pkg.version %>/build/respondtools/index-min.js': ['<%= pkg.version %>/build/respondtools/index.js'],
                     '<%= pkg.version %>/build/mediaquerypolyfill/index-min.js': ['<%= pkg.version %>/build/mediaquerypolyfill/index.js'],
                     '<%= pkg.version %>/build/picturepolyfill/index-min.js': ['<%= pkg.version %>/build/picturepolyfill/index.js']
                 }
