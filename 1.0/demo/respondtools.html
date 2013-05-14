@@ -19,11 +19,16 @@
         });
     }
     
-    S.use('gallery/responsive/1.0/matchmedia/index', function (S, MatchMedia) {
-        if (MatchMedia('(min-width: 400px)')) {
-            alert('yeah:) support');
+    S.use('gallery/responsive/1.0/respondtools/index', function (S, RespondTools) {
+        if (window.matchMedia('only all').matches) {
+            alert('yeah support');
         } else {
-            alert('sorry;) can not support');
+            alert('not support');
+        }
+        if (RespondTools.wave('(max-width: 768px)')) {
+            alert('<=768px');
+        } else {
+            alert('>768px');
         }
     });
     </script>

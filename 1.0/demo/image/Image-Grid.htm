@@ -14,7 +14,35 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
+<style type="text/css">
 
+@media (max-width: 1220px) {
+	.bg {
+		background-image:url(img100x100.png);/* 普通屏幕 */
+		background-image: -webkit-image-set(
+		    url(img100x100.png) 1x,
+		    url(img100x100.png) 2x);/* Retina */
+		}
+}
+
+/* ------------- Retina ------------- */
+@media only screen and (-o-min-device-pixel-ratio: 2/1), /* Opera */
+       only screen and (min--moz-device-pixel-ratio: 2), /* Firefox 16 之前 */
+       only screen and (-webkit-min-device-pixel-ratio: 2), /* Webkit */
+       only screen and (min-resolution: 240dpi), /* 标准 */
+       only screen and (min-resolution: 2dppx) /* 标准 */{
+	.bg {
+	    background-image:url(img100x100.png);
+	    background-size: 50px 50px;
+	}
+}
+
+
+
+</style>
+<img src="pear-tablet.jpeg"
+     srcset="pear-mobile.jpeg 720w, pear-tablet.jpeg 1280w, pear-desktop.jpeg 720w 2x"
+     alt="测试图片">
   <title>Image Grid - CodePen</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />

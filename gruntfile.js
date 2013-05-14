@@ -1,10 +1,10 @@
 module.exports = function(grunt) {
     grunt.initConfig({
-        // ÅäÖÃÎÄ¼ş£¬²Î¿¼package.jsonÅäÖÃ·½Ê½£¬±ØĞëÉèÖÃÏîÊÇ
+        // é…ç½®æ–‡ä»¶ï¼Œå‚è€ƒpackage.jsoné…ç½®æ–¹å¼ï¼Œå¿…é¡»è®¾ç½®é¡¹æ˜¯
         // name, version, author
-        // name×÷Îªgallery·¢²¼ºóµÄÄ£¿éÃû
-        // versionÊÇ°æ±¾£¬Ò²ÊÇ·¢²¼Ä¿Â¼
-        // author±ØĞëÊÇ{name: "xxx", email: "xxx"}¸ñÊ½
+        // nameä½œä¸ºgalleryå‘å¸ƒåçš„æ¨¡å—å
+        // versionæ˜¯ç‰ˆæœ¬ï¼Œä¹Ÿæ˜¯å‘å¸ƒç›®å½•
+        // authorå¿…é¡»æ˜¯{name: "xxx", email: "xxx"}æ ¼å¼
         pkg: grunt.file.readJSON('abc.json'),
         banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
             '<%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %>\n' +
@@ -12,8 +12,8 @@ module.exports = function(grunt) {
             '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
 
-        // kmc´ò°üÈÎÎñ£¬Ä¬ÈÏÇé¿ö£¬Èë¿ÚÎÄ¼şÊÇindex.js£¬¿ÉÒÔ×ÔĞĞÌí¼ÓÈë¿ÚÎÄ¼ş£¬ÔÚfilesÏÂÃæ
-        // Ìí¼Ó
+        // kmcæ‰“åŒ…ä»»åŠ¡ï¼Œé»˜è®¤æƒ…å†µï¼Œå…¥å£æ–‡ä»¶æ˜¯index.jsï¼Œå¯ä»¥è‡ªè¡Œæ·»åŠ å…¥å£æ–‡ä»¶ï¼Œåœ¨filesä¸‹é¢
+        // æ·»åŠ 
         kmc: {
             options: {
                 packages: [
@@ -27,8 +27,8 @@ module.exports = function(grunt) {
             main: {
                 files: [
                     {
-                        src: "<%= pkg.version %>/matchmedia/index.js",
-                        dest: "<%= pkg.version %>/build/matchmedia/index.js"
+                        src: "<%= pkg.version %>/respondtools/index.js",
+                        dest: "<%= pkg.version %>/build/respondtools/index.js"
                     },
                     {
                         src: "<%= pkg.version %>/mediaquerypolyfill/index.js",
@@ -41,15 +41,15 @@ module.exports = function(grunt) {
                 ]
             }
         },
-        // ´ò°üºóÑ¹ËõÎÄ¼ş
-        // Ñ¹ËõÎÄ¼şºÍÈë¿ÚÎÄ¼şÒ»Ò»¶ÔÓ¦
+        // æ‰“åŒ…åå‹ç¼©æ–‡ä»¶
+        // å‹ç¼©æ–‡ä»¶å’Œå…¥å£æ–‡ä»¶ä¸€ä¸€å¯¹åº”
         uglify: {
             options: {
                 banner: '<%= banner %>'
             },
             base: {
                 files: {
-                    '<%= pkg.version %>/build/matchmedia/index-min.js': ['<%= pkg.version %>/build/matchmedia/index.js'],
+                    '<%= pkg.version %>/build/respondtools/index-min.js': ['<%= pkg.version %>/build/respondtools/index.js'],
                     '<%= pkg.version %>/build/mediaquerypolyfill/index-min.js': ['<%= pkg.version %>/build/mediaquerypolyfill/index.js'],
                     '<%= pkg.version %>/build/picturepolyfill/index-min.js': ['<%= pkg.version %>/build/picturepolyfill/index.js']
                 }
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
         }
     });
 
-    // Ê¹ÓÃµ½µÄÈÎÎñ£¬¿ÉÒÔÔö¼ÓÆäËûÈÎÎñ
+    // ä½¿ç”¨åˆ°çš„ä»»åŠ¡ï¼Œå¯ä»¥å¢åŠ å…¶ä»–ä»»åŠ¡
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-kmc');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
