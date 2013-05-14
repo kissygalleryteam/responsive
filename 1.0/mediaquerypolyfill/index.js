@@ -23,6 +23,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 	 */
 	function MediaqueryPolyfill(config) {
 		var self = this;
+		config = {'breakpoints': config};
  		MediaqueryPolyfill.superclass.constructor.call(self, config);
 		self.init();
 	}
@@ -36,13 +37,14 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		/**
 		 * [listeners matchMedia监听器]
 		 * @cfg {Object}
+		 * @description  该js一般直接被运行在body渲染前，要减少字符，listeners默认值可以省略之
 		 */
-		listeners: {value: {}},
+		//listeners: {value: {}},
 		/**
 		 * isAutoExectListener 是否初始化页面时自动执行一次相应的响应回调，默认true
-		 * @cfg {Boolean}
+		 * @cfg {Boolean} 为减字符，该配置直接默认，因为应用场景上看，一般在页面初始化时需要直接执行回调
 		 */
-		isAutoExectListener: { value: true },
+		//isAutoExectListener: { value: true },
 
 		/**
 		 * [isSupportMediaquery 是否支持mediaquery]
@@ -73,13 +75,14 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 
 	S.extend(MediaqueryPolyfill, Base, {
 		init: function() {
-			var self = this, timer;
+			var self = this, timer, listeners = self.get('listeners');
 			!self.get('isSupportMediaquery') && self._changeHtmlClass();
 
 			if(self.get('isSupportAddListener')) { 
-				self._addNativeListener(self.get('listeners')); 
+				self._addNativeListener(listeners); 
 			} else {
-				self.get('isAutoExectListener') && self._addListenerPolyfill(); 
+				//self.get('isAutoExectListener') && self._addListenerPolyfill(listeners); 
+				self._addListenerPolyfill(listeners); 
 			}
 
 			window.onresize = function() {
@@ -94,9 +97,16 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		 */
 		addListener: function(linsternerObj) {
 			var self = this;
-			self.get('isSupportAddListener') && self._addNativeListener(linsternerObj);
+
+			if(self.get('isSupportAddListener')) { 
+				self._addNativeListener(linsternerObj); 
+			} else {
+				//立即执行
+				//self.get('isAutoExectListener') && self._addListenerPolyfill(linsternerObj); 
+				self._addListenerPolyfill(linsternerObj); 
+			}
+
 			var newLinsternerObj = S.merge(linsternerObj, self.get('listeners')); 
-			//resize中自动执行_addListenerPolyfill
 			self.set('listeners', newLinsternerObj);
 		},
 
@@ -111,8 +121,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 				self._changeHtmlClass();	
 			}
 			if (!self.get('isSupportAddListener')) {
-				S.log('exect _addListenerPolyfill');
-				self._addListenerPolyfill();
+				self._addListenerPolyfill(self.get('listeners'));
 			} 
 		},
 
@@ -121,13 +130,13 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		 */
 		_addNativeListener: function(listeners) {
 			var self = this,
-				isAutoExectListener = self.get('isAutoExectListener'),
 				newListeners = {};
 
 			for (var listen in listeners) {
 				var mql = window.matchMedia(listen);
 				newListeners[mql.media] = listeners[listen];
-				isAutoExectListener && mql.matches && listeners[listen]();
+				//self.get('isAutoExectListener') && mql.matches && listeners[listen]();
+				mql.matches && listeners[listen]();
 				mql.addListener(function(mql) {
 					/*
 					 * 因mql.media的值会由原来的(min-width:480px) and (max-width: 1009px)变成	(max-width: 1009px) and (min-width:480px)
@@ -141,9 +150,8 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		/**
 		 * _addListenerPolyfill 通过被执行在window.resize中，模拟实现window.matchMedia('xx').addLinsterner
 		 */
-		_addListenerPolyfill: function() {
-			var self = this, min, max,
-				listeners = self.get('listeners');
+		_addListenerPolyfill: function(listeners) {
+			var self = this, min, max;
 
 			for (var p in listeners) {
 				if (RespondTools.wave(p)) {
@@ -193,7 +201,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 				}
 			}
         	// 不支持兼容模式，必需有doctype
-        	document.documentElement.className = self._replaceClass(document.documentElement.className, /vw\d+/, 'vw' + vwClass);
+        	document.documentElement.className = self._replaceClass(document.documentElement.className, /w\d+/, 'w' + vwClass);
 		}
 	});
 
