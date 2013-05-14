@@ -14,9 +14,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 	 * @return {void} 
 	 * @用法：
 	 * S.use('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MediaqueryPolyfill) {
-     *   var mqp = new MediaqueryPolyfill({
-     *      breakpoints: [480, 1010, 1220, 1420, 1620]
-     *   });
+     *   var mqp = new MediaqueryPolyfill([480, 1010, 1220, 1420, 1620]);
      *   mqp.addListener({'(min-width: 1220px) and (max-width: 1419px)': function(){S.log('1420~1419')}});
      *   mqp.addListener({'(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')}});
      * });
@@ -92,7 +90,8 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		},
 
 		/**
-		 * addListener 添加回调函数
+		 * addListener 模拟实现window.matchMedia('min-width: 1220px').addLinstener(callback)
+		 * @description 只支持min-width和max-width mediaquery 类Respond.js实现响应式设计够用
 		 * @param {Object} linsternerObj {'(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')}}
 		 */
 		addListener: function(linsternerObj) {

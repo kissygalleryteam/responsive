@@ -43,6 +43,7 @@ KISSY.add('gallery/responsive/1.0/respondtools/index', function (S) {
 
 	/**
 	 * wave 当前viewportWidth是否在media query的【min max】区间
+	 * @description 该函数命名和为什么有这个函数，参考jquery respondjs plugin (http://responsejs.com/)
 	 * @param {String} mediaquery (min-width:480px) and (max-width: 1009px) 只支持min-width和max-width；类似respond.js的理念（响应式设计的实现支持min-width和max-width足矣）
 	 * @return {Boolean} 
 	 */
