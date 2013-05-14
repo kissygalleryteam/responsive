@@ -42,7 +42,6 @@ KISSY.add('gallery/responsive/1.0/picturepolyfill/index', function (S, Base, Res
 
 		_responsiveImg: function() {
 			var w = window, ps = w.document.getElementsByTagName( "div" );
-			var HD = window.devicePixelRatio && window.devicePixelRatio;
 			for( var i = 0, il = ps.length; i < il; i++ ) {
 				if( ps[ i ].getAttribute( "data-picture" ) !== null ) {
 
@@ -72,7 +71,8 @@ KISSY.add('gallery/responsive/1.0/picturepolyfill/index', function (S, Base, Res
 
 						for(var s = 0, sl = srcArr.length; s < sl ; s++) {
 							var srcH = srcArr[s].replace(/^\s*/, '').replace(/\s*$/, '').split(" "), 
-							srcRatio = parseFloat( srcH[1], 10 );
+								srcRatio = parseFloat( srcH[1], 10 );
+								srcRatio = srcRatio || 1;
 							if (window.devicePixelRatio) {
 								if(srcRatio == window.devicePixelRatio) {
 									imgsrc = srcH[0];
