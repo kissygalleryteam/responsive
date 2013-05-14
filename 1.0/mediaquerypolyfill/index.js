@@ -12,6 +12,14 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 	 * @constructor
 	 * @param {Object} config  breakpoints 
 	 * @return {void} 
+	 * @用法：
+	 * S.use('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MediaqueryPolyfill) {
+     *   var mqp = new MediaqueryPolyfill({
+     *      breakpoints: [480, 1010, 1220, 1420, 1620]
+     *   });
+     *   mqp.addListener({'(min-width: 1220px) and (max-width: 1419px)': function(){S.log('1420~1419')}});
+     *   mqp.addListener({'(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')}});
+     * });
 	 */
 	function MediaqueryPolyfill(config) {
 		var self = this;
@@ -29,7 +37,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		 * [listeners matchMedia监听器]
 		 * @cfg {Object}
 		 */
-		listeners: {},
+		listeners: {value: {}},
 		/**
 		 * isAutoExectListener 是否初始化页面时自动执行一次相应的响应回调，默认true
 		 * @cfg {Boolean}
@@ -69,7 +77,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 			!self.get('isSupportMediaquery') && self._changeHtmlClass();
 
 			if(self.get('isSupportAddListener')) { 
-				self._addNativeListener(); 
+				self._addNativeListener(self.get('listeners')); 
 			} else {
 				self.get('isAutoExectListener') && self._addListenerPolyfill(); 
 			}
@@ -78,6 +86,18 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 				timer && timer.cancel(); 
 				timer = S.later(self._resizeHandler, 500, false, self); 
 			};
+		},
+
+		/**
+		 * addListener 添加回调函数
+		 * @param {Object} linsternerObj {'(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')}}
+		 */
+		addListener: function(linsternerObj) {
+			var self = this;
+			self.get('isSupportAddListener') && self._addNativeListener(linsternerObj);
+			var newLinsternerObj = S.merge(linsternerObj, self.get('listeners')); 
+			//resize中自动执行_addListenerPolyfill
+			self.set('listeners', newLinsternerObj);
 		},
 
 		/**
@@ -99,9 +119,8 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		/**
 		 * _addNativeListener 依次注册listener 原生实现
 		 */
-		_addNativeListener: function() {
+		_addNativeListener: function(listeners) {
 			var self = this,
-				listeners = self.get('listeners'),
 				isAutoExectListener = self.get('isAutoExectListener'),
 				newListeners = {};
 
@@ -129,7 +148,6 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 			for (var p in listeners) {
 				if (RespondTools.wave(p)) {
 					listeners[p]();
-					S.log('callback');
 				}
 			}
 		},

@@ -29,10 +29,10 @@
                 '(max-width: 1009px) and (min-width: 480px)': function(){S.log('480~1009')},//480~1009
                 '(min-width: 1010px) and (max-width: 1219px)': function(){S.log('1010~1219')},//1010~1219
                 '(min-width: 1220px) and (max-width: 1419px)': function(){S.log('1220~1419')},//1220~1419
-                '(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')},//1420~1619
                 '(min-width: 1620px)': function(){S.log('>=1620')}//1420~1619
             }
         });
+        mqp.addListener({'(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')}});
     });
 
     </script>
