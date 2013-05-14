@@ -1,8 +1,11 @@
-#常用响应式相关实现
+#基于kissy seed常用响应式技术实现
 
-* [mediaquery探测（matchmedia）](/1.0/guide/matchmedia.md)
+* [响应式实现基础函数 (respondTools)](/1.0/guide/respondtools.md)
 * [mediaquery ie8-兼容实现（mediaquerypolyfill）](/1.0/guide/mediaquerypolyfill.md)
 * [响应式图片兼容实现（picturepolyfill）](/1.0/guide/picturepolyfill.md)
+* [响应式导航（navigation）](/1.0/guide/navgation.md)(待从wanke.etao.com导航上抽取出来)
+* [响应式switchable（switchable）](/1.0/guide/switchable.md)（待和承玉进一步沟通，最好kissy switchable直接支持）
+
 
 #常用响应式模式实现
 参考[Responsive Patterns](http://bradfrost.github.io/this-is-responsive/patterns.html),尝试翻译整理以及改变实现方式尽可能兼容更多的浏览器
@@ -11,7 +14,7 @@
 - [Mostly Fluid](http://miaojing.github.io/responsive/1.0/demo/layout/Mostly-Fluid.htm)
 - [Column Drop](http://miaojing.github.io/responsive/1.0/demo/layout/Column-Drop.htm)
 - [Layout Shifter](http://miaojing.github.io/responsive/1.0/demo/layout/Layout-Shifter.htm)
-- [Tiny Tweaks](http://miaojing.github.io/responsive/1.0/demo/navigation/Single-Level/Toggle-Navigation.htm)
+- [Tiny Tweaks](http://miaojing.github.io/responsive/1.0/demo/layout/Tiny-Tweaks.htm)
 - [Main column with sidebar](http://miaojing.github.io/responsive/1.0/demo/layout/Main-column-with-sidebar.htm)
 - [3 column](http://miaojing.github.io/responsive/1.0/demo/layout/3-Column-Layout.htm)
 - [3 column v2](http://miaojing.github.io/responsive/1.0/demo/layout/3-Column-Layout-v2.html)
@@ -48,6 +51,15 @@
 - [Equal Height Rows](http://miaojing.github.io/responsive/1.0/demo/layout/img-landscape.html)
 - [Irregular Grid Blocks](http://miaojing.github.io/responsive/1.0/demo/layout/grid-regular.html)
 
+###Table
+- [Responsive Table](http://css-tricks.com/examples/ResponsiveTables/responsive.php)
+- [Definition List to Table](http://jsbin.com/arixic)
+- [Data- Table to List](http://miaojing.github.io/responsive/1.0/demo/table/un-doing-tables.htm)
+- [Pie Chart to Table](http://miaojing.github.io/responsive/1.0/demo/table/responsive-tables-chart.htm)
+- [Priority Columns](http://filamentgroup.com/examples/rwd-table-patterns/)
+- [Link to Full-Table](http://miaojing.github.io/responsive/1.0/demo/table/responsiveble-tabularcation.htm)
+- [Horizontal Overflow](http://miaojing.github.io/responsive/1.0/demo/table/responsive-tables.htm)
+- [Header Orientation Flip](http://miaojing.github.io/responsive/1.0/demo/table/responsive-tables-1.htm)
 
 ##导航
 ###单层
@@ -72,8 +84,8 @@
 - [Last-One Only](http://miaojing.github.io/responsive/1.0/demo/navigation/Breadcrumbs/Last-One-Only-Breadcrumbs.htm)
 
 ##图片
-- [Basic Fluid Image](http://miaojing.github.io/responsive/1.0/demo/image/Image-Grid.htm)
-- [Image Grid](http://miaojing.github.io/responsive/1.0//demo/image/Landscape-Image.htm)
+- [Basic Fluid Image](http://miaojing.github.io/responsive/1.0//demo/image/Landscape-Image.htm)
+- [Image Grid](http://miaojing.github.io/responsive/1.0/demo/image/Image-Grid.htm)
 
 ##多媒体
 - [Fluid Video](http://miaojing.github.io/responsive/1.0//demo/media/Fluid-Video.htm)
@@ -101,3 +113,6 @@
 
 ###Lightbox
 - [Conditional Lightbox](http://miaojing.github.io/responsive/1.0/demo/modules/Conditional-Lightbox-for-Responsive-Design.htm)
+
+#作者们
+妙净、墨峰、乐淘、邓萌等
