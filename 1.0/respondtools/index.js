@@ -1,5 +1,5 @@
 /*
- * @fileoverview mediaquery 参考 https://github.com/scottjehl/matchMedia.js 支持mediaquery的浏览器一般都有window.matchMedia方法，但ie9支持mediaquery却不支持改方法 
+ * @fileoverview mediaquery 参考 https://github.com/scottjehl/matchMedia.js 支持mediaquery的浏览器一般都有window.matchMedia方法，但ie9支持mediaquery却不支持该方法 
  * @desc matchMedia兼容性
  * ##Desktop
  * ###|chrome 9|firefox 6.0|IE10|opera 12.1|safari 5.1|
@@ -18,30 +18,37 @@ KISSY.add('gallery/responsive/1.0/respondtools/index', function (S) {
 	      docElem  = doc.documentElement,
 	      refNode  = docElem.firstElementChild || docElem.firstChild,
 	      // fakeBody required for <FF4 when executed in <head>
-	      fakeBody = doc.createElement('body'),
+	      //fakeBody = doc.createElement('body'),
 	      div      = doc.createElement('div');
 
 	  div.id = 'mq-test-1';
-	  div.style.cssText = "position:absolute;top:-100em";
-	  fakeBody.style.background = "none";
-	  fakeBody.appendChild(div);
+	  div.style.cssText = "position:absolute;top:-100px";
+	  //fakeBody.style.background = "none";
+	  //fakeBody.appendChild(div);
 
 	  return function(q) {
 	    div.innerHTML = '&shy;<style media="'+q+'"> #mq-test-1 { width: 42px; }</style>';
-	    docElem.insertBefore(fakeBody, refNode);
+	    /* 
+	     * 测试证明添加fakeBody会导致在ie6/7下触发window.resize 故删除fakeBody
+	   	 * 因为<ff4的用户数在我国几乎没有，ff6开始就已经原生支持window.matchMedia 此时此刻最新是ff20
+	   	 * https://developer.mozilla.org/en-US/docs/DOM/window.matchMedia
+	     */
+	    //docElem.insertBefore(fakeBody, refNode); 
+	    docElem.appendChild(div);
 	    bool = div.offsetWidth === 42;
-	    docElem.removeChild(fakeBody);
+	    docElem.removeChild(div);
 	    return { matches: bool, media: q };
 	  };
 	}(document));
 
 	/**
 	 * wave 当前viewportWidth是否在media query的【min max】区间
+	 * @description 该函数命名和为什么有这个函数，参考jquery respondjs plugin (http://responsejs.com/)
 	 * @param {String} mediaquery (min-width:480px) and (max-width: 1009px) 只支持min-width和max-width；类似respond.js的理念（响应式设计的实现支持min-width和max-width足矣）
 	 * @return {Boolean} 
 	 */
 	function wave(mediaquery) {
-		if (window.matchMedia & window.matchMedia('only all').matches) {
+		if (window.matchMedia && window.matchMedia('only all').matches) {
 			return window.matchMedia(mediaquery).matches;
 		} else {
 			var min, max, viewportWidth = document.documentElement.clientWidth;
