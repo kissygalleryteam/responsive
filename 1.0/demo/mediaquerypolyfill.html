@@ -22,17 +22,13 @@
     }
 
     S.use('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MediaqueryPolyfill) {
-        var mqp = new MediaqueryPolyfill({
-            breakpoints: [480, 1010, 1220, 1420, 1620],
-            listeners: {
-                '(max-width: 480px)': function(){S.log('<=480px')},//0~480
-                '(max-width: 1009px) and (min-width: 480px)': function(){S.log('480~1009')},//480~1009
-                '(min-width: 1010px) and (max-width: 1219px)': function(){S.log('1010~1219')},//1010~1219
-                '(min-width: 1220px) and (max-width: 1419px)': function(){S.log('1220~1419')},//1220~1419
-                '(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')},//1420~1619
-                '(min-width: 1620px)': function(){S.log('>=1620')}//1420~1619
-            }
-        });
+        var mqp = new MediaqueryPolyfill([480, 1010, 1220, 1420, 1620]);
+        mqp.addListener({'(max-width: 479px)': function(){S.log('1420~1619')}});
+        mqp.addListener({'(min-width: 480px) and (max-width: 1009px)': function(){S.log('480~1009')}});
+        mqp.addListener({'(min-width: 1010px) and (max-width: 1219px)': function(){S.log('1010~1219')}});
+        mqp.addListener({'(min-width: 1220px) and (max-width: 1419px)': function(){S.log('1220~1419')}});
+        mqp.addListener({'(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')}});
+        mqp.addListener({'(min-width: 1620px)': function(){S.log('>=1620')}});
     });
 
     </script>
@@ -86,44 +82,44 @@
             }
         }
 /* for can't support media query */
-        .vw1620 div:after {
+        .w1620 div:after {
             content: '>=1620';
         }
 
-        .vw1620 div {
+        .w1620 div {
             background-color: blue;
         }
         
 
-        .vw1420 div:after {
+        .w1420 div:after {
             content: '>=1420';
         }
 
-        .vw1420 div {
+        .w1420 div {
             background-color: yellow;
         }
 
-        .vw1220 div:after {
+        .w1220 div:after {
             content: '>=1220';
         }
 
-        .vw1220 div {
+        .w1220 div {
             background-color: red;
         }
 
-        .vw1010 div:after {
+        .w1010 div:after {
             content: '>=1010';
         }
 
-        .vw1010 div {
+        .w1010 div {
             background-color: green;
         }
 
-        .vw480 div:after {
+        .w480 div:after {
             content: '>=480';
         }
 
-        .vw480 div {
+        .w480 div {
             background-color: pink;
         }
         
