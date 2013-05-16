@@ -116,4 +116,4 @@
 - [Conditional Lightbox](http://miaojing.github.io/responsive/1.0/demo/modules/Conditional-Lightbox-for-Responsive-Design.htm)
 
 #作者们
-妙净、墨峰、乐淘、邓萌、基德等，欢迎感兴趣的亲们直接fork代码改之：）
+妙净、墨峰、乐淘、邓萌、基德、雨异、春龙等，欢迎感兴趣的亲们直接fork代码改之：）
