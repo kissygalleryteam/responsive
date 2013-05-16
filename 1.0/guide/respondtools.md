@@ -1,8 +1,7 @@
 # 综述
-响应式基础函数,目前包括2个函数：    
-1.window.matchMedia(mq): window.matchMedia的兼容实现，探测当前是否支持该[mediaquery](http://www.w3.org/TR/css3-mediaqueries/),实现参考[matchMedia.js](https://github.com/scottjehl/matchMedia.js)        
-2.wave(mq): 判断当前viewportWidth是否在media query的【min max】区间,兼容ie6+ 实现参考[jquery respondjs plugin](http://responsejs.com/)    
-
+响应式基础函数,目前包括2个函数
+1.window.matchMedia(mq): window.matchMedia的兼容实现，探测当前是否支持该[mediaquery](http://www.w3.org/TR/css3-mediaqueries/),如ie9支持mediaquery但不支持原生window.matchMedia(),实现参考[matchMedia.js](https://github.com/scottjehl/matchMedia.js),        
+2.wave(mq): 判断当前viewportWidth是否在media query的【min max】区间,兼容ie6+ 实现参考[jquery respondjs plugin](http://responsejs.com/)           
 版本：1.0    
 作者：Scott Jehl, Paul Irish, Nicholas Zakas, 妙净
 # demo示例
@@ -39,12 +38,17 @@ kissy1.2下需要gallery的包配置, 1.3不需要
             alert('>768px');
         }
     });
+    
+## 方法
+window.matchMedia(mq)
+wave(mq)
+ 
 
 ###原生 window.matchMedia兼容性
 ####Desktop
-|chrome 9|firefox 6.0|IE10|opera 12.1|safari 5.1|
+| chrome 9 | firefox 6.0 | IE10 | opera 12.1 | safari 5.1 |
 ####Mobile
-|android 3.0|firefox mobile 6.0|IE mobile not supported|opera mobile 12.1|safari mobile5|
+| android 3.0 | firefox mobile 6.0 | IE mobile not supported | opera mobile 12.1 | safari mobile5 |
 
 
 ##相关链接   

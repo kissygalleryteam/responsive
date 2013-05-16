@@ -13,7 +13,7 @@
 KISSY.add('gallery/responsive/1.0/respondtools/index', function (S) {
 	"use strict";
 
-	window.matchMedia = window.matchMedia || (function(doc, undefined) {
+	var matchMedia = window.matchMedia = window.matchMedia || (function(doc, undefined) {
 	  var bool,
 	      docElem  = doc.documentElement,
 	      refNode  = docElem.firstElementChild || docElem.firstChild,
@@ -66,7 +66,7 @@ KISSY.add('gallery/responsive/1.0/respondtools/index', function (S) {
 	}
 
 	var RespondTools = {
-		match: window.matchMedia,
+		matchMedia: S.bind(matchMedia, window),
 		wave: wave
 	}
 

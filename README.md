@@ -3,10 +3,9 @@
 * [响应式实现基础函数 (respondTools)](/1.0/guide/respondtools.md)
 * [mediaquery ie8-兼容实现（mediaquerypolyfill）](/1.0/guide/mediaquerypolyfill.md)
 * [响应式图片兼容实现（picturepolyfill）](/1.0/guide/picturepolyfill.md)
-* [响应式导航（navigation）](/1.0/guide/navgation.md)(待从wanke.etao.com导航上抽取出来)
 * [响应式模块之slide（slide）](/1.0/guide/slide.md)（最好kissy switchable直接支持,但不再维护，承玉推荐gallery/slide，待线上测试）
+* [响应式导航（navigation）](/1.0/guide/navgation.md)(待从wanke.etao.com导航上抽取出来)
 * [响应式模块之推层（pushlayer）](/1.0/guide/pushlayer.md)（待从wanke.etao.com中抽取出来）
-
 
 #常用响应式模式实现
 参考[Responsive Patterns](http://bradfrost.github.io/this-is-responsive/patterns.html),尝试翻译整理以及改变实现方式尽可能兼容更多的浏览器
