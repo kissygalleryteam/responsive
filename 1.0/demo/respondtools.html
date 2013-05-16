@@ -26,9 +26,14 @@
             alert('not support');
         }
         if (RespondTools.wave('(max-width: 768px)')) {
-            alert('<=768px');
+            alert('width<=768px');
         } else {
-            alert('>768px');
+            alert('width>768px');
+        }
+        if (RespondTools.wave('(max-height: 400px)')) {
+            alert('height<=400px');
+        } else {
+            alert('height>400px');
         }
     });
     </script>

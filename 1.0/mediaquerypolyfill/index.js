@@ -100,23 +100,25 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 			!self.get('isSupportMediaquery') && self._changeHtmlClass();
 
 			if(self.get('isSupportAddListener')) { 
-				self._addNativeListener(listeners); 
+				self._addNativeListener(listeners);
+				return; 
 			} else {
 				//self.get('isAutoExectListener') && self._addListenerPolyfill(listeners); 
 				self._addListenerPolyfill(listeners); 
 			}
 
-			var currwidth = document.documentElement.clientWidth;
+			var docEl = document.documentElement, currWidth = docEl.clientWidth, currHeight = docEl.clientHeight;
 			window.onresize = function() {
 				/*
 				 *	ie6/7下在页面初始化时如果页面产生reflow body resize时，会触发window.resize，过滤掉这些无效的resize
 				 *	http://snook.ca/archives/javascript/ie6_fires_onresize/
 				 */
-				if(currwidth != document.documentElement.clientWidth) {
+				if(currWidth != docEl.clientWidth || currHeight != docEl.clientHeight) {
 					timer && timer.cancel(); 
 					timer = S.later(self._resizeHandler, 500, false, self);
 				}
-				currwidth = document.documentElement.clientWidth;
+				currWidth = docEl.clientWidth;
+				currHeight = docEl.clientHeight;
 			};
 		},
 
@@ -136,7 +138,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 				self._addListenerPolyfill(linsternerObj); 
 			}
 
-			self.set('listeners', newLinsternerObj);
+			self.set('listeners', linsternerObj);
 		},
 
 		/**

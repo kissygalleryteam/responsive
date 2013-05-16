@@ -29,6 +29,8 @@
         mqp.addListener({'(min-width: 1220px) and (max-width: 1419px)': function(){S.log('1220~1419')}});
         mqp.addListener({'(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')}});
         mqp.addListener({'(min-width: 1620px)': function(){S.log('>=1620')}});
+        mqp.addListener({'(min-height: 0px) and (max-height: 399px)': function(){S.log('height:0~400')}});
+        mqp.addListener({'(min-height: 400px) and (max-height: 800px)': function(){S.log('height:400~800')}});
     });
 
     </script>
