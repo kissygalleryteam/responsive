@@ -37,7 +37,31 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		 * @cfg {Object}
 		 * @description  该js一般直接被运行在body渲染前，要减少字符，listeners默认值可以省略之
 		 */
-		//listeners: {value: {}},
+        listeners: {
+            value: {},
+            setter: function(v){
+                var listeners = this.get('listeners');
+                for (var i in v) {
+                    if (v.hasOwnProperty(i)) {
+                        var handler = listeners[i];
+
+                        if (S.isArray(handler)) {
+                            handler.push(v[i]);
+                        } else {
+                            var temp = [];
+                            temp.push(v[i]);
+
+                            if (S.isFunction(handler)){
+                                temp.push(handler);
+                            }
+                            listeners[i] = temp;
+
+                        }
+                    }
+                }
+                return listeners;
+            }
+        },
 		/**
 		 * isAutoExectListener 是否初始化页面时自动执行一次相应的响应回调，默认true
 		 * @cfg {Boolean} 为减字符，该配置直接默认，因为应用场景上看，一般在页面初始化时需要直接执行回调
@@ -152,11 +176,22 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		_addListenerPolyfill: function(listeners) {
 			var self = this, min, max;
 
-			for (var p in listeners) {
-				if (RespondTools.wave(p)) {
-					listeners[p]();
-				}
-			}
+            for (var p in listeners) {
+                if (RespondTools.wave(p)) {
+                    var listener = listeners[p];
+                    if (S.isFunction(listener)) {
+                        listener();
+                    }
+                    if (S.isArray(listener)) {
+                        for(var i = 0,fn; fn = listener[i]; i++){
+                            if (S.isFunction(listener[i])) {
+                                listener[i]();
+                            }
+                        }
+                    }
+
+                }
+            }
 		},
 
 		/**
