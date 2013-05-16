@@ -39,7 +39,8 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		 */
         listeners: {
             value: {},
-            setter: function(v){
+            setter: function(v) {
+            	//addLinstener时，针对同一区间注册多个callback，防止覆盖，存数组队列
                 var listeners = this.get('listeners');
                 for (var i in v) {
                     if (v.hasOwnProperty(i)) {
@@ -50,12 +51,10 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
                         } else {
                             var temp = [];
                             temp.push(v[i]);
-
                             if (S.isFunction(handler)){
                                 temp.push(handler);
                             }
                             listeners[i] = temp;
-
                         }
                     }
                 }
@@ -137,7 +136,6 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 				self._addListenerPolyfill(linsternerObj); 
 			}
 
-			var newLinsternerObj = S.merge(linsternerObj, self.get('listeners')); 
 			self.set('listeners', newLinsternerObj);
 		},
 
