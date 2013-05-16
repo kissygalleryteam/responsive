@@ -83,14 +83,22 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 				self._addListenerPolyfill(listeners); 
 			}
 
+			var currwidth = document.documentElement.clientWidth;
 			window.onresize = function() {
-				timer && timer.cancel(); 
-				timer = S.later(self._resizeHandler, 500, false, self); 
+				/*
+				 *	ie6/7下在页面初始化时如果页面产生reflow body resize时，会触发window.resize，过滤掉这些无效的resize
+				 *	http://snook.ca/archives/javascript/ie6_fires_onresize/
+				 */
+				if(currwidth != document.documentElement.clientWidth) {
+					timer && timer.cancel(); 
+					timer = S.later(self._resizeHandler, 500, false, self);
+				}
+				currwidth = document.documentElement.clientWidth;
 			};
 		},
 
 		/**
-		 * addListener 模拟实现window.matchMedia('min-width: 1220px').addLinstener(callback)
+		 * addListener 模拟实现window.matchMedia('min-width: 1220px').addLinstener(callback) 常用于有不同临界值之间的js逻辑的响应
 		 * @description 只支持min-width和max-width mediaquery 类Respond.js实现响应式设计够用
 		 * @param {Object} linsternerObj {'(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')}}
 		 */
