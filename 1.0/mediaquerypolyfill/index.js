@@ -61,6 +61,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
                 return listeners;
             }
         },
+        
 		/**
 		 * isAutoExectListener 是否初始化页面时自动执行一次相应的响应回调，默认true
 		 * @cfg {Boolean} 为减字符，该配置直接默认，因为应用场景上看，一般在页面初始化时需要直接执行回调
@@ -71,7 +72,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		 * [isSupportMediaquery 是否支持mediaquery]
 		 * @type {Boolean}
 		 */
-		isSupportMediaquery: { value: window.matchMedia && window.matchMedia('only all').matches }, 
+		isSupportMediaquery: { value: RespondTools.isSupportMediaquery }, 
 
 		/**
 		 * [isSupportAddListener 是否支持window.matchMedia('only all').addLinsterner是否支持]

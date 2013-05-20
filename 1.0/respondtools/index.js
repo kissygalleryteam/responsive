@@ -38,33 +38,41 @@ KISSY.add('gallery/responsive/1.0/respondtools/index', function (S) {
 	  };
 	}(document));
 
-	/**
-     * wave 当前viewportWidth是否在media query的【min max】区间
-     * @description 比较常用，后面的mediaquerypolyfill和picturepolyfill均依赖此函数，该函数命名和实现方式，参考jquery respondjs plugin (http://responsejs.com/)
-     * @param {String} mediaquery (min-width:480px) and (max-width: 1009px) 只支持min-width和max-width；类似respond.js的理念（响应式设计的实现支持min-width和max-width足矣）
-     * @return {Boolean} 
-     */
-    function wave(mediaquery) {
-        if (window.matchMedia && window.matchMedia('only all').matches) {
-            return window.matchMedia(mediaquery).matches;
-        } else {
-            var min, max, docEl = document.documentElement, 
-                widthOrHeight = /width/.test(mediaquery)? 'width' : 'height',
-                viewportWidthOrHeight = widthOrHeight == 'width' ? docEl.clientWidth : docEl.clientHeight;
-            //(max-width: 1009px) and (min-width:480px) ==> min = 480; max = 1009
-            min = mediaquery.replace(eval('/.*min-' + widthOrHeight + '[\\:\\s]+(\\d+)px.*/ig'),'$1');
-            max = mediaquery.replace(eval('/.*max-' + widthOrHeight + '[\\:\\s]+(\\d+)px.*/ig'),'$1');
-            min = /^\d/.test(min)? min : 0;
-            max = /^\d/.test(max)? max : 0;
-            if(max) {
-                return viewportWidthOrHeight >= min && viewportWidthOrHeight <= max;
-            } else {
-                return viewportWidthOrHeight >= min;
-            }
-        }
-    }
+
+  /**
+   * isSupportMediaquery 是否支持media query，在ie6-ie9下执行上面的hack的matchMedia检测比较耗费性能，需要构造假el后append再remove,每次约100ms,对于固定的某一浏览器是否支持mediaquery检测一次即可，故缓存之
+   * @type {Boolean}
+   */
+  var isSupportMediaquery = window.matchMedia && window.matchMedia('only all').matches;
+  
+ /**
+   * wave 当前viewportWidth是否在media query的【min max】区间
+   * @description 比较常用，后面的mediaquerypolyfill和picturepolyfill均依赖此函数，该函数命名和实现方式，参考jquery respondjs plugin (http://responsejs.com/)
+   * @param {String} mediaquery (min-width:480px) and (max-width: 1009px) 只支持min-width和max-width；类似respond.js的理念（响应式设计的实现支持min-width和max-width足矣）
+   * @return {Boolean} 
+   */
+  var wave = function(mediaquery) {
+      if (isSupportMediaquery) {
+          return window.matchMedia(mediaquery).matches;
+      } else {
+          var min, max, docEl = document.documentElement, 
+              widthOrHeight = /width/.test(mediaquery)? 'width' : 'height',
+              viewportWidthOrHeight = widthOrHeight == 'width' ? docEl.clientWidth : docEl.clientHeight;
+          //(max-width: 1009px) and (min-width:480px) ==> min = 480; max = 1009
+          min = mediaquery.replace(eval('/.*min-' + widthOrHeight + '[\\:\\s]+(\\d+)px.*/ig'),'$1');
+          max = mediaquery.replace(eval('/.*max-' + widthOrHeight + '[\\:\\s]+(\\d+)px.*/ig'),'$1');
+          min = /^\d/.test(min)? min : 0;
+          max = /^\d/.test(max)? max : 0;
+          if(max) {
+              return viewportWidthOrHeight >= min && viewportWidthOrHeight <= max;
+          } else {
+              return viewportWidthOrHeight >= min;
+          }
+      }
+  }
 
 	var RespondTools = {
+    isSupportMediaquery: isSupportMediaquery,
 		matchMedia: S.bind(matchMedia, window),
 		wave: wave
 	}
