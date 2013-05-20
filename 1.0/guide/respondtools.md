@@ -1,7 +1,7 @@
 # 综述
 响应式基础函数,目前包括2个函数:    
-1. matchMedia(mq): [window.matchMedia](https://developer.mozilla.org/en-US/docs/DOM/window.matchMedia)的兼容实现        
-2. wave(mq): 判断当前viewportWidth是否在media query的【min max】区间,兼容ie6+    
+1. matchMedia(mq): [window.matchMedia](https://developer.mozilla.org/en-US/docs/DOM/window.matchMedia)的兼容实现,实现参考[matchMedia.js](https://github.com/scottjehl/matchMedia.js)        
+2. wave(mq): 判断当前viewportWidth是否在media query的【min max】区间,兼容ie6+,命名和实现参考[jquery respondjs plugin](http://responsejs.com/)   
 版本：1.0    
 作者：Scott Jehl, Paul Irish, Nicholas Zakas, 妙净
 # demo示例
@@ -55,8 +55,9 @@ kissy1.2下需要gallery的包配置, 1.3不需要
 <tr><td>android 3.0</td><td>firefox mobile 6.0</td><td>IE mobile not supported</td><td>opera mobile 12.1</td><td>safari mobile5</td></tr>
 </table>
 
-## 使用于哪些地方
-#
+## 应用处
+1. [mediaquery兼容实现 mediaquerypolyfill](/meidaquerypolyfill.md)
+2. [响应式图片兼容实现 picturepolyfill](/picturepolyfill.md)
 
 ##相关链接   
  1.https://developer.mozilla.org/en-US/docs/DOM/window.matchMedia    
