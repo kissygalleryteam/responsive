@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<!--
+  Created using jsbin.com
+  Source can be edited via http://jsbin.com/emexa4/1/edit
+-->
+<head>
+  <meta charset="utf-8" />
+  <title>Responsive Tables - Chart</title>
+  <style>
+    /* page styles */
+    body {
+      font-family: Helvetica,"Helvetica Neue", sans-serif;
+      font-size:62.5%;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    td, th { 
+       text-align: center; 
+       border: 1px solid #ddd; 
+       padding:2px 5px; 
+    }
+       
+    caption {
+      margin: 0 0 .5em;
+      font-weight: bold;
+    }
+    
+    
+    /*demo styles*/
+    table {
+      width: 100%; 
+    }
+    td, th { 
+      font-size: 1.4em; 
+      padding: .3em; 
+    
+    }
+    th { background-color:#f4f4f4; } 
+    caption { font-size: 1.5em;  }
+    
+    
+    
+    /*plugin styles*/
+    .visualize { width: auto !important; border: 1px solid #888; position: relative; background: #fafafa;  }
+    .visualize canvas {  }
+    .visualize ul,.visualize li { margin: 0; padding: 0;}
+    
+    /*table title, key elements*/
+    .visualize .visualize-info { padding: 3px 5px; background: #fafafa; border: 1px solid #888; position: absolute; top: -20px; right: 10px; opacity: .8; }
+    .visualize .visualize-title { display: block; color: #333; margin-bottom: 3px;  font-size: 1.1em; }
+    .visualize ul.visualize-key { list-style: none;   }
+    .visualize ul.visualize-key li { list-style: none; float: left; margin-right: 10px; padding-left: 10px; margin-bottom: 10px; position: relative;}
+    .visualize ul.visualize-key .visualize-key-color { width: 6px; height: 6px; left: 0; position: absolute; top: 50%; margin-top: -3px;  }
+    .visualize ul.visualize-key .visualize-key-label { color: #000; }
+    
+    /*pie labels*/
+    .visualize-pie .visualize-labels { list-style: none; position: absolute;width: 100%;height: 100%;top: 0;left: 0; }
+    .visualize-pie .visualize-label-pos, .visualize-pie .visualize-label { position: absolute;  margin: 0; padding:0; }
+    .visualize-pie .visualize-label { display: block; color: #fff; font-weight: bold; font-size: 1em; }
+    .visualize-pie-outside .visualize-label { color: #000; font-weight: normal; }
+    .visualize-pie .visualize-label { font-size: 14px !important; }
+    
+    /*line,bar, area labels*/
+    .visualize-labels-x,.visualize-labels-y { position: absolute; left: 0; top: 0; list-style: none; width: 100%; height: 100%; }
+    .visualize-labels-x li, .visualize-labels-y li { position: absolute; bottom: 0; }
+    .visualize-labels-x li span.label, .visualize-labels-y li span.label { position: absolute; color: #555;  }
+    .visualize-labels-x li span.line, .visualize-labels-y li span.line {  position: absolute; border: 0 solid #ccc; }
+    .visualize-labels-x li { height: 100%; }
+    .visualize-labels-x li span.label { top: 100%; margin-top: 5px; }
+    .visualize-labels-x li span.line { border-left-width: 1px; height: 100%; display: block; }
+    .visualize-labels-x li span.line { border: 0;} /*hide vertical lines on area, line, bar*/
+    .visualize-labels-y li { width: 100%;  }
+    .visualize-labels-y li span.label { right: 100%; margin-right: 5px; display: block; width: 100px; text-align: right; }
+    .visualize-labels-y li span.line { border-top-width: 1px; width: 100%; }
+    .visualize-bar .visualize-labels-x li span.label { width: 100%; text-align: center; }
+    
+  
+    
+    
+    /*visualize extension styles - vanilla theme*/
+    .visualize { padding: 10px 10px 10px 10px; background: #ccc url(../images/chartbg-vanilla.png) top repeat-x; border: 1px solid #ddd; -moz-border-radius: 12px; -webkit-border-radius: 12px; border-radius: 12px; }
+    .visualize canvas { border: 1px solid #aaa; margin: -1px; background: #fff; max-width: 100%; }
+    .visualize-labels-x, .visualize-labels-y { top: 0; left: 0; z-index: 100; }
+    .visualize-pie .visualize-labels {}
+    .visualize-labels-x li span.label, .visualize-labels-y li span.label { color: #444; font-size: 1.3em; padding-right: 5px; }
+    .visualize-labels-y li span.line { border-style: solid;  opacity: .7; }
+    .visualize .visualize-info { border: 0; position: static;  opacity: 1; background: none; }
+    .visualize .visualize-title { position: absolute; top: 20px; color: #333; margin-bottom: 0; left: 20px; font-size: 2.1em; font-weight: bold; }
+    .visualize ul.visualize-key { position: absolute; bottom: 15px; background: #eee; z-index: 10; padding: 10px 0; color: #aaa; width: 100%; left: 0;  }
+    .visualize ul.visualize-key li { font-size: 1.2em;  margin-left: 20px; padding-left: 18px; }
+    .visualize ul.visualize-key .visualize-key-color { width: 10px; height: 10px;  margin-top: -4px; }
+    .visualize ul.visualize-key .visualize-key-label { color: #333; }
+    
+    
+    
+    /* queries */
+    table {
+      position: absolute;
+      left: -999999px;
+    }
+    .visualize.complete canvas {
+      max-width: 100% !important;
+      width: 100%;
+    }
+    
+    @media screen and (min-width: 700px){
+      table {
+        position: static;
+        left: auto;
+      }
+      .visualize.complete {
+        display: none;
+      }
+    }
+
+  </style>
+  <script src="http://explorercanvas.googlecode.com/svn/tags/m3/excanvas.compiled.js"></script>  
+  <script src="http://code.jquery.com/jquery-1.6rc1.min.js"></script>
+  <script src="http://filamentgroup.com/examples/charting_v2/visualize.jQuery.temp.js"></script>  
+  
+  <script>
+    $(function(){
+      $('table').visualize({type: 'pie', pieMargin: 15, width: "400px",  height: "400px" }).addClass("complete").removeAttr("style")
+    });  
+  </script>
+
+<style id="jsbin-css">
+
+</style>
+</head>
+<body>
+  
+  <h2>2009 Employee Sales by Department</h2>
+  
+  <table >
+    <!-- <caption>2009 Employee Sales by Department</caption> -->
+    <thead>
+      <tr>
+        <td></td>
+        <th scope="col">food</th>
+        <th scope="col">auto</th>
+        <th scope="col">household</th>
+        <th scope="col">furniture</th>
+        <th scope="col">kitchen</th>
+        <th scope="col">bath</th>
+        <th scope="col">flooring</th>
+        <th scope="col">plumbing</th>
+        <th scope="col">electrical</th>
+        <th scope="col">hardware</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Mary</th>
+        <td>190</td>
+        <td>160</td>
+        <td>40</td>
+        <td>120</td>
+        <td>30</td>
+        <td>70</td>
+        <td>40</td>
+        <td>120</td>
+        <td>30</td>
+        <td>70</td>
+      </tr>
+      <tr>
+        <th scope="row">Tom</th>
+        <td>3</td>
+        <td>40</td>
+        <td>30</td>
+        <td>45</td>
+        <td>35</td>
+        <td>49</td>
+        <td>30</td>
+        <td>45</td>
+        <td>35</td>
+        <td>49</td>
+      </tr>
+      <tr>
+        <th scope="row">Brad</th>
+        <td>10</td>
+        <td>180</td>
+        <td>10</td>
+        <td>85</td>
+        <td>25</td>
+        <td>79</td>
+        <td>10</td>
+        <td>85</td>
+        <td>25</td>
+        <td>79</td>
+      </tr>
+      <tr>
+        <th scope="row">Kate</th>
+        <td>40</td>
+        <td>80</td>
+        <td>90</td>
+        <td>25</td>
+        <td>15</td>
+        <td>119</td>
+        <td>40</td>
+        <td>80</td>
+        <td>90</td>
+        <td>25</td>
+      </tr>  
+      <tr>
+        <th scope="row">Donald</th>
+        <td>45</td>
+        <td>35</td>
+        <td>49</td>
+        <td>30</td>
+        <td>3</td>
+        <td>40</td>
+        <td>30</td>
+        <td>45</td>
+        <td>35</td>
+        <td>49</td>
+      </tr>
+      <tr>
+        <th scope="row">Mark</th>
+        <td>49</td>
+        <td>30</td>
+        <td>3</td>
+        <td>40</td>
+        <td>30</td>
+        <td>45</td>
+        <td>35</td>
+        <td>49</td>
+        <td>45</td>
+        <td>35</td>
+      </tr>
+      <tr>
+        <th scope="row">Samantha</th>
+        <td>30</td>
+        <td>45</td>
+        <td>35</td>
+        <td>49</td>
+        <td>49</td>
+        <td>30</td>
+        <td>3</td>
+        <td>40</td>
+        <td>45</td>
+        <td>35</td>
+      </tr>
+      <tr>
+        <th scope="row">Harold</th>
+        <td>30</td>
+        <td>30</td>
+        <td>3</td>
+        <td>40</td>
+        <td>45</td>
+        <td>35</td>
+        <td>45</td>
+        <td>35</td>
+        <td>49</td>
+        <td>49</td>
+      </tr>  
+    </tbody>
+  </table>  
+
+<script>
+
+</script>
+<script src="http://static.jsbin.com/js/render/edit.js"></script>
+<script>jsbinShowEdit({"root":"http://static.jsbin.com","csrf":"H1Cg2gAhrfSSA9EHXbRnBZrl"});</script>
+<script src="http://static.jsbin.com/js/vendor/eventsource.js"></script>
+<script src="http://static.jsbin.com/js/spike.js"></script>
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-1656750-34']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+})();
+</script>
+</body>
+</html>

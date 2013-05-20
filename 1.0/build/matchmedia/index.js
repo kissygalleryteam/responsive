@@ -1,4 +1,10 @@
 /*
+combined files : 
+
+gallery/responsive/1.0/matchmedia/index
+
+*/
+/*
  * @fileoverview mediaquery探测 参考 https://github.com/scottjehl/matchMedia.js 
  * @author Scott Jehl, Paul Irish, Nicholas Zakas, miaojing@taobao.com
  * @version 1.0

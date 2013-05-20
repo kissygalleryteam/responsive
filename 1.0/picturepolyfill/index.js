@@ -1,6 +1,6 @@
 /**
 * 响应式图片
-* @author Scott Jehl, 妙净<miaojing@taobao.com>
+* @author Scott Jehl, 妙净
 * @version:1-0-0
 * @ Picturefill - Author: Scott Jehl, 2012 | License: MIT/GPLv2 */
 /*
@@ -12,14 +12,15 @@
 			B) A major browser implements <picture>
 */
 
-KISSY.add('gallery/responsive/1.0/picturepolyfill/index', function (S, DOM, Event, Base, MatchMedia) {
+KISSY.add('gallery/responsive/1.0/picturepolyfill/index', function (S, Base, RespondTools) {
 	"use strict";
 	/**
 	 * @class PicturePolyfill
 	 * @constructor
-	 * @param {Array} config  resolution breakpoint 分辨率临界值
+	 * @param {Array} config 
 	 * @return {void} 
 	 */
+	
 	function PicturePolyfill() {
 		var self = this;
  		PicturePolyfill.superclass.constructor.call(self);
@@ -30,85 +31,67 @@ KISSY.add('gallery/responsive/1.0/picturepolyfill/index', function (S, DOM, Even
 	S.extend(PicturePolyfill, Base, {
 		
 		init: function() {
-			var self = this;
-			var timer;
+			var self = this, timer;
 			self._responsiveImg();
-			var viewportWidth = document.documentElement.clientWidth;
 			
 			window.onresize = function() {
-				if (timer) { 
-					timer.cancel(); 
-				}
+				timer && timer.cancel(); 
 				timer = S.later(self._responsiveImg, 200, false, self); 
 			};
 		},
 
 		_responsiveImg: function() {
-			var doc = window.document;
-			var ps = doc.getElementsByTagName( "picture" );
-
-			// Loop the pictures
+			var w = window, ps = w.document.getElementsByTagName( "div" );
 			for( var i = 0, il = ps.length; i < il; i++ ) {
-				var sources = ps[ i ].getElementsByTagName( "source" ),
-					picImg = null,
-					matches = [];
+				if( ps[ i ].getAttribute( "data-picture" ) !== null ) {
 
-				// See which sources match
-				for( var j = 0, jl = sources.length; j < jl; j++ ){
-					var media = sources[ j ].getAttribute( "media" );
-					// if there's no media specified, OR w.matchMedia is supported 
-					if(!media || MatchMedia(media)) {
-						matches.push( sources[ j ] );
-					}
-				}
+					var sources = ps[ i ].getElementsByTagName( "div" ),
+						matches = [];
 
-				// Find any existing img element in the picture element
-				picImg = ps[ i ].getElementsByTagName( "img" )[ 0 ];
-
-				if( matches.length ){
-					// Grab the most appropriate (last) match.
-					var match = matches.pop(),
-						srcset = match.getAttribute( "srcset" );
-
-					if( !picImg ){
-						picImg = doc.createElement( "img" );
-						picImg.alt = ps[ i ].getAttribute( "alt" );
-						ps[ i ].appendChild( picImg );
+					// 匹配哪一个source 
+					for( var j = 0, jl = sources.length; j < jl; j++ ) {
+						var media = sources[ j ].getAttribute( "data-media" );
+						if( !media || RespondTools.wave(media)){
+							matches.push( sources[ j ] );
+						}
 					}
 
-					if( srcset ) {
-							var screenRes = window.devicePixelRatio || 1, // Is it worth looping through reasonable matchMedia values here?
-								sources = srcset.split(","); // Split comma-separated `srcset` sources into an array.
+					//如果picture下存在fallback img后续将其移除 
+					var picImg = ps[ i ].getElementsByTagName( "img" )[ 0 ];
 
-							var hasHD = window.devicePixelRatio > 1;
+					if( matches.length ) {			
+						if( !picImg ){
+							picImg = w.document.createElement( "img" );
+							picImg.alt = ps[ i ].getAttribute( "data-alt" );
+							ps[ i ].appendChild( picImg );
+						}
 
-							for( var res = sources.length, r = res - 1; r >= 0; r-- ) { // Loop through each source/resolution in `srcset`.
-								var source = sources[ r ].replace(/^\s*/, '').replace(/\s*$/, '').split(" "), // Remove any leading whitespace, then split on spaces.
-									resMatch = parseFloat( source[1], 10 ); // Parse out the resolution for each source in `srcset`.
+						//额外支持高清屏
+						var src = matches.pop().getAttribute( "data-src" ), imgsrc, srcArr = src.split(",");
 
-								if( screenRes >= resMatch ) {
-									if( picImg.getAttribute( "src" ) !== source[0] ) {
-										var newImg = document.createElement("img");
-										newImg.src = source[0];
-										// When the image is loaded, set a width equal to that of the original’s intrinsic width divided by the screen resolution:
-										newImg.onload = function() {
-											// Clone the original image into memory so the width is unaffected by page styles:
-											this.width = ( this.cloneNode( true ).width / resMatch );
-										}
-										picImg.parentNode.replaceChild( newImg, picImg);
-									}
-									break; // We’ve matched, so bail out of the loop here.
+						for(var s = 0, sl = srcArr.length; s < sl ; s++) {
+							var srcH = srcArr[s].replace(/^\s*/, '').replace(/\s*$/, '').split(" "), 
+								srcRatio = parseFloat( srcH[1], 10 );
+								srcRatio = srcRatio || 1;
+							if (window.devicePixelRatio) {
+								if(srcRatio == window.devicePixelRatio) {
+									imgsrc = srcH[0];
 								}
+							} else {
+								//不支持高清屏 
+								if(!srcH[1] || srcH[1] && srcRatio == 1) imgsrc = srcH[0];
 							}
-					} else {
-						// No `srcset` in play, so just use the `src` value:
-						picImg.src = match.getAttribute( "src" );
+						}
+
+						picImg.src =  imgsrc;
+					} else if( picImg ){
+						ps[ i ].removeChild( picImg );
 					}
 				}
-			}
+			}	
 		}
 	}); 
 
 return PicturePolyfill;
 	
-}, { requires:["dom", "event", "base", "gallery/responsive/1.0/matchmedia/index"]});
+}, { requires:["base", "../respondtools/index"]});

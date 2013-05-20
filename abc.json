@@ -1,0 +1,13 @@
+{
+    "name": "responsive",
+    "version": "1.0",
+    "desc": "mediaquery兼容实现、响应式图片实现、响应式导航实现等，以及响应式模式等",
+    "cover": "",
+    "author": {
+        "name": "妙净、墨峰等",
+        "email": "miaojing@taobao.com",
+        "page": "https://github.com/miaojing/"
+    },
+    "type": "kissy-pie",
+    "type-url": "http://abc.alibaba-inc.com/r/kissy-pie"
+}

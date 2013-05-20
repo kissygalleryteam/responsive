@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Media Video Flash Youku</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style type="text/css">
+	.video-container{
+		width: 90%;
+		height: 524px;
+		margin: 0 auto;
+	}
+
+	@media screen and (max-width: 768px){
+		.video-container{
+			width: 580px;
+			height: 262px;
+			margin: 0 auto;
+		}
+	}
+  </style>
+</head>
+<body>
+	<div class="video-container">
+		<embed src="http://player.youku.com/player.php/sid/XNTQ1MDM5OTI4/v.swf" allowFullScreen="true" quality="high" align="middle" width="100%" height="100%" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+	</div>
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+ <script> 
+  if($.browser&&$.browser.msie&&$.browser.msie<=8){
+	$(document).ready(function() {
+	    adjustMenu();
+	})
+
+	$(window).bind('resize orientationchange', function() {   
+	    adjustMenu();
+	});
+
+	var adjustMenu = function() {
+		var bw = $('body').width();
+		var ww = $(window).width();
+	    $('.video-container').css("width",ww - 20 + "px").css("height", ww*524/1160 + "px");
+	} 
+  }
+ </script>
+</body> 
+</html>

@@ -13,15 +13,24 @@
             packages:[
                 {
                     name:"gallery", // 包名
-                    path:"../../../../", // 包对应路径, 相对路径指相对于当前页面路径
-                    charset:"utf-8"
+                    path:"../../../", // 包对应路径, 相对路径指相对于当前页面路径
+                    charset:"utf-8",
+                    ignorePackageNameInUri: true
                 }
             ]
         });
     }
 
     S.use('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MediaqueryPolyfill) {
-        new MediaqueryPolyfill([480, 1010, 1220, 1420, 1620]);
+        var mqp = new MediaqueryPolyfill([480, 1010, 1220, 1420, 1620]);
+        mqp.addListener({'(max-width: 479px)': function(){S.log('1420~1619')}});
+        mqp.addListener({'(min-width: 480px) and (max-width: 1009px)': function(){S.log('480~1009')}});
+        mqp.addListener({'(min-width: 1010px) and (max-width: 1219px)': function(){S.log('1010~1219')}});
+        mqp.addListener({'(min-width: 1220px) and (max-width: 1419px)': function(){S.log('1220~1419')}});
+        mqp.addListener({'(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')}});
+        mqp.addListener({'(min-width: 1620px)': function(){S.log('>=1620')}});
+        mqp.addListener({'(min-height: 0px) and (max-height: 399px)': function(){S.log('height:0~400')}});
+        mqp.addListener({'(min-height: 400px) and (max-height: 800px)': function(){S.log('height:400~800')}});
     });
 
     </script>
@@ -31,7 +40,7 @@
 
         @media (max-width: 1620px) {
             div:after {
-                content: '1620';
+                content: '<=1620';
             }
             div {
                 background-color: blue;
@@ -40,7 +49,7 @@
 
         @media (max-width: 1420px) {
             div:after {
-                content: '1420';
+                content: '<=1420';
             }
             div {
                 background-color: yellow;
@@ -49,7 +58,7 @@
 
         @media (max-width: 1220px) {
             div:after {
-                content: '1220';
+                content: '<=1220';
             }
             div {
                 background-color: red;
@@ -59,7 +68,7 @@
 
         @media (max-width: 1010px) {
             div:after {
-                content: '1010';
+                content: '<=1010';
             }
             div {
                 background-color: green;
@@ -68,51 +77,51 @@
 
         @media (max-width: 480px) {
             div:after {
-                content: '480';
+                content: '<=480';
             }
             div {
                 background-color: pink;
             }
         }
 /* for can't support media query */
-        .vw1620 div:after {
-            content: '1620';
+        .w1620 div:after {
+            content: '>=1620';
         }
 
-        .vw1620 div {
+        .w1620 div {
             background-color: blue;
         }
         
 
-        .vw1420 div:after {
-            content: '1420';
+        .w1420 div:after {
+            content: '>=1420';
         }
 
-        .vw1420 div {
+        .w1420 div {
             background-color: yellow;
         }
 
-        .vw1220 div:after {
-            content: '1220';
+        .w1220 div:after {
+            content: '>=1220';
         }
 
-        .vw1220 div {
+        .w1220 div {
             background-color: red;
         }
 
-        .vw1010 div:after {
-            content: '1620';
+        .w1010 div:after {
+            content: '>=1010';
         }
 
-        .vw1010 div {
+        .w1010 div {
             background-color: green;
         }
 
-        .vw480 div:after {
-            content: '1620';
+        .w480 div:after {
+            content: '>=480';
         }
 
-        .vw480 div {
+        .w480 div {
             background-color: pink;
         }
         

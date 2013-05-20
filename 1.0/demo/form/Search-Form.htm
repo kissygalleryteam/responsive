@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by Brad Frost (http://codepen.io/bradfrost/pen/EvmuH)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>Search Form - CodePen</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel='stylesheet' href='http://bradfrost.github.com/this-is-responsive/styles.css'>
+
+  <style>
+.is-vishidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.pattern {
+  padding: 1em; 
+  line-height: 1;
+}
+.f {
+   position: relative; 
+}
+
+input {
+  display: block;
+  border: 1px solid #000;
+}
+
+input[type=search] {
+    width: 100%;
+    padding: 1em;
+    padding-right: 7em;
+    position: relative;
+   top: 0;
+}
+
+input[type=submit] {
+  position: absolute;
+  right: 0.75em;
+  top: 0.5em;
+  bottom: 0.5em;
+  z-index: 1;
+  width: 6em;
+  padding: 0;
+  cursor: pointer;
+}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+</head>
+
+<body>
+
+  <div id="pattern" class="pattern">
+  <form action="#" method="post" class="f">
+      <label class="is-vishidden">Search the site</label>     
+    <input type="search" placeholder="Search the site" />
+      <input type="submit" class="btn search-submit" value="Search">
+</form>
+</div>
+<!--End Pattern HTML-->
+
+  <div class="container">	
+		<section class="pattern-description">
+			<h1>Fluid Search Form</h1>
+      <p>A fully-fluid search form.</p>
+      <h2>Considerations</h2>
+      <ul>
+        <li>Remember, a field placeholder is not a substitute for a form label.</li>
+        <li>Utilize <code>box-sizing: border-box;</code> to create fully fluid form fields with fixed amounts of padding.</li>
+        <li>Use <code>type=search</code> to pull up the search-specific virtual keyboard on many touch devices</li>
+      </ul>
+      <h2>Resources</h2>
+      <ul>
+        <li><a href="http://paulirish.com/2012/box-sizing-border-box-ftw/">* { box-sizing: border-box } FTW</a></li>
+        <li><a href="http://diveintohtml5.info/forms.html">A Form of Madness</a></li>
+        <li><a href="http://wac.osu.edu/tutorials/forms/hiding-labels.htm">Test of methods for hidden label information in forms.</a></li>
+      </ul>
+		</section>
+		<footer role="contentinfo">   
+			<div>
+				<nav id="menu">
+					<a href="http://bradfrost.github.com/this-is-responsive/patterns.html">&larr;More Responsive Patterns</a>
+				</nav>
+			</div>
+		</footer>
+	</div>
+
+  <script src=""></script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+</body>
+
+</html>

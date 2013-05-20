@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by Brad Frost (http://codepen.io/bradfrost/pen/xkcBn)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+<style type="text/css">
+
+@media (max-width: 1220px) {
+	.bg {
+		background-image:url(img100x100.png);/* 普通屏幕 */
+		background-image: -webkit-image-set(
+		    url(img100x100.png) 1x,
+		    url(img100x100.png) 2x);/* Retina */
+		}
+}
+
+/* ------------- Retina ------------- */
+@media only screen and (-o-min-device-pixel-ratio: 2/1), /* Opera */
+       only screen and (min--moz-device-pixel-ratio: 2), /* Firefox 16 之前 */
+       only screen and (-webkit-min-device-pixel-ratio: 2), /* Webkit */
+       only screen and (min-resolution: 240dpi), /* 标准 */
+       only screen and (min-resolution: 2dppx) /* 标准 */{
+	.bg {
+	    background-image:url(img100x100.png);
+	    background-size: 50px 50px;
+	}
+}
+
+
+
+</style>
+<img src="pear-tablet.jpeg"
+     srcset="pear-mobile.jpeg 720w, pear-tablet.jpeg 1280w, pear-desktop.jpeg 720w 2x"
+     alt="测试图片">
+  <title>Image Grid - CodePen</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel='stylesheet' href='http://bradfrost.github.com/this-is-responsive/styles.css'>
+
+  <style>
+.g {
+  		padding: 0.25em;
+			overflow: hidden;
+		}
+		.g li {
+			float: left;
+			width: 50%;
+			padding: 0.25em;
+		}
+		.g img {
+			display: block;
+		}
+		.g li:nth-child(odd) {
+			clear: left;
+		}
+
+		@media screen and (min-width: 40em) {
+			.g li {
+		    	width: 33.3333333333333333%; 
+		  	}
+		  	.g li:nth-child(3n+1) {
+		  		clear: left;
+		  	}
+		  	.g li:nth-child(odd) {
+				clear: none;
+			}
+		}
+		@media screen and (min-width: 55em) {
+			.g li {
+		    	width: 25%; 
+		  	}
+		  	.g li:nth-child(4n+1) {
+		  		clear: left;
+		  	}
+		  	.g li:nth-child(3n+1) {
+				clear: none;
+			}
+		}
+		@media screen and (min-width: 72em) {
+			.g li {
+		    	width: 20%; 
+		  	}
+		  	.g li:nth-child(5n+1) {
+		  		clear: left;
+		  	}
+		  	.g li:nth-child(4n+1) {
+				clear: none;
+			}
+		}
+		@media screen and (min-width: 90em) {
+			.g li {
+		    	width: 16.666666666%; 
+		  	}
+		  	.g li:nth-child(6n+1) {
+		  		clear: left;
+		  	}
+		  	.g li:nth-child(5n+1) {
+				clear: none;
+			}
+		}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+</head>
+
+<body>
+
+  <!--Pattern HTML-->
+  <div id="pattern" class="pattern">
+  	<ul class="g">
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+			<li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+		</ul>
+	</div>
+	<!--End Pattern HTML-->
+
+	<div class="container">	
+		<section class="pattern-description">
+			<h1>Image Grid</h1>
+			<p>A list of images that by default is two-columns. As screen real estate becomes available, more columns are added.</p>
+			<h2>Considerations</h2>
+			<ul>
+				<li>Assume small screen by default. Add columns as necessary.</li>
+			</ul>
+		</section>
+		<footer role="contentinfo">   
+			<div>
+				<nav id="menu">
+					<a href="http://bradfrost.github.com/this-is-responsive/patterns.html">&larr;More Responsive Patterns</a>
+				</nav>
+			</div>
+		</footer>
+	</div>
+
+  <script src=""></script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+</body>
+
+</html>
