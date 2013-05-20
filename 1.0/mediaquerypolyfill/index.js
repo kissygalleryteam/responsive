@@ -61,7 +61,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
                 return listeners;
             }
         },
-        
+
 		/**
 		 * isAutoExectListener 是否初始化页面时自动执行一次相应的响应回调，默认true
 		 * @cfg {Boolean} 为减字符，该配置直接默认，因为应用场景上看，一般在页面初始化时需要直接执行回调
@@ -115,8 +115,9 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 				 *	http://snook.ca/archives/javascript/ie6_fires_onresize/
 				 */
 				if(currWidth != docEl.clientWidth || currHeight != docEl.clientHeight) {
-					timer && timer.cancel(); 
-					timer = S.later(self._resizeHandler, 500, false, self);
+					self._resizeHandler();//resize后页面变化太慢，故取消later,同时因为外层对clientWidth和clientHeight有一层过滤，就算ie6.7下不断触发这里函数体也没关系
+					//timer && timer.cancel(); 
+					//timer = S.later(self._resizeHandler, 500, false, self);
 				}
 				currWidth = docEl.clientWidth;
 				currHeight = docEl.clientHeight;

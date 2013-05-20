@@ -44,7 +44,7 @@ KISSY.add('gallery/responsive/1.0/respondtools/index', function (S) {
    * @type {Boolean}
    */
   var isSupportMediaquery = window.matchMedia && window.matchMedia('only all').matches;
-  
+
  /**
    * wave 当前viewportWidth是否在media query的【min max】区间
    * @description 比较常用，后面的mediaquerypolyfill和picturepolyfill均依赖此函数，该函数命名和实现方式，参考jquery respondjs plugin (http://responsejs.com/)
@@ -75,7 +75,7 @@ KISSY.add('gallery/responsive/1.0/respondtools/index', function (S) {
     isSupportMediaquery: isSupportMediaquery,
 		matchMedia: S.bind(matchMedia, window),
 		wave: wave
-	}
+	};
 
 	return RespondTools;
 });
