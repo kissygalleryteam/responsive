@@ -37,7 +37,31 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		 * @cfg {Object}
 		 * @description  该js一般直接被运行在body渲染前，要减少字符，listeners默认值可以省略之
 		 */
-		//listeners: {value: {}},
+        listeners: {
+            value: {},
+            setter: function(v) {
+            	//addLinstener时，针对同一区间注册多个callback，防止覆盖，存数组队列
+                var listeners = this.get('listeners');
+                for (var i in v) {
+                    if (v.hasOwnProperty(i)) {
+                        var handler = listeners[i];
+
+                        if (S.isArray(handler)) {
+                            handler.push(v[i]);
+                        } else {
+                            var temp = [];
+                            temp.push(v[i]);
+                            if (S.isFunction(handler)){
+                                temp.push(handler);
+                            }
+                            listeners[i] = temp;
+                        }
+                    }
+                }
+                return listeners;
+            }
+        },
+
 		/**
 		 * isAutoExectListener 是否初始化页面时自动执行一次相应的响应回调，默认true
 		 * @cfg {Boolean} 为减字符，该配置直接默认，因为应用场景上看，一般在页面初始化时需要直接执行回调
@@ -48,7 +72,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		 * [isSupportMediaquery 是否支持mediaquery]
 		 * @type {Boolean}
 		 */
-		isSupportMediaquery: { value: window.matchMedia && window.matchMedia('only all').matches }, 
+		isSupportMediaquery: { value: RespondTools.isSupportMediaquery }, 
 
 		/**
 		 * [isSupportAddListener 是否支持window.matchMedia('only all').addLinsterner是否支持]
@@ -77,20 +101,31 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 			!self.get('isSupportMediaquery') && self._changeHtmlClass();
 
 			if(self.get('isSupportAddListener')) { 
-				self._addNativeListener(listeners); 
+				self._addNativeListener(listeners);
+				return; 
 			} else {
 				//self.get('isAutoExectListener') && self._addListenerPolyfill(listeners); 
 				self._addListenerPolyfill(listeners); 
 			}
 
+			var docEl = document.documentElement, currWidth = docEl.clientWidth, currHeight = docEl.clientHeight;
 			window.onresize = function() {
-				timer && timer.cancel(); 
-				timer = S.later(self._resizeHandler, 500, false, self); 
+				/*
+				 *	ie6/7下在页面初始化时如果页面产生reflow body resize时，会触发window.resize，过滤掉这些无效的resize
+				 *	http://snook.ca/archives/javascript/ie6_fires_onresize/
+				 */
+				if(currWidth != docEl.clientWidth || currHeight != docEl.clientHeight) {
+					self._resizeHandler();//resize后页面变化太慢，故取消later,同时因为外层对clientWidth和clientHeight有一层过滤，就算ie6.7下不断触发这里函数体也没关系
+					//timer && timer.cancel(); 
+					//timer = S.later(self._resizeHandler, 500, false, self);
+				}
+				currWidth = docEl.clientWidth;
+				currHeight = docEl.clientHeight;
 			};
 		},
 
 		/**
-		 * addListener 模拟实现window.matchMedia('min-width: 1220px').addLinstener(callback)
+		 * addListener 模拟实现window.matchMedia('min-width: 1220px').addLinstener(callback) 常用于有不同临界值之间的js逻辑的响应
 		 * @description 只支持min-width和max-width mediaquery 类Respond.js实现响应式设计够用
 		 * @param {Object} linsternerObj {'(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')}}
 		 */
@@ -105,8 +140,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 				self._addListenerPolyfill(linsternerObj); 
 			}
 
-			var newLinsternerObj = S.merge(linsternerObj, self.get('listeners')); 
-			self.set('listeners', newLinsternerObj);
+			self.set('listeners', linsternerObj);
 		},
 
 		/**
@@ -152,11 +186,22 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		_addListenerPolyfill: function(listeners) {
 			var self = this, min, max;
 
-			for (var p in listeners) {
-				if (RespondTools.wave(p)) {
-					listeners[p]();
-				}
-			}
+            for (var p in listeners) {
+                if (RespondTools.wave(p)) {
+                    var listener = listeners[p];
+                    if (S.isFunction(listener)) {
+                        listener();
+                    }
+                    if (S.isArray(listener)) {
+                        for(var i = 0,fn; fn = listener[i]; i++){
+                            if (S.isFunction(listener[i])) {
+                                listener[i]();
+                            }
+                        }
+                    }
+
+                }
+            }
 		},
 
 		/**

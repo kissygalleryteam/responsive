@@ -6,7 +6,7 @@ gallery/responsive/1.0/mediaquerypolyfill/index
 
 */
 /*
- * @fileoverview mediaquery 参考 https://github.com/scottjehl/matchMedia.js 支持mediaquery的浏览器一般都有window.matchMedia方法，但ie9支持mediaquery却不支持改方法 
+ * @fileoverview mediaquery 参考 https://github.com/scottjehl/matchMedia.js 支持mediaquery的浏览器一般都有window.matchMedia方法，但ie9支持mediaquery却不支持该方法 
  * @desc matchMedia兼容性
  * ##Desktop
  * ###|chrome 9|firefox 6.0|IE10|opera 12.1|safari 5.1|
@@ -20,55 +20,69 @@ gallery/responsive/1.0/mediaquerypolyfill/index
 KISSY.add('gallery/responsive/1.0/respondtools/index', function (S) {
 	"use strict";
 
-	window.matchMedia = window.matchMedia || (function(doc, undefined) {
+	var matchMedia = window.matchMedia = window.matchMedia || (function(doc, undefined) {
 	  var bool,
-	      docElem  = doc.documentElement,
-	      refNode  = docElem.firstElementChild || docElem.firstChild,
-	      // fakeBody required for <FF4 when executed in <head>
-	      fakeBody = doc.createElement('body'),
-	      div      = doc.createElement('div');
+      docElem  = doc.documentElement,
+      refNode  = docElem.firstElementChild || docElem.firstChild,
+      // fakeBody required for <FF4 when executed in <head>
+      fakeBody = doc.createElement('body'),
+      div      = doc.createElement('div');
 
 	  div.id = 'mq-test-1';
 	  div.style.cssText = "position:absolute;top:-100em";
 	  fakeBody.style.background = "none";
 	  fakeBody.appendChild(div);
 
-	  return function(q) {
+	  return function(q){
+
 	    div.innerHTML = '&shy;<style media="'+q+'"> #mq-test-1 { width: 42px; }</style>';
+
 	    docElem.insertBefore(fakeBody, refNode);
 	    bool = div.offsetWidth === 42;
 	    docElem.removeChild(fakeBody);
+
 	    return { matches: bool, media: q };
 	  };
 	}(document));
 
-	/**
-	 * wave 当前viewportWidth是否在media query的【min max】区间
-	 * @param {String} mediaquery (min-width:480px) and (max-width: 1009px) 只支持min-width和max-width；类似respond.js的理念（响应式设计的实现支持min-width和max-width足矣）
-	 * @return {Boolean} 
-	 */
-	function wave(mediaquery) {
-		if (window.matchMedia & window.matchMedia('only all').matches) {
-			return window.matchMedia(mediaquery).matches;
-		} else {
-			var min, max, viewportWidth = document.documentElement.clientWidth;
-			//(max-width: 1009px) and (min-width:480px) ==> min = 480; max = 1009
-			min = mediaquery.replace(/.*min-width[\:\s]+(\d+)px.*/ig,'$1');
-			max = mediaquery.replace(/.*max-width[\:\s]+(\d+)px.*/ig,'$1');
-			min = /width/.test(min)? 0 : min;
-			max = /width/.test(max)? 0 : max;
-			if(max) {
-				return viewportWidth >= min && viewportWidth <= max;
-			} else {
-				return viewportWidth >= min;
-			}
-		}
-	}
+
+  /**
+   * isSupportMediaquery 是否支持media query，在ie6-ie9下执行上面的hack的matchMedia检测比较耗费性能，需要构造假el后append再remove,每次约100ms,对于固定的某一浏览器是否支持mediaquery检测一次即可，故缓存之
+   * @type {Boolean}
+   */
+  var isSupportMediaquery = window.matchMedia && window.matchMedia('only all').matches;
+
+ /**
+   * wave 当前viewportWidth是否在media query的【min max】区间
+   * @description 比较常用，后面的mediaquerypolyfill和picturepolyfill均依赖此函数，该函数命名和实现方式，参考jquery respondjs plugin (http://responsejs.com/)
+   * @param {String} mediaquery (min-width:480px) and (max-width: 1009px) 只支持min-width和max-width；类似respond.js的理念（响应式设计的实现支持min-width和max-width足矣）
+   * @return {Boolean} 
+   */
+  var wave = function(mediaquery) {
+      if (isSupportMediaquery) {
+          return window.matchMedia(mediaquery).matches;
+      } else {
+          var min, max, docEl = document.documentElement, 
+              widthOrHeight = /width/.test(mediaquery)? 'width' : 'height',
+              viewportWidthOrHeight = widthOrHeight == 'width' ? docEl.clientWidth : docEl.clientHeight;
+          //(max-width: 1009px) and (min-width:480px) ==> min = 480; max = 1009
+          min = mediaquery.replace(eval('/.*min-' + widthOrHeight + '[\\:\\s]+(\\d+)px.*/ig'),'$1');
+          max = mediaquery.replace(eval('/.*max-' + widthOrHeight + '[\\:\\s]+(\\d+)px.*/ig'),'$1');
+          min = /^\d/.test(min)? min : 0;
+          max = /^\d/.test(max)? max : 0;
+          if(max) {
+              return viewportWidthOrHeight >= min && viewportWidthOrHeight <= max;
+          } else {
+              return viewportWidthOrHeight >= min;
+          }
+      }
+  }
 
 	var RespondTools = {
-		match: window.matchMedia,
+    isSupportMediaquery: isSupportMediaquery,
+		matchMedia: S.bind(matchMedia, window),
 		wave: wave
-	}
+	};
 
 	return RespondTools;
 });
@@ -88,9 +102,16 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 	 * @constructor
 	 * @param {Object} config  breakpoints 
 	 * @return {void} 
+	 * @用法：
+	 * S.use('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, MediaqueryPolyfill) {
+     *   var mqp = new MediaqueryPolyfill([480, 1010, 1220, 1420, 1620]);
+     *   mqp.addListener({'(min-width: 1220px) and (max-width: 1419px)': function(){S.log('1420~1419')}});
+     *   mqp.addListener({'(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')}});
+     * });
 	 */
 	function MediaqueryPolyfill(config) {
 		var self = this;
+		config = {'breakpoints': config};
  		MediaqueryPolyfill.superclass.constructor.call(self, config);
 		self.init();
 	}
@@ -104,19 +125,44 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		/**
 		 * [listeners matchMedia监听器]
 		 * @cfg {Object}
+		 * @description  该js一般直接被运行在body渲染前，要减少字符，listeners默认值可以省略之
 		 */
-		listeners: {},
+        listeners: {
+            value: {},
+            setter: function(v) {
+            	//addLinstener时，针对同一区间注册多个callback，防止覆盖，存数组队列
+                var listeners = this.get('listeners');
+                for (var i in v) {
+                    if (v.hasOwnProperty(i)) {
+                        var handler = listeners[i];
+
+                        if (S.isArray(handler)) {
+                            handler.push(v[i]);
+                        } else {
+                            var temp = [];
+                            temp.push(v[i]);
+                            if (S.isFunction(handler)){
+                                temp.push(handler);
+                            }
+                            listeners[i] = temp;
+                        }
+                    }
+                }
+                return listeners;
+            }
+        },
+
 		/**
 		 * isAutoExectListener 是否初始化页面时自动执行一次相应的响应回调，默认true
-		 * @cfg {Boolean}
+		 * @cfg {Boolean} 为减字符，该配置直接默认，因为应用场景上看，一般在页面初始化时需要直接执行回调
 		 */
-		isAutoExectListener: { value: true },
+		//isAutoExectListener: { value: true },
 
 		/**
 		 * [isSupportMediaquery 是否支持mediaquery]
 		 * @type {Boolean}
 		 */
-		isSupportMediaquery: { value: window.matchMedia && window.matchMedia('only all').matches }, 
+		isSupportMediaquery: { value: RespondTools.isSupportMediaquery }, 
 
 		/**
 		 * [isSupportAddListener 是否支持window.matchMedia('only all').addLinsterner是否支持]
@@ -141,19 +187,50 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 
 	S.extend(MediaqueryPolyfill, Base, {
 		init: function() {
-			var self = this, timer;
+			var self = this, timer, listeners = self.get('listeners');
 			!self.get('isSupportMediaquery') && self._changeHtmlClass();
 
 			if(self.get('isSupportAddListener')) { 
-				self._addNativeListener(); 
+				self._addNativeListener(listeners);
+				return; 
 			} else {
-				self.get('isAutoExectListener') && self._addListenerPolyfill(); 
+				//self.get('isAutoExectListener') && self._addListenerPolyfill(listeners); 
+				self._addListenerPolyfill(listeners); 
 			}
 
+			var docEl = document.documentElement, currWidth = docEl.clientWidth, currHeight = docEl.clientHeight;
 			window.onresize = function() {
-				timer && timer.cancel(); 
-				timer = S.later(self._resizeHandler, 500, false, self); 
+				/*
+				 *	ie6/7下在页面初始化时如果页面产生reflow body resize时，会触发window.resize，过滤掉这些无效的resize
+				 *	http://snook.ca/archives/javascript/ie6_fires_onresize/
+				 */
+				if(currWidth != docEl.clientWidth || currHeight != docEl.clientHeight) {
+					self._resizeHandler();//resize后页面变化太慢，故取消later,同时因为外层对clientWidth和clientHeight有一层过滤，就算ie6.7下不断触发这里函数体也没关系
+					//timer && timer.cancel(); 
+					//timer = S.later(self._resizeHandler, 500, false, self);
+				}
+				currWidth = docEl.clientWidth;
+				currHeight = docEl.clientHeight;
 			};
+		},
+
+		/**
+		 * addListener 模拟实现window.matchMedia('min-width: 1220px').addLinstener(callback) 常用于有不同临界值之间的js逻辑的响应
+		 * @description 只支持min-width和max-width mediaquery 类Respond.js实现响应式设计够用
+		 * @param {Object} linsternerObj {'(min-width: 1420px) and (max-width: 1619px)': function(){S.log('1420~1619')}}
+		 */
+		addListener: function(linsternerObj) {
+			var self = this;
+
+			if(self.get('isSupportAddListener')) { 
+				self._addNativeListener(linsternerObj); 
+			} else {
+				//立即执行
+				//self.get('isAutoExectListener') && self._addListenerPolyfill(linsternerObj); 
+				self._addListenerPolyfill(linsternerObj); 
+			}
+
+			self.set('listeners', linsternerObj);
 		},
 
 		/**
@@ -167,24 +244,22 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 				self._changeHtmlClass();	
 			}
 			if (!self.get('isSupportAddListener')) {
-				S.log('exect _addListenerPolyfill');
-				self._addListenerPolyfill();
+				self._addListenerPolyfill(self.get('listeners'));
 			} 
 		},
 
 		/**
 		 * _addNativeListener 依次注册listener 原生实现
 		 */
-		_addNativeListener: function() {
+		_addNativeListener: function(listeners) {
 			var self = this,
-				listeners = self.get('listeners'),
-				isAutoExectListener = self.get('isAutoExectListener'),
 				newListeners = {};
 
 			for (var listen in listeners) {
 				var mql = window.matchMedia(listen);
 				newListeners[mql.media] = listeners[listen];
-				isAutoExectListener && mql.matches && listeners[listen]();
+				//self.get('isAutoExectListener') && mql.matches && listeners[listen]();
+				mql.matches && listeners[listen]();
 				mql.addListener(function(mql) {
 					/*
 					 * 因mql.media的值会由原来的(min-width:480px) and (max-width: 1009px)变成	(max-width: 1009px) and (min-width:480px)
@@ -198,16 +273,25 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 		/**
 		 * _addListenerPolyfill 通过被执行在window.resize中，模拟实现window.matchMedia('xx').addLinsterner
 		 */
-		_addListenerPolyfill: function() {
-			var self = this, min, max,
-				listeners = self.get('listeners');
+		_addListenerPolyfill: function(listeners) {
+			var self = this, min, max;
 
-			for (var p in listeners) {
-				if (RespondTools.wave(p)) {
-					listeners[p]();
-					S.log('callback');
-				}
-			}
+            for (var p in listeners) {
+                if (RespondTools.wave(p)) {
+                    var listener = listeners[p];
+                    if (S.isFunction(listener)) {
+                        listener();
+                    }
+                    if (S.isArray(listener)) {
+                        for(var i = 0,fn; fn = listener[i]; i++){
+                            if (S.isFunction(listener[i])) {
+                                listener[i]();
+                            }
+                        }
+                    }
+
+                }
+            }
 		},
 
 		/**
@@ -251,7 +335,7 @@ KISSY.add('gallery/responsive/1.0/mediaquerypolyfill/index', function(S, Respond
 				}
 			}
         	// 不支持兼容模式，必需有doctype
-        	document.documentElement.className = self._replaceClass(document.documentElement.className, /vw\d+/, 'vw' + vwClass);
+        	document.documentElement.className = self._replaceClass(document.documentElement.className, /w\d+/, 'w' + vwClass);
 		}
 	});
 
