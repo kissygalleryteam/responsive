@@ -1,6 +1,6 @@
 # 综述
 MediaqueryPolyfill即media query兼容（ie8-）实现     
-实现思路：不支持mediaquery的在html节点上切换class（如响应的临界值为1220和1420：vw1220、vw1420）,在页面初始化前和window.resize的时候切换class。    
+实现思路：不支持mediaquery的在html节点上切换class（如响应的临界值为1220和1420：w1220、w1420）,在页面初始化前和window.resize的时候切换class。    
 版本：1.0    
 作者：妙净
 # demo示例
@@ -62,22 +62,26 @@ MediaqueryPolyfill即media query兼容（ie8-）实现
             background-color: red;
         }
     }
-    /*前缀vw = viewportWidth 区别于之前常用的w990 */
-    .vw1620 div {
+    
+    .w1620 div {
         background-color: blue;
     }
 
-    .vw1420 div {
+    .w1420 div {
         background-color: yellow;
     }
 
-    .vw1220 div {
+    .w1220 div {
         background-color: red;
     }
     /*
      * 上面media query和hack css的内容是重复的，可以根据需要引入less解决,一淘首页目前是引入less解决
      * 如果响应到mobile端，高分辨率的css hack多余了，如果多余好几k,可以考虑实现拆分成不同文件，根据不同终端输出。
      */
+    
+# 线上使用项目
+1. [一淘首页](http://www.etao.com)
+2. [一淘点评](http://dianping.etao.com)
 
 # 备注
 

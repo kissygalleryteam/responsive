@@ -20,15 +20,20 @@
     }
     
     S.use('gallery/responsive/1.0/respondtools/index', function (S, RespondTools) {
-        if (window.matchMedia('only all').matches) {
+        if (RespondTools.matchMedia('only all').matches) {
             alert('yeah support');
         } else {
             alert('not support');
         }
         if (RespondTools.wave('(max-width: 768px)')) {
-            alert('<=768px');
+            alert('width<=768px');
         } else {
-            alert('>768px');
+            alert('width>768px');
+        }
+        if (RespondTools.wave('(max-height: 400px)')) {
+            alert('height<=400px');
+        } else {
+            alert('height>400px');
         }
     });
     </script>
