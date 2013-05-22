@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>在临界值由平铺图片变为slide</title>
+<script type="text/javascript" src="http://a.tbcdn.cn/??s/kissy/1.3.0/seed.js" data-config="{combine:true}"></script>
+<link rel="stylesheet" href="http://a.tbcdn.cn/s/kissy/1.3.0/css/dpl/base.css" />
+<style>
+body {
+    background: white;
+}
+
+#slides {
+    width: 1200px;
+    margin-left:auto;
+    margin-right:auto;
+    position: relative;
+}
+
+#slides img {
+    width: 220px;
+    height: 220px;
+}
+
+.slides_container {
+}
+
+.slides_container .tab-pannel {
+    float: left;
+    margin-left: 40px;
+    margin-top: 40px; 
+}
+
+.next, .prev {
+    display: none;
+    position: absolute;
+    font-size: 50px;
+    color: #DEDEDE;
+    text-decoration: none;
+    top: 30%;
+}
+
+.next {
+    right: 0;
+}
+
+.next:hover, .prev:hover {
+    color: #06D;
+}
+
+@media (max-width: 1200px) {
+    #slides {
+        width: 800px;
+        height: 260px;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 768px) {
+    #slides {
+        width: 600px;
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    #slides {
+        width: 220px;
+        height: 220px;
+        overflow: hidden;
+    }
+
+    #slides .slides_container {
+        width: 220px;
+        height: 220px;
+        position: relative;
+    }
+
+    #slides .slides_container .tab-pannel {
+        width: 220px;
+        height: 220px;
+        margin: 0;
+    }
+
+    .prev, .next {
+        display: block;
+    }
+}
+</style>
+
+
+</head>
+<body>
+<div id="example">
+    <h1>在临界点由平铺图片变为slide</h1>
+    <p style="color:#aaa">pc下改变浏览器宽度测试效果哦~</p>
+
+    <div id="slides">
+        <div class="slides_container tab-content">
+            <div class="tab-pannel">
+                <img src="http://img01.taobaocdn.com/bao/uploaded/i1/15881020491092812/T1gJlKXrheXXXXXXXX_!!0-item_pic.jpg_b.jpg">
+            </div>
+            <div class="tab-pannel">
+                <img src="http://img01.taobaocdn.com/bao/uploaded/i1/15881020487125033/T1zbdvXB4hXXXXXXXX_!!0-item_pic.jpg_b.jpg">
+            </div>
+            <div class="tab-pannel">
+                <img src="http://img03.taobaocdn.com/bao/uploaded/i3/15881021983062209/T1d.d6XwFgXXXXXXXX_!!0-item_pic.jpg_b.jpg">
+            </div>
+            <div class="tab-pannel">
+                <img src="http://img01.taobaocdn.com/bao/uploaded/i1/15881020488381181/T1ptBLXphbXXXXXXXX_!!0-item_pic.jpg_b.jpg">
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="prev" id="J_pre">&lt;</a>
+        <a href="javascript:void(0);" class="next" id="J_next">&gt;</a>
+    </div>
+</div>
+
+<script>
+
+function initSlide() {
+    KISSY.log('initSlide');
+    KISSY.use('gallery/slide/1.0/',function(S,Slide){
+        window.C = new Slide('slides',{
+            effect:'vSlide',
+            timeout:3000,
+            speed:700,
+            selectedClass:'current',
+            adaptive_fixed_size: true,
+            carousel:true,
+            touchmove:true
+        });
+        S.one('#J_pre').on('click',function(e){
+            e.halt();
+            C.previous().stop().play();
+        });
+        S.one('#J_next').on('click',function(e){
+            e.halt();
+            C.next();
+        });
+    });
+}
+
+if(window.matchMedia('(max-width: 600px)').matches) {
+    KISSY.log('init');
+    initSlide();
+}
+
+window.matchMedia('(max-width: 600px)').addListener(function(mq){
+    KISSY.log('addListener');
+    if(mq.matches) {
+         KISSY.log('matches');
+         if(!window.C) initSlide();
+    } else {
+        //TODO销毁slide
+        KISSY.log('false');
+    }
+});
+
+</script>
+</body>
+</html>
