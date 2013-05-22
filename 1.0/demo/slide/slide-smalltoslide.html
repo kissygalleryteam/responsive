@@ -21,6 +21,7 @@ body {
     width: 220px;
     height: 220px;
 }
+
 .slides_container {
 }
 
@@ -47,13 +48,22 @@ body {
     color: #06D;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     #slides {
-        width: 600px;
+        width: 800px;
+        height: 260px;
+        overflow: hidden;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    #slides {
+        width: 600px;
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
     #slides {
         width: 220px;
         height: 220px;
@@ -82,10 +92,10 @@ body {
 </head>
 <body>
 <div id="example">
-    <h1>在临界值由平铺图片变为slide</h1>
+    <h1>在临界点由平铺图片变为slide</h1>
     <p style="color:#aaa">pc下改变浏览器宽度测试效果哦~</p>
 
-    <div id="slides"><!--Slide控件开始-->
+    <div id="slides">
         <div class="slides_container tab-content">
             <div class="tab-pannel">
                 <img src="http://img01.taobaocdn.com/bao/uploaded/i1/15881020491092812/T1gJlKXrheXXXXXXXX_!!0-item_pic.jpg_b.jpg">
@@ -102,33 +112,47 @@ body {
         </div>
         <a href="javascript:void(0);" class="prev" id="J_pre">&lt;</a>
         <a href="javascript:void(0);" class="next" id="J_next">&gt;</a>
-    </div><!--Slide控件结束-->
+    </div>
 </div>
 
 <script>
-window.matchMedia('(max-width: 480px)').addListener(function(mq){
-    if(mq.matches) {
-        KISSY.use('gallery/slide/1.0/',function(S,Slide){
-            var C = new Slide('slides',{
-                effect:'vSlide',
-                timeout:3000,
-                speed:700,
-                selectedClass:'current',
-                adaptive_fixed_size: true,
-                carousel:true,
-                touchmove:true
-            });
-            S.one('#J_pre').on('click',function(e){
-                e.halt();
-                C.previous().stop().play();
-            });
-            S.one('#J_next').on('click',function(e){
-                e.halt();
-                C.next();
-            });
+
+function initSlide() {
+    KISSY.log('initSlide');
+    KISSY.use('gallery/slide/1.0/',function(S,Slide){
+        window.C = new Slide('slides',{
+            effect:'vSlide',
+            timeout:3000,
+            speed:700,
+            selectedClass:'current',
+            adaptive_fixed_size: true,
+            carousel:true,
+            touchmove:true
         });
+        S.one('#J_pre').on('click',function(e){
+            e.halt();
+            C.previous().stop().play();
+        });
+        S.one('#J_next').on('click',function(e){
+            e.halt();
+            C.next();
+        });
+    });
+}
+
+if(window.matchMedia('(max-width: 600px)').matches) {
+    KISSY.log('init');
+    initSlide();
+}
+
+window.matchMedia('(max-width: 600px)').addListener(function(mq){
+    KISSY.log('addListener');
+    if(mq.matches) {
+         KISSY.log('matches');
+         if(!window.C) initSlide();
     } else {
-        S.log('false');
+        //TODO销毁slide
+        KISSY.log('false');
     }
 });
 
