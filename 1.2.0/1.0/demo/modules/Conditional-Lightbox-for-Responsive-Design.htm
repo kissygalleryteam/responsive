@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by Brad Frost (http://codepen.io/bradfrost/pen/tfCAp)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>Conditional Lightbox for Responsive Design - CodePen</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel='stylesheet' href='http://bradfrost.github.com/this-is-responsive/styles.css'>
+
+  <style>
+img {
+  max-width: 100%;
+}
+
+.let-there-be-light {
+   display: block;
+   position: relative; 
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.let-there-be-light:hover .msg {
+   background: rgba(0,0,0,0.7); 
+}
+
+.msg {
+  display: none;
+}
+
+.lightbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 3em 1em;
+    background: rgba(0,0,0,0.9);
+  }
+
+@media all and (min-width: 45em) {
+
+    body:after { /* http://adactio.com/journal/5429/ */
+        content: 'widescreen';
+        display: none;
+    }
+
+    .msg {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10em;
+      margin-left: -5em;
+      z-index; 1;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border-radius: 2em;
+      padding: 1em;
+    }
+}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+</head>
+
+<body>
+
+  <div class="pattern">
+<a href="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_landscape.png" class="let-there-be-light">
+  <span class="msg">Let there be light</span>
+  <img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="" />
+</a>
+<div>
+</div>
+<!--End Pattern HTML-->
+
+<div class="container">	
+		<section class="pattern-description">
+			<h1>Conditional Lightbox</h1>
+      <p>A lightbox that only initiates when enough screen space is available. The default behavior links through to the larger image asset providing a better experience for small screen users, while still providing a lightbox experience when it makes contextual sense. <a href=" http://bradfrostweb.com/blog/post/conditional-lightbox/">Read more about conditional lightbox</a></p>
+		</section>
+		<footer role="contentinfo">   
+			<div>
+				<nav id="menu">
+					<a href="http://bradfrost.github.com/this-is-responsive/patterns.html">←More Responsive Patterns</a>
+				</nav>
+			</div>
+		</footer>
+	</div>
+
+  <script src="//code.jquery.com/jquery-latest.js"></script>
+
+  <script>
+var size = window.getComputedStyle(document.body,':after').getPropertyValue('content'); //http://adactio.com/journal/5429/
+
+$(document).ready(function(){
+  lightboxInit();
+});
+
+function lightboxInit() {
+  $('.let-there-be-light').click(function(e){
+    if(size == 'widescreen') {
+      e.preventDefault();
+      var $thisHref = $(this).attr('href');
+      buildLightBox($thisHref);
+    }
+  }); 
+}
+
+function buildLightBox(src) {
+   $('<div class="lightbox">').appendTo('body').html('<img src="'+src+'" alt="" />');
+
+  $('body').on('click','.lightbox',function(e) {
+     $('.lightbox').remove();
+  });
+}
+
+$(window).resize(function() {
+    size = window.getComputedStyle(document.body,':after').getPropertyValue('content');
+});
+  </script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+</body>
+
+</html>

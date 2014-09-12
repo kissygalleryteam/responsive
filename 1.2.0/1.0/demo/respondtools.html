@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>KISSY gallery - response - mediaquery探测</title>
+    <script src="http://a.tbcdn.cn/s/kissy/1.3.0/seed.js" charset="utf-8"></script>
+    <script>
+    var S = KISSY;
+    if(S.Config.debug){
+        S.config({
+            packages:[
+                {
+                    name:"gallery", // 包名
+                    path:"../../../", // 包对应路径, 相对路径指相对于当前页面路径
+                    charset:"utf-8",
+                    ignorePackageNameInUri: true
+                }
+            ]
+        });
+    }
+    
+    S.use('gallery/responsive/1.0/respondtools/index', function (S, RespondTools) {
+        if (RespondTools.matchMedia('only all').matches) {
+            alert('yeah support');
+        } else {
+            alert('not support');
+        }
+        if (RespondTools.wave('(max-width: 768px)')) {
+            alert('width<=768px');
+        } else {
+            alert('width>768px');
+        }
+        if (RespondTools.wave('(max-height: 400px)')) {
+            alert('height<=400px');
+        } else {
+            alert('height>400px');
+        }
+    });
+    </script>
+</head>
+<body>
+</body>
+</html>

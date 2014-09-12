@@ -1,0 +1,3 @@
+/*! responsive - v1.0 - 2013-04-28 4:36:58 PM
+* Copyright (c) 2013 miaojing; Licensed  */
+KISSY.add("gallery/responsive/1.0/matchmedia/index",function(){"use strict";function e(e){var t,n=document,i=n.documentElement,s=i.firstElementChild||i.firstChild,d=n.createElement("body"),r=n.createElement("div");return r.id="mq-test-1",r.style.cssText="position:absolute;top:-100em",d.style.background="none",d.appendChild(r),r.innerHTML='&shy;<style media="'+e+'"> #mq-test-1 { width: 42px; }</style>',i.insertBefore(d,s),t=42===r.offsetWidth,i.removeChild(d),t}return e});

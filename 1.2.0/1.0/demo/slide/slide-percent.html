@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Demo</title>
+<script type="text/javascript" src="http://a.tbcdn.cn/??s/kissy/1.3.0/seed.js" data-config="{combine:true}"></script>
+<link rel="stylesheet" href="http://a.tbcdn.cn/s/kissy/1.3.0/css/dpl/base.css" />
+<style>
+body {
+    background: white;
+}
+
+#example {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#slides {
+    max-width: 500px;
+    position: relative;
+    float: left;
+    border: 1px solid red;
+}
+
+#slides img {
+    max-width: 100%;
+    height: auto;
+}
+
+.slides_container {
+    max-width: 500px;
+    width: 30%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slides_container .tab-pannel {
+}
+
+.next, .prev {
+    position: absolute;
+    font-size: 50px;
+    color: #DEDEDE;
+    text-decoration: none;
+    top: 30%;
+}
+
+.next {
+    right: 0;
+}
+
+.next:hover, .prev:hover {
+    color: #06D;
+}
+/*
+@media (min-width: 990px) {
+    #slides {
+        width: 250px;
+    }
+    .slides_container {
+        width: 250px!important; 
+        height: 150px!important;
+    }
+    .slides_container .tab-pannel {
+        width: 250px!important;
+        height: 150px!important;
+    }
+    .slides_container .tab-pannel img {
+        width: 250px!important;
+        height: 150px!important;
+    }
+}
+
+@media (min-width: 1200px) {
+    #slides {
+        width: 500px;
+    }
+    .slides_container {
+        width: 500px!important;
+        height: 300px!important;
+    }
+    .slides_container .tab-pannel {
+        width: 500px!important;
+        height: 300px!important;
+    }
+    .slides_container .tab-pannel img {
+        width: 500px!important;
+        height: 300px!important;
+    }
+}*/
+</style>
+
+
+</head>
+<body>
+<div id="example">
+    <h1>自适应等比缩放slide</h1>
+    <p style="color:#aaa">pc下改变浏览器宽度测试效果哦~</p>
+    <div id="slides"><!--Slide控件开始-->
+        <div class="slides_container tab-content">
+            <div class="tab-pannel">
+                <img src="http://img01.taobaocdn.com/bao/uploaded/i1/14106034930848281/T2mVL0XoFXXXXXXXXX_!!1104454106-2-p4pbp.png">
+            </div>
+            <div class="tab-pannel">
+                <img src="http://img02.taobaocdn.com/tps/i2/T1WBCIXphfXXbogjYy-500-300.png">
+            </div>
+            <div class="tab-pannel">
+                <img src="http://img02.taobaocdn.com/tps/i2/T1MfWHXBBhXXcMejYy-500-300.jpg">
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="prev" id="J_pre">&lt;</a>
+        <a href="javascript:void(0);" class="next" id="J_next">&gt;</a>
+    </div><!--Slide控件结束-->
+</div>
+
+<script>KISSY.use('gallery/slide/1.0/',function(S,Slide){
+    var C = new Slide('slides',{
+        //autoSlide:true,
+        effect:'vSlide',
+        timeout:3000,
+        speed:700,
+        selectedClass:'current',
+        //adaptive_fixed_size: true,
+        carousel:true,
+        touchmove:true,
+        adaptive_width:function(){
+         return document.body.offsetWidth;
+       }
+    });
+    S.one('#J_pre').on('click',function(e){
+        e.halt();
+        C.previous().stop().play();
+    });
+    S.one('#J_next').on('click',function(e){
+        e.halt();
+        C.next();
+    });
+});</script>
+
+</body>
+</html>

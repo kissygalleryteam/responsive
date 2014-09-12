@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by Brad Frost (http://codepen.io/bradfrost/pen/dlwBD)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>Accordion to Full - CodePen</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel='stylesheet' href='http://bradfrost.github.com/this-is-responsive/styles.css'>
+
+  <style>
+.tab {
+  padding: 1em;
+  margin: 0;
+  position: relative;
+  cursor: pointer;
+  outline: 0;
+}
+.tab:after {
+    	content: '+';
+			position: absolute;
+			top: 0;
+			right: 0;
+			display: block;
+			font-size: 1.5em;
+			padding: 0.5em;
+}
+.tab.active {
+  background: rgba(0,0,0,0.3);
+}
+.tab.active:after {
+   content: '-'; 
+}
+
+.panel { 
+  overflow: hidden;
+}
+.js .panel {
+  max-height: 0;
+  -webkit-transition: max-height 0.3s ease-out;
+  -moz-transition: max-height 0.3s ease-out;
+  -ms-transition: max-height 0.3s ease-out;
+  -o-transition: max-height 0.3s ease-out;
+  transition: max-height 0.3s ease-out;
+}
+.js .panel.active {
+  max-height: 30em;
+}
+.panel p {
+  padding: 1em;
+}
+.panel p:last-child {
+   margin: 0; 
+}
+
+/* Where it makes sense to display the full content */
+@media all and (min-width:50em) {
+  .tab {
+    cursor: default;
+  } 
+  .tab.active {
+     background: none; 
+  }
+  .tab:after, .tab.active:after {
+     content: ""; 
+  }
+
+  .js .panel, .js .panel.active {
+     max-height: none; 
+  }
+}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+</head>
+
+<body>
+
+  <!--Pattern HTML-->
+  <div id="pattern" class="pattern">
+    <!--Begin Pattern HTML-->
+    <h3 id="tab1" class="tab accordian" aria-controls="panel1" role="tab" tabindex="0">Section 1</h3>
+
+  <div id="panel1" class="panel accordian" aria-labeledby="tab1" role="tabpanel">
+  	<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+	</div>
+
+	<h3 id="tab2" class="tab accordian" aria-controls="panel2" role="tab" tabindex="-1">Section 2</h3>
+	<div id="panel2" class="panel accordian" aria-labeledby="tab2" role="tabpanel">
+		<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+	</div>
+
+	<h3 id="tab3" class="tab accordian" aria-controls="panel3" role="tab" tabindex="-1">Section 3</h3>
+	<div id="panel3" class="panel accordian" aria-labeledby="tab3" role="tabpanel">
+		<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+	</div>
+
+	<h3 id="tab4" class="tab accordian" aria-controls="panel4" role="tab" tabindex="-1">Section 4</h3>
+	<div id="panel4" class="panel accordian" aria-labeledby="tab4" role="tabpanel">
+	 	<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+	</div>
+
+	</div>
+	<!--End Pattern HTML-->
+
+	<div class="container">	
+		<section class="pattern-description">
+			<h1>Accordion to Full</h1>
+      <p>Small screens are presented with a collapsed accordion of the sections, and when enough screen space becomes available the sections expand and show the full content. </p>
+      <h2>Considerations</h2>
+      <ul>
+        <li>Use proper ARIA roles</li>
+        <li>Only hide panel content when Javascript becomes available in order to keep content accessible for users with poor or no javascript support.</li>
+        <li>Use clear labels (typically a plus sign or downward caret) to indicate accordions are interactive</li>
+      </ul>
+      <h2>Resources</h2>
+      <ul>
+        <li><a href="http://test.cita.uiuc.edu/aria/tabpanel/tabpanel2.php">ARIA Tabpanel example</a></li>
+      </ul>
+		</section>
+		<footer role="contentinfo">   
+			<div>
+				<nav id="menu">
+					<a href="http://bradfrost.github.com/this-is-responsive/patterns.html">&larr;More Responsive Patterns</a>
+				</nav>
+			</div>
+		</footer>
+	</div>
+
+  <script src="//code.jquery.com/jquery-latest.js"></script>
+
+  <script>
+$(document).ready(function() {
+      $('body').addClass('js');
+  	  var $tab = $('.tab');
+
+		$tab.on("click", function(e){
+      e.preventDefault();
+      var $this = $(this);
+      $this.toggleClass('active');
+      $this.next('.panel').toggleClass('active');
+    });
+});
+  </script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+</body>
+
+</html>

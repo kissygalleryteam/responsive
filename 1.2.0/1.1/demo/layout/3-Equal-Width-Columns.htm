@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by Brad Frost (http://codepen.io/bradfrost/pen/orKvD)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>3 Equal-Width Columns - CodePen</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel='stylesheet' href='http://bradfrost.github.com/this-is-responsive/styles.css'>
+
+  <style>
+.col-group > div {
+  padding: 1em 1em 0;
+}
+
+@media screen and (min-width: 50em) {
+  .col-group {
+    overflow: hidden;
+  }
+  .col-group > div {
+    float: left;
+    width: 33.3333333%;
+  }
+}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+</head>
+
+<body>
+
+  <div id="pattern" class="pattern">
+  <div class="col-group">
+    <div>
+      <h2>Here's a column of text</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque turpis diam, tincidunt nec convallis vitae, dapibus vitae enim. Nam bibendum nisl in risus imperdiet vestibulum.</p>
+    </div>
+    <div>
+      <h2>Here's another column of text</h2>
+      <p>Sed sit amet molestie diam. Etiam adipiscing dictum eros, vitae feugiat augue convallis sit amet. Nunc quis massa non dolor dictum condimentum.</p>
+    </div>
+    <div>
+      <h2>Here's the third column</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque turpis diam, tincidunt nec convallis vitae, dapibus vitae enim. Nam bibendum nisl in risus imperdiet vestibulum.</p>
+    </div>
+  </div>
+</div>
+<!--End Pattern HTML-->
+
+<div class="container">  
+  <section class="pattern-description">
+    <h1>3 Equal-Width Columns</h1>
+    <p>Content that becomes 3 equal columns when space allows.</p>
+  </section>
+  <footer role="contentinfo">   
+    <div>
+      <nav id="menu">
+        <a href="http://bradfrost.github.com/this-is-responsive/patterns.html#">&larr;More Responsive Patterns</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+  <script src=""></script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+</body>
+
+</html>

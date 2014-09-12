@@ -1,0 +1,18 @@
+body, h2, fieldset, legend {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 12px/1.5 Tahoma, Arial, '\5fae\8f6f\96c5\9ed1', sans-serif;
+	background: url(imgs/body-bg.jpg) no-repeat center top #0D1424;
+}
+
+.main-wrap {
+	padding: 0 15px;
+	color: #eee;
+}
+
+.pagetitle {
+	padding: 10px 0;
+}

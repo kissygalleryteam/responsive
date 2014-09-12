@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dropdowns</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">	
+		body, nav, ul, li, a {
+		    margin: 0;
+		    padding: 0;
+		}
+
+		body {
+		    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+
+		a {
+		    text-decoration: none;
+		}
+
+		.container {
+		    width: 90%;
+		    max-width: 900px;
+		    margin: 10px auto;
+		}
+
+		.toggleMenu {
+		    display: none;
+		    background: #666;
+		    padding: 10px 15px;
+		    color: #fff;
+		}
+
+		.nav {
+		    list-style: none;
+		    *zoom: 1;
+		    background: #175e4c;
+		}
+
+		.nav:before,
+		.nav:after {
+		    content: " ";
+		    display: table;
+		}
+
+		.nav:after {
+		    clear: both;
+		}
+
+		.nav ul {
+		    list-style: none;
+		    width: 9em;
+		}
+
+		.nav a {
+		    padding: 10px 15px;
+		    color: #fff;
+		}
+
+		.nav li {
+		    position: relative;
+		}
+
+		.nav > li {
+		    float: left;
+		    border-top: 1px solid #104336;
+		}
+
+		.nav > li > .parent {
+		    background-image: url("http://codepen.io/images/downArrow.png");
+		    background-repeat: no-repeat;
+		    background-position: right;
+		}
+
+		.nav > li > a {
+		    display: block;
+		}
+
+		.nav li  ul {
+		    position: absolute;
+		    left: -9999px;
+		}
+
+		.nav > li.hover > ul {
+		    left: 0;
+		}
+
+		.nav li li.hover ul {
+		    left: 100%;
+		    top: 0;
+		}
+
+		.nav li li a {
+		    display: block;
+		    background: #1d7a62;
+		    position: relative;
+		    z-index: 100;
+		    border-top: 1px solid #175e4c;
+		}
+
+		.nav li li li a {
+		    background: #249578;
+		    z-index: 200;
+		    border-top: 1px solid #1d7a62;
+		}
+
+		@media screen and (max-width: 768px) {
+		    .active {
+		        display: block;
+		    }
+
+		    .nav > li {
+		        float: none;
+		    }
+
+		    .nav > li > .parent {
+		        background-position: 95% 50%;
+		    }
+
+		    .nav li li .parent {
+		        background-image: url("http://codepen.io/images/downArrow.png");
+		        background-repeat: no-repeat;
+		        background-position: 95% 50%;
+		    }
+
+		    .nav ul {
+		        display: block;
+		        width: 100%;
+		    }
+
+		    .nav > li.hover > ul , .nav li li.hover ul {
+		        position: static;
+		    }
+		} 
+	</style>
+</head>
+<body>
+<div class="container">	
+<a class="toggleMenu" href="#">Menu</a>
+<ul class="nav">
+	<li  class="test">
+		<a href="#">Shoes</a>
+		<ul>
+			<li>
+				<a href="#">Womens</a>
+				<ul>
+					<li><a href="#">Sandals</a></li>
+					<li><a href="#">Sneakers</a></li>
+					<li><a href="#">Wedges</a></li>
+					<li><a href="#">Heels</a></li>
+					<li><a href="#">Loafers</a></li>
+					<li><a href="#">Flats</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Mens</a>
+				<ul>
+					<li><a href="#">Loafers</a></li>
+					<li><a href="#">Sneakers</a></li>
+					<li><a href="#">Formal</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#">Shirts</a>
+		<ul>
+			<li>
+				<a href="#">Mens</a>
+				<ul>
+					<li><a href="#">T-Shirts</a></li>
+					<li><a href="#">Dress Shirts</a></li>
+					<li><a href="#">Tank Tops</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Womens</a>
+				<ul>
+					<li><a href="#">T-Shirts</a></li>
+					<li><a href="#">Blouses</a></li>
+					<li><a href="#">Dress Shirts</a></li>
+					<li><a href="#">Tunics</a></li>
+					<li><a href="#">Camisoles</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#">Pants</a>
+		<ul>
+			<li>
+				<a href="#">Mens</a>
+				<ul>
+					<li><a href="#">Trousers</a></li>
+					<li><a href="#">Slacks</a></li>
+					<li><a href="#">Jeans</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Womens</a>
+				<ul>
+					<li><a href="#">Trousers</a></li>
+					<li><a href="#">Slacks</a></li>
+					<li><a href="#">Jeans</a></li>
+					<li><a href="#">Leggings</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#">Skirts</a>
+		<ul>
+			<li>
+				<a href="#">Long</a>
+				<ul>
+					<li><a href="#">Denim</a></li>
+					<li><a href="#">Knits</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Short</a>
+				<ul>
+					<li><a href="#">Denim</a></li>
+					<li><a href="#">Knits</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Mini</a>
+				<ul>
+					<li><a href="#">Denim</a></li>
+					<li><a href="#">Knits</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#">Dresses</a>
+		<ul>
+			<li>
+				<a href="#">Casual</a>
+			</li>
+			<li>
+				<a href="#">Formal</a>
+				<ul>
+					<li><a href="#">Wedding</a></li>
+					<li><a href="#">Party</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</li>
+	<li>
+		<a href="#">Sweaters</a>
+		<ul>
+			<li>
+				<a href="#">Mens</a>
+				<ul>
+					<li><a href="#">Wool</a></li>
+					<li><a href="#">Knitwear</a></li>
+					<li><a href="#">Light Sweaters</a></li>
+					<li><a href="#">Cardigans</a></li>
+					<li><a href="#">Hoodies</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Womens</a>
+				<ul>
+					<li><a href="#">Wool</a></li>
+					<li><a href="#">Knitwear</a></li>
+					<li><a href="#">Light Sweaters</a></li>
+					<li><a href="#">Cardigans</a></li>
+					<li><a href="#">Hoodies</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#">Accessories</a>
+		<ul>
+			<li>
+				<a href="#">Womens</a>
+				<ul>
+					<li><a href="#">Belts</a></li>
+					<li><a href="#">Bags</a></li>
+					<li><a href="#">Jewelery</a></li>
+					<li><a href="#">Hats</a></li>
+					<li><a href="#">Eyewear</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Mens</a>
+				<ul>
+					<li><a href="#">Belts</a></li>
+					<li><a href="#">Hats</a></li>
+					<li><a href="#">Eyewear</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#">Outerwear</a>
+		<ul>
+			<li>
+				<a href="#">Womens</a>
+				<ul>
+					<li><a href="#">Winter</a></li>
+					<li><a href="#">Spring/Fall</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Mens</a>
+				<ul>
+					<li><a href="#">Winter</a></li>
+					<li><a href="#">Spring/Fall</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#">Shipping Info</a>
+	</li>
+</ul>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	
+var ww = document.body.clientWidth;
+
+$(document).ready(function() {
+    $(".nav li a").each(function() {
+        if ($(this).next().length > 0) {
+            $(this).addClass("parent");
+        };
+    })
+
+    $(".toggleMenu").click(function(e) {
+        e.preventDefault();
+        $(this).toggleClass("active");
+        $(".nav").toggle();
+    });
+    adjustMenu();
+})
+
+$(window).bind('resize orientationchange', function() {
+    ww = document.body.clientWidth;
+    adjustMenu();
+});
+
+var adjustMenu = function() {
+    if (ww < 768) {
+        $(".toggleMenu").css("display", "inline-block");
+        if (!$(".toggleMenu").hasClass("active")) {
+            $(".nav").hide();
+        } else {
+            $(".nav").show();
+        }
+        $(".nav li").unbind('mouseenter mouseleave');
+        $(".nav li a.parent").unbind('click').bind('click', function(e) {
+            // must be attached to anchor element to prevent bubbling
+            e.preventDefault();
+            $(this).parent("li").toggleClass("hover");
+        });
+    } else if (ww >= 768) {
+        $(".toggleMenu").css("display", "none");
+        $(".nav").show();
+        $(".nav li").removeClass("hover");
+        $(".nav li a").unbind('click');
+        $(".nav li").unbind('mouseenter mouseleave').bind('mouseenter mouseleave', function() {
+            // must be attached to li so that mouseleave is not triggered when hover over submenu
+            $(this).toggleClass('hover');
+        });
+    }
+} 
+</script>
+</body>
+</html>

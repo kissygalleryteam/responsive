@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Multi Nav</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style type="text/css">
+	* 									{ margin: 0; padding: 0; }
+	body								{ font: 14px Helvetica, Sans-Serif; } 
+	#page-wrap							{ width: 800px; margin: 25px auto; } 
+	a									{ text-decoration: none; }
+	ul									{ list-style: none; }
+	p                                   { margin: 15px 0; }
+	a.menu-link{
+		display: block;
+		color: black;
+		padding: 4px 8px;
+		border-right: 1px solid #333;
+		background: #ccc;
+	}
+
+	.mini-menu a{
+		display: block;
+		color: black;
+		padding: 4px 8px;
+		border-right: 1px solid #333;
+		background: #f6f6f6;
+	}
+
+	body a.hide{
+		display: none;
+	}
+
+	/* 
+		LEVEL ONE
+	*/
+	ul.dropdown                         { position: relative; }
+	ul.dropdown li                      { font-weight: bold; float: left; zoom: 1; background: #ccc; }
+	ul.dropdown a:hover		            { color: #000; }
+	ul.dropdown a:active                { color: #ffa500; }
+	ul.dropdown li a                    { display: block; padding: 4px 8px; border-right: 1px solid #333;
+		 								  color: #222; }
+	ul.dropdown li:last-child a         { border-right: none; } /* Doesn't work in IE */
+	ul.dropdown li.hover,
+	ul.dropdown li:hover                { background: #F3D673; color: black; position: relative; }
+	ul.dropdown li.hover a              { color: black; }
+
+
+	/* 
+		LEVEL TWO
+	*/
+	ul.dropdown ul 						{ width: 220px; visibility: hidden; position: absolute; top: 100%; left: 0; }
+	ul.dropdown ul li 					{ font-weight: normal; background: #f6f6f6; color: #000; 
+										  border-bottom: 1px solid #ccc; float: none; _display: inline; _width: 100%;}
+										  
+	                                    /* IE 6 & 7 Needs Inline Block */
+	ul.dropdown ul li a					{ border-right: none; width: 100%; display: inline-block; } 
+
+	/* 
+		LEVEL THREE
+	*/
+	ul.dropdown ul ul 					{ left: 100%; top: 0; }
+	ul.dropdown li:hover > ul 			{ visibility: visible; }
+  </style>
+</head>
+<body>
+  <a href="#menu" class="menu-link hide">Menu</a>
+  <ul class="dropdown">
+        	<li><a href="#">For Facilities</a>
+        		<ul class="sub_menu">
+        			 <li><a href="#">Artificial Turf</a></li>
+        			 <li>
+        				<a href="#">Batting Cages</a>
+        				<ul>
+        					<li><a href="#">Indoor</a></li>
+        					<li><a href="#">Outdoor</a></li>
+        				</ul>
+        			 </li>
+        			 <li><a href="#">Benches &amp; Bleachers</a></li>
+        			 <li><a href="#">Communication Devices</a></li>
+        			 <li><a href="#">Dugouts</a></li>
+        			 <li><a href="#">Fencing &amp; Windscreen</a></li>
+        			 <li><a href="#">Floor Protectors</a></li>
+        			 <li><a href="#">Foul Poles</a></li>
+        			 <li><a href="#">Netting</a></li>
+        			 <li><a href="#">Outdoor Furniture &amp; Storage</a></li>
+        			 <li><a href="#">Outdoor Signs</a></li>
+        			 <li><a href="#">Padding</a></li>
+        			 <li><a href="#">Scoreboards</a></li>
+        			 <li><a href="#">Shade Structures</a></li>
+        			 <li><a href="#"> - VIEW ALL - </a></li>
+        		</ul>
+        	</li>
+        	<li><a href="#">Field Maintenance</a>
+        		<ul class="sub_menu">
+        			<li><a href="#">All-in-One Team Cart</a></li>
+        			<li><a href="#">Air &amp; Electrical Reels</a></li>
+        			 <li><a href="#">Field Drags</a></li>
+        			 <li>
+        				<a href="#">Field Marking Equipment</a>
+        				<ul>
+        					<li><a href="#">Batter's Box Templates</a></li>
+        					<li><a href="#">Dryline Markers</a></li>
+        					<li><a href="#">Field Paint</a></li>
+        					<li><a href="#">Field Sprayers</a></li>
+        					<li><a href="#">Stencils</a></li>
+        				</ul>
+        			 </li>
+        			 <li>
+        				<a href="#">Field Tarps</a>
+        				<ul>
+        					<li><a href="#">Area Tarps</a></li>
+        					<li><a href="#">Growth Covers / Protectors</a></li>
+        					<li><a href="#">Infield Tarps</a></li>
+        					<li><a href="#">Tarp Accessories</a></li>
+        				</ul>
+        			 </li>
+        			 <li><a href="#">Hand Tools</a></li>
+        			 <li>
+        				<a href="#">Irrigation, Hoses, Nozzles</a>
+        				<ul>
+        					<li><a href="#">Hoses &amp; Hose Reels</a></li>
+        					<li><a href="#">Irrigation</a></li>
+        					<li><a href="#">Nozzles</a></li>
+        				</ul>
+        			 </li>
+        			 <li><a href="#">Layout &amp; Measurement Tools</a></li>
+        			 <li><a href="#">Moisture Removal</a></li>
+        			 <li><a href="#">Mound &amp; Home Plate Fortification</a></li>
+        			 <li><a href="#">Mowers &amp; Stripers</a></li>
+        			 <li><a href="#">Soil &amp; Enviornmental Management</a></li>
+        			 <li><a href="#">Soil Amendments</a></li>
+        			 <li><a href="#">Spreaders &amp; Sweepers</a></li>
+        			 <li><a href="#"> - VIEW ALL - </a></li>
+        		</ul>
+        	</li>
+        	<li><a href="#">Game-Practice Equipment</a>
+        		<ul class="sub_menu">
+        			 <li>
+        				<a href="#">Baseball - Softball</a>
+        				<ul>
+        					<li><a href="#">Base Accessories</a></li>
+        					<li><a href="#">Bases &amp; Home Plates</a></li>
+        					<li><a href="#">Game Accessories</a></li>
+        					<li><a href="#">Pitching Rubbers</a></li>
+        				</ul>
+        			 </li>
+        			 <li>
+        				<a href="#">Batting Practice Equipment</a>
+        				<ul>
+        					<li><a href="#">Backstops</a></li>
+        					<li><a href="#">Infield Screens</a></li>
+        					<li><a href="#">Jugs Pitching Machines</a></li>
+        					<li><a href="#">Turf Mats</a></li>
+        					<li><a href="#">Turf Protectors</a></li>
+        					<li><a href="#">Replacement Accessories</a></li>
+        				</ul>
+        			 </li>
+        			 <li>
+        				<a href="#">Batting Cages</a>
+        				<ul>
+        					<li><a href="#">Indoor</a></li>
+        					<li><a href="#">Outdoor</a></li>
+        				</ul>
+        			 </li>
+        			 <li>
+        				<a href="#">Portable Mounds</a>
+        				<ul>
+        					<li><a href="#">Batting Practice Mounds</a></li>
+        					<li><a href="#">Game Mounds</a></li>
+        					<li><a href="#">Practice Mounds</a></li>
+        				</ul>
+        			 </li>
+        			 <li>
+        				<a href="#">Football</a>
+        				<ul>
+        					<li><a href="#">First Down Markers</a></li>
+        					<li><a href="#">Football Accessories</a></li>
+        					<li><a href="#">Football Goalposts</a></li>
+        				</ul>
+        			 </li>
+        			 <li>
+        				<a href="#">Soccer</a>
+        				<ul>
+        					<li><a href="#">Soccer Goals</a></li>
+        					<li><a href="#">Soccer Accessories</a></li>
+        				</ul>
+        			 </li>
+        			 <li><a href="#"> - VIEW ALL - </a></li>
+        		</ul>
+        	</li>
+        	<li><a href="#">Training &amp; Conditioning</a>
+        		<ul class="sub_menu">
+        			 <li><a href="#">Ladders &amp; Sticks</a></li>
+        			 <li><a href="#">Hurdles</a></li>
+        			 <li><a href="#">Training Accessories</a></li>
+        			 <li><a href="#">Smart-Cart Training System</a></li>
+        			 <li><a href="#">Smart-Hurdle Collection</a></li>
+        			 <li><a href="#"> - VIEW ALL - </a></li>
+        		</ul>
+        	</li>
+        	<li><a href="#">Books-Videos</a>
+        		<ul class="sub_menu">
+        			 <li><a href="#">Field Design &amp; Maintenance</a></li>
+        			 <li><a href="#">Turf Management</a></li>
+        			 <li><a href="#">Training</a></li>
+        			 <li><a href="#"> - VIEW ALL - </a></li>
+        		</ul>
+        	</li>
+  </ul>
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript">
+  	$(function(){
+	    $("ul.dropdown li").hover(function(){
+	        $(this).addClass("hover");
+	        $('ul:first',this).css('visibility', 'visible');
+	    }, function(){
+	        $(this).removeClass("hover");
+	        $('ul:first',this).css('visibility', 'hidden');
+	    });
+	    $("ul.dropdown li ul li:has(ul)").find("a:first").append(" &raquo; ");
+	});
+	var ww = document.body.clientWidth;
+	$(document).ready(function() {
+		adjustMenu();
+	})
+
+	$(window).bind('resize orientationchange', function() {
+		ww = document.body.clientWidth;
+		adjustMenu();
+	});
+
+	$('.menu-link').click(function(e){
+		if(!$('.mini-menu').length>0){
+			$('.menu-link').after("<div class='mini-menu'></div>")
+			$('ul.dropdown').children('li').children('a').clone().appendTo($('.mini-menu'));
+		}else{
+			$('.mini-menu').toggle();
+		}
+	})
+
+	var adjustMenu = function() {
+		if(ww < 800){
+		   if($('.menu-link').hasClass('hide')){
+		   	   $('.menu-link').removeClass('hide');
+		   	   $('ul.dropdown').hide();
+		   }
+		}else if(ww >= 800){
+		   if(!$('.menu-link').hasClass('hide')){
+		   	 $('.menu-link').addClass('hide');
+		   	 $('ul.dropdown').show();
+		   	 if($('.mini-menu')){
+		   	 	$('.mini-menu').hide();
+		   	 }
+		   }
+		}
+	}
+
+  </script>
+</body>
+</html>

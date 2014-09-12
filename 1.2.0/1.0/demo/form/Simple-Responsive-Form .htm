@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by Chris Coyier (http://codepen.io/chriscoyier/pen/DmnlJ)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>Simple Responsive Form - CodePen</title>
+
+  <style>article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block}audio,canvas,video{display:inline-block;*display:inline;*zoom:1}audio:not([controls]){display:none}[hidden]{display:none}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html,button,input,select,textarea{font-family:sans-serif}body{margin:0}a:focus{outline:thin dotted}a:hover,a:active{outline:0}h1{font-size:2em;margin:0.67em 0}h2{font-size:1.5em;margin:0.83em 0}h3{font-size:1.17em;margin:1em 0}h4{font-size:1em;margin:1.33em 0}h5{font-size:0.83em;margin:1.67em 0}h6{font-size:0.75em;margin:2.33em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}blockquote{margin:1em 40px}dfn{font-style:italic}mark{background:#ff0;color:#000}p,pre{margin:1em 0}pre,code,kbd,samp{font-family:monospace, serif;_font-family:'courier new', monospace;font-size:1em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}q{quotes:none}q:before,q:after{content:'';content:none}small{font-size:75%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}dl,menu,ol,ul{margin:1em 0}dd{margin:0 0 0 40px}menu,ol,ul{padding:0 0 0 40px}nav ul,nav ol{list-style:none;list-style-image:none}img{border:0;-ms-interpolation-mode:bicubic}a img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}form{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0;white-space:normal;*margin-left:-7px}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}button,input{line-height:normal}button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;*overflow:visible}button[disabled],input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;*height:13px;*width:13px}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-decoration,input[type="search"]::-webkit-search-cancel-button{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+</style>
+
+  <style>
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px 15%;
+}
+form header {
+  margin: 0 0 20px 0; 
+}
+form header div {
+  font-size: 90%;
+  color: #999;
+}
+form header h2 {
+  margin: 0 0 5px 0;
+}
+form > div {
+  clear: both;
+  overflow: hidden;
+  padding: 1px;
+  margin: 0 0 10px 0;
+}
+form > div > fieldset > div > div {
+  margin: 0 0 5px 0;
+}
+form > div > label,
+legend {
+	width: 25%;
+  float: left;
+  padding-right: 10px;
+}
+form > div > div,
+form > div > fieldset > div {
+  width: 75%;
+  float: right;
+}
+form > div > fieldset label {
+	font-size: 90%;
+}
+fieldset {
+	border: 0;
+  padding: 0;
+}
+
+input[type=text],
+input[type=email],
+input[type=url],
+input[type=password],
+textarea {
+	width: 100%;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+input[type=text],
+input[type=email],
+input[type=url],
+input[type=password] {
+  width: 50%;
+}
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=url]:focus,
+input[type=password]:focus,
+textarea:focus {
+  outline: 0;
+  border-color: #4697e4;
+}
+
+@media (max-width: 600px) {
+  form > div {
+    margin: 0 0 15px 0; 
+  }
+  form > div > label,
+  legend {
+	  width: 100%;
+    float: none;
+    margin: 0 0 5px 0;
+  }
+  form > div > div,
+  form > div > fieldset > div {
+    width: 100%;
+    float: none;
+  }
+  input[type=text],
+  input[type=email],
+  input[type=url],
+  input[type=password],
+  textarea,
+  select {
+    width: 100%; 
+  }
+}
+@media (min-width: 1200px) {
+  form > div > label,
+	legend {
+  	text-align: right;
+  }
+}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+</head>
+
+<body>
+
+  <form action="#">
+
+  <header>
+    <h2>Example Responsive Form</h2>
+    <div>This form breaks at 600px and goes from a left-label form to a top-label form. At above 1200px, the labels align right.</div>
+  </header>
+
+  <div>
+    <label class="desc" id="title1" for="Field1">Full Name</label>
+    <div>
+      <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+    </div>
+  </div>
+
+  <div>
+    <label class="desc" id="title3" for="Field3">
+      Email
+    </label>
+    <div>
+      <input id="Field3" name="Field3" type="email" spellcheck="false" value="" maxlength="255" tabindex="3"> 
+   </div>
+  </div>
+
+  <div>
+    <label class="desc" id="title4" for="Field4">
+      Message
+    </label>
+
+    <div>
+      <textarea id="Field4" name="Field4" spellcheck="true" rows="10" cols="50" tabindex="4"></textarea>
+    </div>
+  </div>
+
+  <div>
+    <fieldset>
+
+      <legend id="title5" class="desc">
+        Select a Choice
+      </legend>
+
+      <div>
+      	<input id="radioDefault_5" name="Field5" type="hidden" value="">
+      	<div>
+      		<input id="Field5_0" name="Field5" type="radio" value="First Choice" tabindex="5" checked="checked">
+      		<label class="choice" for="Field5_0">First Choice</label>
+      	</div>
+        <div>
+        	<input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
+        	<label class="choice" for="Field5_1">Second Choice</label>
+        </div>
+        <div>
+        	<input id="Field5_2" name="Field5" type="radio" value="Third Choice" tabindex="7">
+        	<label class="choice" for="Field5_2">Third Choice</label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div>
+    <fieldset>
+      <legend id="title6" class="desc">
+        Check All That Apply
+      </legend>
+      <div>
+      <div>
+      	<input id="Field6" name="Field6" type="checkbox" value="First Choice" tabindex="8">
+      	<label class="choice" for="Field6">First Choice</label>
+      </div>
+      <div>
+      	<input id="Field7" name="Field7" type="checkbox" value="Second Choice" tabindex="9">
+      	<label class="choice" for="Field7">Second Choice</label>
+      </div>
+      <div>
+      	<input id="Field8" name="Field8" type="checkbox" value="Third Choice" tabindex="10">
+      	<label class="choice" for="Field8">Third Choice</label>
+      </span>
+      </div>
+    </fieldset>
+  </div>
+
+  <div>
+    <label class="desc" id="title106" for="Field106">
+    	Select a Choice
+    </label>
+    <div>
+    <select id="Field106" name="Field106" class="field select medium" tabindex="11"> 
+      <option value="First Choice">First Choice</option>
+      <option value="Second Choice">Second Choice</option>
+      <option value="Third Choice">Third Choice</option>
+    </select>
+    </div>
+  </div>
+
+  <div>
+		<div>
+  		<input id="saveForm" name="saveForm" type="submit" value="Submit">
+    </div>
+	</div>
+
+</form>
+
+  <script src="//code.jquery.com/jquery-latest.js"></script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+</body>
+
+</html>

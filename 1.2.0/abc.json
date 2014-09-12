@@ -1,0 +1,13 @@
+{
+    "name": "responsive",
+    "version": "1.0",
+    "desc": "响应式相关兼容实现、响应式模式",
+    "cover": "",
+    "author": {
+        "name": "miaojing",
+        "email": "zhou2ting@gmail.com",
+        "page": "https://github.com/miaojing/"
+    },
+    "type": "kissy-pie",
+    "type-url": "http://abc.alibaba-inc.com/r/kissy-pie"
+}

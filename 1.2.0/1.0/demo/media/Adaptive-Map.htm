@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by Brad Frost (http://codepen.io/bradfrost/pen/tLxAs)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>Adaptive Map - CodePen</title>
+
+  <meta name="viewport" content="width=device-width" />
+
+  <link rel='stylesheet' href='http://bradfrost.github.com/this-is-responsive/styles.css'>
+
+  <style>
+.btn {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background: #808080;
+  color: #fff;
+  margin: 1em;
+}
+.btn:hover, .btn:focus {
+  color: #fff;
+  background: #333;
+}
+
+.static-img {
+  display: block;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+/* From http://codepen.io/chriscoyier/full/kycDp */
+.map-container {
+  width: 100%;
+  margin: 0 auto;
+  height: 0;
+  padding-top: 38%;
+  position: relative;
+  display: none;
+  /* Hide for small screens */
+}
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  /* had to specify height/width */
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+/* Medium Screens */
+@media all and (min-width: 34.375em) {
+  .map-container {
+    display: block;
+  }
+
+  .static-img {
+    display: none;
+  }
+}
+  </style>
+
+  <script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+      js = js.replace(/\.location(\s+)?=/mi, "");
+      js = js.replace(/top.location.+=('|")/mi, "");
+      js = js.replace(/location\.replace/mi, "");
+      js = js.replace(/\.submit\(\)/mi, "");
+      js = js.replace(/fromCharCode/mi, "");
+      js = js.replace(/window(\s+)?\[(\s+)?("|')l/mi, "");
+      js = js.replace(/self(\s+)?\[(\s+)?("|')loc/mi, "");
+      return js;
+    }
+    _ogEval        = window.eval;
+    window.eval    = function(text) {_ogEval(cleanJS(text));};
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+</head>
+
+<body>
+
+  <!--Pattern HTML-->
+  <div id="pattern" class="pattern">
+    <div class="map">
+      <a href="https://maps.google.com/maps?q=Pittsburgh,+PA&hl=en&sll=40.697488,-73.979681&sspn=0.667391,1.447449&oq=Pittsburgh&hnear=Pittsburgh,+Allegheny,+Pennsylvania&t=m&z=12" class="btn map-link">View Map</a>
+    </div>
+  </div>
+  <!--End Pattern HTML-->
+
+  <div class="container">	
+		<section class="pattern-description">
+			<h1>Adaptive Map</h1>
+      <p>A map experience that defaults to a text link to Google Maps, loads in a static map image for small screens and an iframe map for larger screens.</p>
+      <p><a href=
+        "http://bradfrostweb.com/blog/post/adaptive-maps/">Read more about Adaptive Maps</a></p>
+		</section>
+		<footer role="contentinfo">   
+			<div>
+				<nav id="menu">
+					<a href="http://bradfrost.github.com/this-is-responsive/patterns.html">&larr;More Responsive Patterns</a>
+				</nav>
+			</div>
+		</footer>
+	</div>
+
+  <script src="//code.jquery.com/jquery-latest.js"></script>
+
+  <script>
+$(document).ready(function(){
+  buildMap();
+});
+
+var sw = document.body.clientWidth,
+    bp = 550,
+    $map = $('.map');
+var static = "http://maps.google.com/maps/api/staticmap?center=40.440625,-79.995886&zoom=13&markers=40.440625,-79.995886&size=640x320&sensor=true";
+var embed = '<iframe width="980" height="650" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=pittsburgh,+pa&amp;aq=&amp;sll=38.003385,-79.420925&amp;sspn=5.54782,11.612549&amp;ie=UTF8&amp;hq=&amp;hnear=Pittsburgh,+Allegheny,+Pennsylvania&amp;t=m&amp;ll=40.440676,-79.995918&amp;spn=0.117583,0.336113&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe>';
+
+function buildMap() {
+  if(sw>bp) { //If Large Screen
+      if($('.map-container').length < 1) { //If map doesn't already exist
+        buildEmbed();
+      }
+  } else {
+      if($('.static-img').length < 1) { //If static image doesn't exist
+        buildStatic();
+      }
+  }
+};
+
+function buildEmbed() { //Build iframe view
+    $('<div class="map-container"/>').html(embed).prependTo($map);
+};
+
+function buildStatic() { //Build static map
+   var mapLink = $('.map-link').attr('href'),
+       $img = $('<img class="static-img" />').attr('src',static);
+   $('<a/>').attr('href',mapLink).html($img).prependTo($map); 
+}
+
+$(window).resize(function() {
+  sw = document.body.clientWidth;
+  buildMap();
+  google.maps.event.trigger(map, "resize");
+});
+  </script>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+</body>
+
+</html>
